@@ -1,0 +1,2 @@
+D:/game/qt/PhantomGenesis/build/CMakeFiles/edit_cache.dir
+D:/game/qt/PhantomGenesis/build/CMakeFiles/rebuild_cache.dir
