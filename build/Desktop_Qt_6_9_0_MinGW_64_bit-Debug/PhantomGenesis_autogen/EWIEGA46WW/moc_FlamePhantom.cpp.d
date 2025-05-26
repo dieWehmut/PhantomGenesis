@@ -1,6 +1,8 @@
-D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenesis_autogen/EWIEGA46WW/moc_Player.cpp: D:/game/qt/PhantomGenesis/Player.h \
+D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenesis_autogen/EWIEGA46WW/moc_FlamePhantom.cpp: D:/game/qt/PhantomGenesis/FlamePhantom.h \
   D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenesis_autogen/moc_predefs.h \
   D:/game/qt/PhantomGenesis/ActiveObject.h \
+  D:/game/qt/PhantomGenesis/PhantomBase.h \
+  D:/game/qt/PhantomGenesis/Player.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/QObject \
   E:/qt/6.9.0/mingw_64/include/QtCore/q17memory.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/q20functional.h \

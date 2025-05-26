@@ -2,7 +2,15 @@
 #include <QKeyEvent>
 #include <QDebug>
 #include <QPainter>
-Player::Player(QObject *parent) : QObject(parent) {
+
+Player::Player(QObject *parent) : ActiveObject(parent) {
+    //属性初始值
+    setHp(100);
+    setSpeed(1.0f);
+    setSightRange(200);
+    setAtkRange(50);
+    setAtk(10);
+    //玩家人物图
     setPixmap(QPixmap("Resource/player.png").scaled(64, 64));
     setTransformOriginPoint(pixmap().width()/2, pixmap().height()/2);
     setFlag(QGraphicsItem::ItemIsFocusable); 
@@ -13,10 +21,10 @@ Player::Player(QObject *parent) : QObject(parent) {
 
 void Player::updatePosition() {//位置跟新
     velocity = QPointF(0, 0);
-    if(pressedKeys.contains(Qt::Key_W)) velocity.setY(-speed);
-    if(pressedKeys.contains(Qt::Key_S)) velocity.setY(speed);
-    if(pressedKeys.contains(Qt::Key_A)) velocity.setX(-speed);
-    if(pressedKeys.contains(Qt::Key_D)) velocity.setX(speed);
+    if(pressedKeys.contains(Qt::Key_W)) velocity.setY(-getSpeed());
+    if(pressedKeys.contains(Qt::Key_S)) velocity.setY(getSpeed());
+    if(pressedKeys.contains(Qt::Key_A)) velocity.setX(-getSpeed());
+    if(pressedKeys.contains(Qt::Key_D)) velocity.setX(getSpeed());
     if(velocity.x() != 0 && velocity.y() != 0) {
         velocity *= 0.7071f; 
     }
@@ -46,8 +54,8 @@ void Player::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 }
 QRectF Player::boundingRect() const {
     QRectF baseRect = QGraphicsPixmapItem::boundingRect();
-    int barWidth = 40;
-    int barHeight = 6;
+    int barWidth = 60;
+    int barHeight = 5;
     qreal x = (baseRect.width() - barWidth) / 2;
     qreal y = -barHeight - 5;
     QRectF healthBarRect(x, y, barWidth, barHeight);

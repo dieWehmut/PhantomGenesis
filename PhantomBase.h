@@ -1,13 +1,12 @@
 #ifndef PHANTOMBASE_H
 #define PHANTOMBASE_H
-
-class PhantomBase
-{
+#include"ActiveObject.h"
+class PhantomBase: public ActiveObject{
 public:
     PhantomBase();
-private:
-    int sightRange;
-    float speed;
+    int getAtkRange() const { return atkRange; }
+protected:
+
 };
 
 #endif // PHANTOMBASE_H

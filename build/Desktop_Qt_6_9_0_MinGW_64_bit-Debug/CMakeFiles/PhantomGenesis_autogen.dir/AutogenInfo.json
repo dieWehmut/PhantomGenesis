@@ -291,9 +291,21 @@
 	"HEADERS" : 
 	[
 		[
+			"D:/game/qt/PhantomGenesis/ActiveObject.h",
+			"MU",
+			"EWIEGA46WW/moc_ActiveObject.cpp",
+			null
+		],
+		[
 			"D:/game/qt/PhantomGenesis/FlamePhantom.h",
 			"MU",
 			"EWIEGA46WW/moc_FlamePhantom.cpp",
+			null
+		],
+		[
+			"D:/game/qt/PhantomGenesis/GameManager.h",
+			"MU",
+			"EWIEGA46WW/moc_GameManager.cpp",
 			null
 		],
 		[
@@ -403,7 +415,9 @@
 	"SETTINGS_FILE" : "D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/CMakeFiles/PhantomGenesis_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "D:/game/qt/PhantomGenesis/ActiveObject.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/FlamePhantom.cpp", "MU", null ],
+		[ "D:/game/qt/PhantomGenesis/GameManager.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/King.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/LurkPhantom.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/Map.cpp", "MU", null ],

@@ -13,7 +13,7 @@ public:
     int getGridSize()const;//获取格子大小
 private:
     QGraphicsScene* gameScene;
-    static const int GRID_SIZE = 50;//格子大小
+    static const int GRID_SIZE = 128;//格子大小，要调
     static const int GRID_ROW = 12; // 地图行数
     static const int GRID_COL = 18; // 地图列数
     QGraphicsPixmapItem* mapItems[GRID_ROW][GRID_COL]; // 格子数组

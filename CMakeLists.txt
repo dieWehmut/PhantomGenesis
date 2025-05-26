@@ -22,6 +22,9 @@ qt_add_executable(PhantomGenesis
     PhantomBase.h PhantomBase.cpp
     FlamePhantom.h FlamePhantom.cpp
     LurkPhantom.h LurkPhantom.cpp
+    ActiveObject.h
+    GameManager.h GameManager.cpp
+    ActiveObject.cpp
 
 )
 

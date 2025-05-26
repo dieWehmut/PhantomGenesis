@@ -1,7 +1,11 @@
 PhantomGenesis_autogen/timestamp: \
+	D:/game/qt/PhantomGenesis/ActiveObject.cpp \
+	D:/game/qt/PhantomGenesis/ActiveObject.h \
 	D:/game/qt/PhantomGenesis/CMakeLists.txt \
 	D:/game/qt/PhantomGenesis/FlamePhantom.cpp \
 	D:/game/qt/PhantomGenesis/FlamePhantom.h \
+	D:/game/qt/PhantomGenesis/GameManager.cpp \
+	D:/game/qt/PhantomGenesis/GameManager.h \
 	D:/game/qt/PhantomGenesis/King.cpp \
 	D:/game/qt/PhantomGenesis/King.h \
 	D:/game/qt/PhantomGenesis/LurkPhantom.cpp \
@@ -54,6 +58,7 @@ PhantomGenesis_autogen/timestamp: \
 	D:/mingw64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake \
 	E:/qt/6.9.0/mingw_64/include/QtCore/QObject \
 	E:/qt/6.9.0/mingw_64/include/QtCore/QString \
+	E:/qt/6.9.0/mingw_64/include/QtCore/QTimer \
 	E:/qt/6.9.0/mingw_64/include/QtCore/q17memory.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/q20functional.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/q20iterator.h \
@@ -61,6 +66,7 @@ PhantomGenesis_autogen/timestamp: \
 	E:/qt/6.9.0/mingw_64/include/QtCore/q20type_traits.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/q20utility.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/q23utility.h \
+	E:/qt/6.9.0/mingw_64/include/QtCore/qabstracteventdispatcher.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qalgorithms.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qanystringview.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qarraydata.h \
@@ -70,6 +76,7 @@ PhantomGenesis_autogen/timestamp: \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qatomic.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qatomic_cxx11.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qbasicatomic.h \
+	E:/qt/6.9.0/mingw_64/include/QtCore/qbasictimer.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qbindingstorage.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qbytearray.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qbytearrayalgorithms.h \
@@ -88,8 +95,11 @@ PhantomGenesis_autogen/timestamp: \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qcontiguouscache.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qdarwinhelpers.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qdatastream.h \
+	E:/qt/6.9.0/mingw_64/include/QtCore/qdeadlinetimer.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qdebug.h \
+	E:/qt/6.9.0/mingw_64/include/QtCore/qelapsedtimer.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qendian.h \
+	E:/qt/6.9.0/mingw_64/include/QtCore/qeventloop.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qexceptionhandling.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qflags.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qfloat16.h \
@@ -163,6 +173,7 @@ PhantomGenesis_autogen/timestamp: \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qtenvironmentvariables.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qtextstream.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qtformat_impl.h \
+	E:/qt/6.9.0/mingw_64/include/QtCore/qtimer.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qtmetamacros.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qtnoop.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qtpreprocessorsupport.h \
@@ -192,6 +203,7 @@ PhantomGenesis_autogen/timestamp: \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qimage.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qkeysequence.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qpaintdevice.h \
+	E:/qt/6.9.0/mingw_64/include/QtGui/qpainter.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qpainterpath.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qpalette.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qpen.h \
@@ -201,6 +213,7 @@ PhantomGenesis_autogen/timestamp: \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qregion.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qrgb.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qrgba64.h \
+	E:/qt/6.9.0/mingw_64/include/QtGui/qtextoption.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qtgui-config.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qtguiexports.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qtguiglobal.h \
@@ -209,10 +222,15 @@ PhantomGenesis_autogen/timestamp: \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qwindowdefs_win.h \
 	E:/qt/6.9.0/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
 	E:/qt/6.9.0/mingw_64/include/QtWidgets/QGraphicsScene \
+	E:/qt/6.9.0/mingw_64/include/QtWidgets/QGraphicsView \
 	E:/qt/6.9.0/mingw_64/include/QtWidgets/QMainWindow \
+	E:/qt/6.9.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+	E:/qt/6.9.0/mingw_64/include/QtWidgets/qframe.h \
 	E:/qt/6.9.0/mingw_64/include/QtWidgets/qgraphicsitem.h \
 	E:/qt/6.9.0/mingw_64/include/QtWidgets/qgraphicsscene.h \
+	E:/qt/6.9.0/mingw_64/include/QtWidgets/qgraphicsview.h \
 	E:/qt/6.9.0/mingw_64/include/QtWidgets/qmainwindow.h \
+	E:/qt/6.9.0/mingw_64/include/QtWidgets/qscrollarea.h \
 	E:/qt/6.9.0/mingw_64/include/QtWidgets/qsizepolicy.h \
 	E:/qt/6.9.0/mingw_64/include/QtWidgets/qtabwidget.h \
 	E:/qt/6.9.0/mingw_64/include/QtWidgets/qtwidgets-config.h \

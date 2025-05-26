@@ -16,7 +16,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+protected:
+    bool eventFilter(QObject *obj, QEvent *event) override;//游戏内专用
 private:
     Ui::MainWindow *ui;
     Map* map;

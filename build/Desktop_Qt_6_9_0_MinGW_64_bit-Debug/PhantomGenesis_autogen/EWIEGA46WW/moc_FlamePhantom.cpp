@@ -1,12 +1,12 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'Player.h'
+** Meta object code from reading C++ file 'FlamePhantom.h'
 **
 ** Created by: The Qt Meta Object Compiler version 69 (Qt 6.9.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../../../Player.h"
+#include "../../../../FlamePhantom.h"
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>
@@ -16,7 +16,7 @@
 
 #include <QtCore/qxptype_traits.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'Player.h' doesn't include <QObject>."
+#error "The header file 'FlamePhantom.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 69
 #error "This file was generated using the moc from 6.9.0. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -31,14 +31,14 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 QT_WARNING_DISABLE_GCC("-Wuseless-cast")
 namespace {
-struct qt_meta_tag_ZN6PlayerE_t {};
+struct qt_meta_tag_ZN12FlamePhantomE_t {};
 } // unnamed namespace
 
-template <> constexpr inline auto Player::qt_create_metaobjectdata<qt_meta_tag_ZN6PlayerE_t>()
+template <> constexpr inline auto FlamePhantom::qt_create_metaobjectdata<qt_meta_tag_ZN12FlamePhantomE_t>()
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "Player"
+        "FlamePhantom"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -47,44 +47,44 @@ template <> constexpr inline auto Player::qt_create_metaobjectdata<qt_meta_tag_Z
     };
     QtMocHelpers::UintData qt_enums {
     };
-    return QtMocHelpers::metaObjectData<Player, qt_meta_tag_ZN6PlayerE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+    return QtMocHelpers::metaObjectData<FlamePhantom, qt_meta_tag_ZN12FlamePhantomE_t>(QMC::MetaObjectFlag{}, qt_stringData,
             qt_methods, qt_properties, qt_enums);
 }
-Q_CONSTINIT const QMetaObject Player::staticMetaObject = { {
-    QMetaObject::SuperData::link<ActiveObject::staticMetaObject>(),
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN6PlayerE_t>.stringdata,
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN6PlayerE_t>.data,
+Q_CONSTINIT const QMetaObject FlamePhantom::staticMetaObject = { {
+    QMetaObject::SuperData::link<PhantomBase::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN12FlamePhantomE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN12FlamePhantomE_t>.data,
     qt_static_metacall,
     nullptr,
-    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN6PlayerE_t>.metaTypes,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN12FlamePhantomE_t>.metaTypes,
     nullptr
 } };
 
-void Player::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void FlamePhantom::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    auto *_t = static_cast<Player *>(_o);
+    auto *_t = static_cast<FlamePhantom *>(_o);
     (void)_t;
     (void)_c;
     (void)_id;
     (void)_a;
 }
 
-const QMetaObject *Player::metaObject() const
+const QMetaObject *FlamePhantom::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *Player::qt_metacast(const char *_clname)
+void *FlamePhantom::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN6PlayerE_t>.strings))
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN12FlamePhantomE_t>.strings))
         return static_cast<void*>(this);
-    return ActiveObject::qt_metacast(_clname);
+    return PhantomBase::qt_metacast(_clname);
 }
 
-int Player::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int FlamePhantom::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = ActiveObject::qt_metacall(_c, _id, _a);
+    _id = PhantomBase::qt_metacall(_c, _id, _a);
     return _id;
 }
 QT_WARNING_POP
