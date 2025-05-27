@@ -38,10 +38,14 @@ template <> constexpr inline auto GameManager::qt_create_metaobjectdata<qt_meta_
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "GameManager"
+        "GameManager",
+        "handleViewResize",
+        ""
     };
 
     QtMocHelpers::UintData qt_methods {
+        // Slot 'handleViewResize'
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -63,9 +67,12 @@ Q_CONSTINIT const QMetaObject GameManager::staticMetaObject = { {
 void GameManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     auto *_t = static_cast<GameManager *>(_o);
-    (void)_t;
-    (void)_c;
-    (void)_id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->handleViewResize(); break;
+        default: ;
+        }
+    }
     (void)_a;
 }
 
@@ -85,6 +92,18 @@ void *GameManager::qt_metacast(const char *_clname)
 int GameManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 1)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 1;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 1)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 1;
+    }
     return _id;
 }
 QT_WARNING_POP

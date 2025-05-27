@@ -14,7 +14,7 @@ qt_add_executable(PhantomGenesis
     Map.h Map.cpp
     resources.qrc
     Resource/map1.png
-    Resource/map2.png
+
     Resource/map0.png
     Player.h Player.cpp
     Resource/player.png
@@ -25,6 +25,10 @@ qt_add_executable(PhantomGenesis
     ActiveObject.h
     GameManager.h GameManager.cpp
     ActiveObject.cpp
+    Resource/player.gif
+    Resource/black.png
+    Resource/portal.png
+    Resource/flame.png
 
 )
 

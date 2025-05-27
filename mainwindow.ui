@@ -10,62 +10,282 @@
     <height>720</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1080</width>
+    <height>720</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(0, 0, 0);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QStackedWidget" name="stackedWidget">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>1080</width>
-      <height>720</height>
-     </rect>
-    </property>
-    <property name="currentIndex">
-     <number>1</number>
-    </property>
-    <widget class="QWidget" name="startPage">
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 242, 219);</string>
-     </property>
-     <widget class="QPushButton" name="startBtn">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>500</y>
-        <width>181</width>
-        <height>101</height>
-       </rect>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(188, 255, 196);</string>
+      <property name="currentIndex">
+       <number>1</number>
       </property>
-      <property name="text">
-       <string>开始游戏</string>
-      </property>
+      <widget class="QWidget" name="startPage">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(190, 255, 253);</string>
+       </property>
+       <widget class="QPushButton" name="startBtn">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>230</y>
+          <width>181</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(188, 255, 196);</string>
+        </property>
+        <property name="text">
+         <string>开始游戏</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="loadBtn">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>320</y>
+          <width>181</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>读取存档</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="edBtn">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>430</y>
+          <width>181</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>ED鉴赏</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="exitBtn">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>520</y>
+          <width>181</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>退出游戏</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="saveBtn">
+        <property name="geometry">
+         <rect>
+          <x>319</x>
+          <y>462</y>
+          <width>121</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>保存</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="gamePage">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(0, 0, 0);</string>
+       </property>
+       <widget class="QGraphicsView" name="graphicsView">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>49</y>
+          <width>1080</width>
+          <height>671</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(0, 0, 0);</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="backBtn_4">
+        <property name="geometry">
+         <rect>
+          <x>-10</x>
+          <y>-10</y>
+          <width>151</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>返回标题</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="saveBtn_2">
+        <property name="geometry">
+         <rect>
+          <x>149</x>
+          <y>-8</y>
+          <width>151</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>保存</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="loadBtn_2">
+        <property name="geometry">
+         <rect>
+          <x>309</x>
+          <y>-8</y>
+          <width>141</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>读取</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pauseBtn">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>-10</y>
+          <width>131</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>暂停</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="helpBtn">
+        <property name="geometry">
+         <rect>
+          <x>610</x>
+          <y>-10</y>
+          <width>131</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>帮助</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="settingBtn">
+        <property name="geometry">
+         <rect>
+          <x>759</x>
+          <y>-8</y>
+          <width>121</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>设置</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="savePage">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(0, 255, 127);</string>
+       </property>
+       <widget class="QPushButton" name="backBtn_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>550</y>
+          <width>151</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>返回标题</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="loadPage">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 211, 37);</string>
+       </property>
+       <widget class="QPushButton" name="backBtn_3">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>530</y>
+          <width>151</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>返回标题</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="edPage">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(69, 165, 255);</string>
+       </property>
+       <widget class="QPushButton" name="backBtn">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>10</y>
+          <width>151</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>返回标题</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="edScene"/>
      </widget>
-    </widget>
-    <widget class="QWidget" name="gamePage">
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
-     </property>
-     <widget class="QGraphicsView" name="graphicsView">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>1080</width>
-        <height>720</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(211, 255, 255);</string>
-      </property>
-     </widget>
-    </widget>
-   </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

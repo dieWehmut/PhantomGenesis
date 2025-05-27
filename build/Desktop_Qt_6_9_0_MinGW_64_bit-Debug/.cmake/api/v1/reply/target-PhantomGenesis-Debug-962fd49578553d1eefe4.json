@@ -75,13 +75,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 38,
+				"line" : 43,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 30,
+				"line" : 35,
 				"parent" : 0
 			},
 			{
@@ -351,11 +351,12 @@
 				1,
 				2,
 				6,
-				12,
-				15,
-				17,
-				19,
-				21,
+				11,
+				14,
+				16,
+				18,
+				20,
+				23,
 				24
 			]
 		}
@@ -478,8 +479,8 @@
 			"sourceIndexes" : 
 			[
 				0,
-				25,
-				26
+				29,
+				30
 			]
 		},
 		{
@@ -489,11 +490,12 @@
 				1,
 				2,
 				6,
-				12,
-				15,
-				17,
-				19,
-				21,
+				11,
+				14,
+				16,
+				18,
+				20,
+				23,
 				24
 			]
 		},
@@ -503,13 +505,13 @@
 			[
 				3,
 				5,
-				11,
-				14,
-				16,
-				18,
-				20,
-				22,
-				23
+				10,
+				13,
+				15,
+				17,
+				19,
+				21,
+				22
 			]
 		},
 		{
@@ -526,15 +528,18 @@
 				7,
 				8,
 				9,
-				10,
-				13
+				12,
+				25,
+				26,
+				27,
+				28
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				27
+				31
 			]
 		}
 	],
@@ -587,17 +592,12 @@
 		},
 		{
 			"backtrace" : 4,
-			"path" : "Resource/map1.png",
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/Resource/map1.png",
 			"sourceGroupIndex" : 4
 		},
 		{
 			"backtrace" : 4,
-			"path" : "Resource/map2.png",
-			"sourceGroupIndex" : 4
-		},
-		{
-			"backtrace" : 4,
-			"path" : "Resource/map0.png",
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/Resource/map0.png",
 			"sourceGroupIndex" : 4
 		},
 		{
@@ -675,6 +675,32 @@
 			"compileGroupIndex" : 0,
 			"path" : "GameManager.cpp",
 			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "ActiveObject.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/player.gif",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/black.png",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/portal.png",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/flame.png",
+			"sourceGroupIndex" : 4
 		},
 		{
 			"backtrace" : 0,

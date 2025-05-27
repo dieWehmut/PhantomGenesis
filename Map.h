@@ -3,22 +3,29 @@
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 #include <QString>
+#include <QVector>
 class Map{
 public:
     Map(QGraphicsScene* scene);
     ~Map();//清理地图
     void initMap(int mapId);//初始化地图
-    void updateMap();//更新地图
+    void updateMap();//地图整体状态更新，不只是格子
     QRectF getMapBounds()const;//获取地图边界;
     int getGridSize()const;//获取格子大小
+    int getGridRow()const;//获取行数
+    int getGridCol()const;//获取列数
+    int getOriginalTileType(int row, int col, int mapId) const;//获取原始格子类型，大概不变
+    int getTileType(int row, int col) const; // 获取当前的格子类型
+    void updateSingleTile(int row, int col, int tileType); // 单格子更新
 private:
-    QGraphicsScene* gameScene;
-    static const int GRID_SIZE = 128;//格子大小，要调
-    static const int GRID_ROW = 12; // 地图行数
-    static const int GRID_COL = 18; // 地图列数
+    QGraphicsScene* gameScene;//game场景
+    static const int GRID_SIZE = 256;//格子大小，要调
+    static const int GRID_ROW = 16; //行数
+    static const int GRID_COL = 24; //列数
     QGraphicsPixmapItem* mapItems[GRID_ROW][GRID_COL]; // 格子数组
+    int currentMapData[GRID_ROW][GRID_COL];//当前地图数据
+    QVector<QVector<QVector<int>>> allMapLayouts;
     void loadMapTile(int row, int col, int tileType);//加载地图
-
 };
 
 #endif // MAP_H

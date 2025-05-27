@@ -38,10 +38,17 @@ template <> constexpr inline auto Player::qt_create_metaobjectdata<qt_meta_tag_Z
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "Player"
+        "Player",
+        "updatePixmap",
+        "",
+        "frameNumber"
     };
 
     QtMocHelpers::UintData qt_methods {
+        // Slot 'updatePixmap'
+        QtMocHelpers::SlotData<void(int)>(1, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 3 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -63,10 +70,12 @@ Q_CONSTINIT const QMetaObject Player::staticMetaObject = { {
 void Player::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     auto *_t = static_cast<Player *>(_o);
-    (void)_t;
-    (void)_c;
-    (void)_id;
-    (void)_a;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->updatePixmap((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        default: ;
+        }
+    }
 }
 
 const QMetaObject *Player::metaObject() const
@@ -85,6 +94,18 @@ void *Player::qt_metacast(const char *_clname)
 int Player::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = ActiveObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 1)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 1;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 1)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 1;
+    }
     return _id;
 }
 QT_WARNING_POP

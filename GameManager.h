@@ -12,13 +12,20 @@ class GameManager : public QObject
 public:
     explicit GameManager(QGraphicsView* graphicsView, QObject *parent = nullptr);
     ~GameManager();
-    void startGame();
+    void startGame();//开始游戏
+    void pauseGame();//暂停
+    void resumeGame();//恢复游戏
+    bool eventFilter(QObject *watched, QEvent *event) override;
+public slots:
+    void handleViewResize(); // 处理视图的改变
 private:
     QGraphicsView* gameView;//游戏视图
     QGraphicsScene* gameScene;//游戏场景
     Map* gameMap;//地图
     Player* player;//玩家
+    int curMapId; // 当前地图ID
     QTimer* gameLoopTimer;//计时器
+    void updateVisibleTiles(); // 更新视野地图
 };
 
 #endif // GAMEMANAGER_H

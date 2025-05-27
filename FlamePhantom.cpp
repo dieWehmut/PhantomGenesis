@@ -6,7 +6,7 @@ FlamePhantom::FlamePhantom(Player* targetPlayer)
     rangeIndicator = QPixmap("Resource/flamePhantomRangeIndicator.png");
     setPixmap(QPixmap("Resource/flamePhantom.png"));
 }
-void FlamePhantom::updateStatus() {//各种状态更新，不含自身属性
+void FlamePhantom::updateStatus() {//各种状态更新
     qreal distance = QLineF(pos(), player->pos()).length();//计算距离
     if(distance < atkRange) {
         rangeDebuff();
@@ -24,6 +24,6 @@ void FlamePhantom::rangeDebuff() {//范围伤害
     }
     player->setSpeed(player->getSpeed() * 0.8);
 }
-void FlamePhantom::meleeAtk() {
+void FlamePhantom::meleeAtk() {//近战攻击
     player->setHp(player->getHp() - atk);
 }

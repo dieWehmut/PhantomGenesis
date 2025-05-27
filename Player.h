@@ -13,6 +13,9 @@ public:
     void updatePosition() override;//重写位置更新
 private:
     QSet<int> pressedKeys;//各种按键集
+    QMovie* playerMovie;
+private slots:
+    void updatePixmap(int frameNumber);
 };
 
 

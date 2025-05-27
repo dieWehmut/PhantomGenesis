@@ -2,6 +2,7 @@
 #define ACTIVEOBJECT_H
 #include <QGraphicsPixmapItem>
 #include <QObject>
+#include <QMovie>
 class ActiveObject:public QObject, public QGraphicsPixmapItem {//所有能动的对象的基类
     Q_OBJECT
 public:
