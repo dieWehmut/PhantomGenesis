@@ -29,6 +29,8 @@ qt_add_executable(PhantomGenesis
     Resource/black.png
     Resource/portal.png
     Resource/flame.png
+    Wave.h Wave.cpp
+    PlayerWave.h PlayerWave.cpp
 
 )
 

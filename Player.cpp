@@ -1,15 +1,18 @@
 #include "Player.h"
 #include <QKeyEvent>
-#include <QDebug>
 #include <QPainter>
-
+#include <QGraphicsScene>
+#include"PlayerWave.h"
 Player::Player(QObject *parent) : ActiveObject(parent) {
     //属性初始值设置
     setHp(100);
-    setSpeed(10.0f);
-    setSightRange(30);
+    setSpeed(1.5f);
+    setSightRange(100);
     setAtkRange(50);
     setAtk(10);
+    setAtkCD(500);
+    setCurCD(0);
+    setLastMoveDirection(QPointF(1, 0));
     playerMovie = new QMovie("Resource/player.gif", QByteArray(), this);//玩家人物图
     if (playerMovie->isValid()) {
         connect(playerMovie, &QMovie::frameChanged, this, &Player::updatePixmap);
@@ -19,7 +22,7 @@ Player::Player(QObject *parent) : ActiveObject(parent) {
     }
     setTransformOriginPoint(pixmap().width()/2, pixmap().height()/2);
     setFlag(QGraphicsItem::ItemIsFocusable); 
-        setBoundingRegionGranularity(1.0);
+    setBoundingRegionGranularity(1.0);
     setCacheMode(DeviceCoordinateCache);
     setFocus(); 
 }
@@ -33,16 +36,54 @@ void Player::updatePosition() {//位置跟新
     if(velocity.x() != 0 && velocity.y() != 0) {
         velocity *= 0.7071f; 
     }
+    if (velocity.x() != 0 || velocity.y() != 0) {
+        setLastMoveDirection(velocity);
+        qreal length = qSqrt(lastMoveDirection.x()*lastMoveDirection.x()+lastMoveDirection.y() * lastMoveDirection.y());
+        if (length > 0){
+            lastMoveDirection.setX(lastMoveDirection.x() / length);
+            lastMoveDirection.setY(lastMoveDirection.y() / length);
+        }
+    }
+    if(velocity.x() != 0 && velocity.y() != 0) {
+        velocity *= 0.7071f; 
+    }
     QPointF newPos = pos() + velocity;
     setPos(newPos);
+    if (curCD > 0) {
+        curCD -= 1000/60;
+    }
 }
 
 void Player::keyPressEvent(QKeyEvent *event) {
     pressedKeys.insert(event->key());
+    if (event->key() == Qt::Key_Space) {//检测攻击
+        playerStartAtk();
+    }
 }
 
 void Player::keyReleaseEvent(QKeyEvent *event) {
     pressedKeys.remove(event->key());
+}
+void Player::clearPressedKeys() {
+    pressedKeys.clear();
+}
+void Player::playerStartAtk() {//发动攻击
+    if (curCD <= 0) {
+        PlayerWave *wave = new PlayerWave(lastMoveDirection, getAtk(), nullptr);
+        QPointF playerCenter = pos() + QPointF(pixmap().width() / 2, pixmap().height() / 2);
+        wave->setPos(playerCenter);
+        if (scene()) {
+            scene()->addItem(wave);
+        }
+        setCurCD(atkCD);
+    }
+}
+void Player::focusInEvent(QFocusEvent *event) {
+    QGraphicsPixmapItem::focusInEvent(event);
+}
+void Player::focusOutEvent(QFocusEvent *event) {
+    QGraphicsPixmapItem::focusOutEvent(event);
+    clearPressedKeys();
 }
 void Player::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {//血条
     Q_UNUSED(option);

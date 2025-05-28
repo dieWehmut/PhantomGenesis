@@ -16,6 +16,10 @@ PhantomGenesis_autogen/timestamp: \
 	D:/game/qt/PhantomGenesis/PhantomBase.h \
 	D:/game/qt/PhantomGenesis/Player.cpp \
 	D:/game/qt/PhantomGenesis/Player.h \
+	D:/game/qt/PhantomGenesis/PlayerWave.cpp \
+	D:/game/qt/PhantomGenesis/PlayerWave.h \
+	D:/game/qt/PhantomGenesis/Wave.cpp \
+	D:/game/qt/PhantomGenesis/Wave.h \
 	D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake \
 	D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/CMakeFiles/3.30.2/CMakeCXXCompiler.cmake \
 	D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/CMakeFiles/3.30.2/CMakeRCCompiler.cmake \
@@ -56,6 +60,7 @@ PhantomGenesis_autogen/timestamp: \
 	D:/mingw64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake \
 	D:/mingw64/share/cmake-3.30/Modules/Platform/Windows.cmake \
 	D:/mingw64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake \
+	E:/qt/6.9.0/mingw_64/include/QtCore/QDebug \
 	E:/qt/6.9.0/mingw_64/include/QtCore/QObject \
 	E:/qt/6.9.0/mingw_64/include/QtCore/QString \
 	E:/qt/6.9.0/mingw_64/include/QtCore/QTimer \
@@ -214,6 +219,8 @@ PhantomGenesis_autogen/timestamp: \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qxptype_traits.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qyieldcpu.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/QMovie \
+	E:/qt/6.9.0/mingw_64/include/QtGui/QPainter \
+	E:/qt/6.9.0/mingw_64/include/QtGui/QPainterPath \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qaction.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qbitmap.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qbrush.h \

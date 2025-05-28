@@ -32,7 +32,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->loadBtn, &QPushButton::clicked, this, &MainWindow::loadGame);
     connect(ui->loadBtn_2, &QPushButton::clicked, this, &MainWindow::loadGame);
     connect(ui->edBtn, &QPushButton::clicked, this, &MainWindow::showEdPage);
-    // connect(ui->pauseBtn, &QPushButton::clicked, this, &MainWindow::pauseGame);//待实现
+    connect(ui->pauseBtn, &QPushButton::clicked, this, &MainWindow::togglePause);
+    connect(ui->continueBtn, &QPushButton::clicked, this, &MainWindow::returnToGame);
 }
 
 MainWindow::~MainWindow()
@@ -40,13 +41,35 @@ MainWindow::~MainWindow()
     delete ui;
     delete gameManager;
 }
-
+void MainWindow::changeEvent(QEvent *event) {
+    if (event->type() == QEvent::ActivationChange) {
+        if (gameManager && gameStarted) { 
+            if (isActiveWindow()) {
+                if (gameManager->isGamePaused()) { 
+                    gameManager->resumeGame();
+                    ui->pauseBtn->setText("暂停"); 
+                    ui->continueBtn->hide(); 
+                }
+            } else {
+                if (!gameManager->isGamePaused()) {
+                    gameManager->pauseGame();
+                    ui->pauseBtn->setText("继续"); 
+                    ui->continueBtn->show(); 
+                }
+            }
+        }
+    }
+    QMainWindow::changeEvent(event);
+}
 bool MainWindow::eventFilter(QObject* obj, QEvent* event)//防滑动
 {
     if (obj == ui->graphicsView) {
         switch(event->type()) {
         case QEvent::Wheel:
         case QEvent::GraphicsSceneWheel:
+            return true;
+        case QEvent::FocusIn: 
+            ui->graphicsView->setFocus();
             return true;
         default:
             break;
@@ -67,8 +90,10 @@ void MainWindow::startGame(){//game开始
         gameManager->startGame();
         gameStarted = true;
     }
+    ui->pauseBtn->setText("暂停"); //显示暂停
+    ui->continueBtn->hide(); // 隐藏继续按钮
 }
-void MainWindow::returnToGame(){//之后要读档的，会改
+void MainWindow::returnToGame(){
     ui->stackedWidget->setCurrentIndex(1);
     if (gameManager) {
         ui->graphicsView->setGeometry(0, 0, ui->stackedWidget->width(), ui->stackedWidget->height());
@@ -77,6 +102,21 @@ void MainWindow::returnToGame(){//之后要读档的，会改
         emit viewResized();
         if (gameStarted) {
             gameManager->resumeGame();
+            ui->pauseBtn->setText("暂停"); 
+        }
+    }
+    ui->continueBtn->hide(); 
+}
+void MainWindow::togglePause() {
+    if (gameManager) {
+        if (gameManager->isGamePaused()) {
+            gameManager->resumeGame();
+            ui->pauseBtn->setText("暂停");
+            ui->continueBtn->hide(); 
+        } else {
+            gameManager->pauseGame();
+            ui->pauseBtn->setText("继续");
+            ui->continueBtn->show(); 
         }
     }
 }

@@ -20,6 +20,7 @@ public:
 protected:
     bool eventFilter(QObject *obj, QEvent *event) override;//游戏内专用
     void resizeEvent(QResizeEvent *event) override; // 窗口自由改变
+    void changeEvent(QEvent *event) override;//窗口状态改变
 private:
     Ui::MainWindow *ui;
     Map* map;//地图
@@ -32,6 +33,7 @@ private slots://页面跳转
     void saveGame();//保存
     void goBackToStartPage();//返回标题
     void returnToGame(); //返回game
+    void togglePause();//暂停
 signals:
     void viewResized();//窗口改变
 };

@@ -7,6 +7,7 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/6.9.0/mingw_64/include/QtCore/QString \
   E:/qt/6.9.0/mingw_64/include/QtCore/QTimer \
   E:/qt/6.9.0/mingw_64/include/QtCore/QVector \
+  E:/qt/6.9.0/mingw_64/include/QtCore/Qdebug \
   E:/qt/6.9.0/mingw_64/include/QtCore/q17memory.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/q20algorithm.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/q20functional.h \

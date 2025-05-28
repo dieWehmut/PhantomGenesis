@@ -16,6 +16,8 @@ public:
     void pauseGame();//暂停
     void resumeGame();//恢复游戏
     bool eventFilter(QObject *watched, QEvent *event) override;
+    Player* getPlayer() const { return player; } 
+    bool isGamePaused() const { return gamePaused; } 
 public slots:
     void handleViewResize(); // 处理视图的改变
 private:
@@ -25,6 +27,7 @@ private:
     Player* player;//玩家
     int curMapId; // 当前地图ID
     QTimer* gameLoopTimer;//计时器
+    bool gamePaused; // 标记是否暂停
     void updateVisibleTiles(); // 更新视野地图
 };
 

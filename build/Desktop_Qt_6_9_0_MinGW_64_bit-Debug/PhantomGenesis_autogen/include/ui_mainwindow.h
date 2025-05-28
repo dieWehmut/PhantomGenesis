@@ -40,6 +40,7 @@ public:
     QPushButton *pauseBtn;
     QPushButton *helpBtn;
     QPushButton *settingBtn;
+    QPushButton *continueBtn;
     QWidget *savePage;
     QPushButton *backBtn_2;
     QWidget *loadPage;
@@ -119,6 +120,10 @@ public:
         settingBtn = new QPushButton(gamePage);
         settingBtn->setObjectName("settingBtn");
         settingBtn->setGeometry(QRect(759, -8, 121, 51));
+        continueBtn = new QPushButton(gamePage);
+        continueBtn->setObjectName("continueBtn");
+        continueBtn->setGeometry(QRect(330, 230, 421, 261));
+        continueBtn->setStyleSheet(QString::fromUtf8("background-color: rgb(149, 255, 183);"));
         stackedWidget->addWidget(gamePage);
         savePage = new QWidget();
         savePage->setObjectName("savePage");
@@ -151,7 +156,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -171,6 +176,7 @@ public:
         pauseBtn->setText(QCoreApplication::translate("MainWindow", "\346\232\202\345\201\234", nullptr));
         helpBtn->setText(QCoreApplication::translate("MainWindow", "\345\270\256\345\212\251", nullptr));
         settingBtn->setText(QCoreApplication::translate("MainWindow", "\350\256\276\347\275\256", nullptr));
+        continueBtn->setText(QCoreApplication::translate("MainWindow", "\347\273\247\347\273\255\346\270\270\346\210\217", nullptr));
         backBtn_2->setText(QCoreApplication::translate("MainWindow", "\350\277\224\345\233\236\346\240\207\351\242\230", nullptr));
         backBtn_3->setText(QCoreApplication::translate("MainWindow", "\350\277\224\345\233\236\346\240\207\351\242\230", nullptr));
         backBtn->setText(QCoreApplication::translate("MainWindow", "\350\277\224\345\233\236\346\240\207\351\242\230", nullptr));

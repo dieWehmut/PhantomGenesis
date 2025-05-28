@@ -2,26 +2,29 @@
 #include <QDebug>
 #include <QtMath>
 
-GameManager::GameManager(QGraphicsView* graphicsView, QObject *parent) : QObject(parent), gameView(graphicsView), gameScene(nullptr), gameMap(nullptr), player(nullptr), gameLoopTimer(nullptr) {
+GameManager::GameManager(QGraphicsView* graphicsView, QObject *parent) : QObject(parent), gameView(graphicsView), gameScene(nullptr), gameMap(nullptr), player(nullptr), gameLoopTimer(nullptr), gamePaused(false) { 
     if (parent) {
         connect(parent, SIGNAL(viewResized()), this, SLOT(handleViewResize()));
     }
 }
-void GameManager::pauseGame() {//待补充的
+void GameManager::pauseGame() {//待补充
     if (gameLoopTimer && gameLoopTimer->isActive()) {
         gameLoopTimer->stop();
+        gamePaused = true;
     }
 }
 
 void GameManager::resumeGame() {
     if (gameLoopTimer && !gameLoopTimer->isActive()) {
         gameLoopTimer->start(1000/60);
+        gamePaused = false; 
     }
     if (gameView) {
         gameView->setFocusPolicy(Qt::StrongFocus);
         gameView->setFocus();
     }
     if (player) {
+        player->clearPressedKeys(); // 清除按键集
         player->setFocus();
     }
 }
@@ -68,7 +71,7 @@ void GameManager::startGame() {
         gameView->centerOn(player); // 视野居中
         gameView->viewport()->update();
     });
-    gameLoopTimer->start(1000/60);//60帧
+    gameLoopTimer->start(1000/60);
 }
 void GameManager::updateVisibleTiles() {
     if (!player || !gameMap) return;

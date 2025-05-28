@@ -16,19 +16,36 @@ events:
       - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
       - "CMakeLists.txt:2 (project)"
     message: |
-      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-      Compiler: D:/mingw64/bin/clang++.exe 
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: D:/Tools/bin/i586-pc-msdosdjgpp-g++.exe 
       Build flags: 
       Id flags:  
+      
+      The output was:
+      1
+      collect2: 鑷村懡閿欒锛歭d 浠ヤ俊鍙?11 [Segmentation fault] 閫€鍑恒€?缂栬瘧涓柇銆?
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: D:/Tools/bin/i586-pc-msdosdjgpp-g++.exe 
+      Build flags: 
+      Id flags: -c 
       
       The output was:
       0
       
       
-      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
       
-      The CXX compiler identification is Clang, found in:
-        D:/game/qt/PhantomGenesis/build/CMakeFiles/3.30.2/CompilerIdCXX/a.exe
+      The CXX compiler identification is GNU, found in:
+        D:/game/qt/PhantomGenesis/build/CMakeFiles/3.30.2/CompilerIdCXX/CMakeCXXCompilerId.o
       
   -
     kind: "try_compile-v1"
@@ -39,10 +56,9 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-wzhtf4"
-      binary: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-wzhtf4"
+      source: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-igs4tm"
+      binary: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-igs4tm"
     cmakeVariables:
-      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/mingw64/bin/clang-scan-deps.exe"
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
       CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
@@ -51,187 +67,731 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-wzhtf4'
+        Change Dir: 'D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-igs4tm'
         
-        Run Build Command(s): c:\\Users\\30119\\.trae\\extensions\\kylinideteam.kylin-cmake-tools-0.0.4-universal\\res\\ninja\\win32-x64\\ninja -v cmTC_63cb1
-        [1/2] D:\\mingw64\\bin\\clang++.exe   -v -MD -MT CMakeFiles/cmTC_63cb1.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles\\cmTC_63cb1.dir\\CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles/cmTC_63cb1.dir/CMakeCXXCompilerABI.cpp.obj -c D:/mingw64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp
-        (built by Brecht Sanders, r1) clang version 18.1.8
-        Target: x86_64-w64-windows-gnu
-        Thread model: posix
-        InstalledDir: D:/mingw64/bin
-         (in-process)
-         "D:/mingw64/bin/clang++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-wzhtf4 -v -fcoverage-compilation-dir=D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-wzhtf4 -resource-dir D:/mingw64/lib/clang/18 -dependency-file "CMakeFiles\\\\cmTC_63cb1.dir\\\\CMakeCXXCompilerABI.cpp.obj.d" -MT CMakeFiles/cmTC_63cb1.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -internal-isystem D:/mingw64/x86_64-w64-mingw32/include/c++ -internal-isystem D:/mingw64/x86_64-w64-mingw32/include/c++/x86_64-w64-mingw32 -internal-isystem D:/mingw64/x86_64-w64-mingw32/include/c++/backward -internal-isystem D:/mingw64/x86_64-w64-mingw32/include/c++/14.2.0 -internal-isystem D:/mingw64/x86_64-w64-mingw32/include/c++/14.2.0/x86_64-w64-mingw32 -internal-isystem D:/mingw64/x86_64-w64-mingw32/include/c++/14.2.0/backward -internal-isystem D:/mingw64/include/c++/14.2.0 -internal-isystem D:/mingw64/include/c++/14.2.0/x86_64-w64-mingw32 -internal-isystem D:/mingw64/include/c++/14.2.0/backward -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++ -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/x86_64-w64-mingw32 -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/backward -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2.0 -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2.0/x86_64-w64-mingw32 -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2.0/backward -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2 -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2/x86_64-w64-mingw32 -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2/backward -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14 -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14/x86_64-w64-mingw32 -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14/backward -internal-isystem D:/mingw64/lib/clang/18/include -internal-isystem D:/mingw64/x86_64-w64-mingw32/include -internal-isystem D:/mingw64/x86_64-w64-mingw32/usr/include -internal-isystem D:/mingw64/include -fdeprecated-macro -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -exception-model=seh -faddrsig -o CMakeFiles/cmTC_63cb1.dir/CMakeCXXCompilerABI.cpp.obj -x c++ D:/mingw64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp
-        clang -cc1 version 18.1.8 based upon LLVM 18.1.8 default target x86_64-w64-mingw32
-        ignoring nonexistent directory "D:/mingw64/x86_64-w64-mingw32/include/c++"
-        ignoring nonexistent directory "D:/mingw64/x86_64-w64-mingw32/include/c++/x86_64-w64-mingw32"
-        ignoring nonexistent directory "D:/mingw64/x86_64-w64-mingw32/include/c++/backward"
-        ignoring nonexistent directory "D:/mingw64/x86_64-w64-mingw32/include/c++/14.2.0"
-        ignoring nonexistent directory "D:/mingw64/x86_64-w64-mingw32/include/c++/14.2.0/x86_64-w64-mingw32"
-        ignoring nonexistent directory "D:/mingw64/x86_64-w64-mingw32/include/c++/14.2.0/backward"
-        ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++"
-        ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/x86_64-w64-mingw32"
-        ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/backward"
-        ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2.0"
-        ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2.0/x86_64-w64-mingw32"
-        ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2.0/backward"
-        ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2"
-        ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2/x86_64-w64-mingw32"
-        ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2/backward"
-        ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14"
-        ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14/x86_64-w64-mingw32"
-        ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14/backward"
-        ignoring nonexistent directory "D:/mingw64/x86_64-w64-mingw32/usr/include"
-        #include "..." search starts here:\x0d
-        #include <...> search starts here:\x0d
-         D:/mingw64/include/c++/14.2.0\x0d
-         D:/mingw64/include/c++/14.2.0/x86_64-w64-mingw32\x0d
-         D:/mingw64/include/c++/14.2.0/backward\x0d
-         D:/mingw64/lib/clang/18/include\x0d
-         D:/mingw64/x86_64-w64-mingw32/include\x0d
-         D:/mingw64/include\x0d
-        End of search list.\x0d
-        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\mingw64\\bin\\clang++.exe  -v -Wl,-v CMakeFiles/cmTC_63cb1.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_63cb1.exe -Wl,--out-implib,libcmTC_63cb1.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
-        (built by Brecht Sanders, r1) clang version 18.1.8
-        Target: x86_64-w64-windows-gnu
-        Thread model: posix
-        InstalledDir: D:/mingw64/bin
-         "D:/Tools/bin/x86_64-w64-mingw32-ld.exe" -m i386pep -Bdynamic -o cmTC_63cb1.exe D:/mingw64/x86_64-w64-mingw32/lib/crt2.o D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/crtbegin.o -LD:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0 -LD:/mingw64/x86_64-w64-mingw32/lib -LD:/mingw64/x86_64-w64-mingw32/mingw/lib -LD:/mingw64/lib -v CMakeFiles/cmTC_63cb1.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_63cb1.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/crtend.o\x0d
-        GNU ld (GNU Binutils) 2.43.1
+        Run Build Command(s): D:/mingw64/bin/ninja.exe -v cmTC_2c543
+        [1/2] D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe   -v -o CMakeFiles/cmTC_2c543.dir/CMakeCXXCompilerABI.cpp.obj -c D:/mingw64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/i586-pc-msdosdjgpp-g++
+        Target: i586-pc-msdosdjgpp
+        Configured with: /usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0/configure --srcdir=/usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0 --prefix=/usr --exec-prefix=/usr --localstatedir=/var --sysconfdir=/etc --docdir=/usr/share/doc/djgpp-gcc --htmldir=/usr/share/doc/djgpp-gcc/html -C --build=x86_64-pc-cygwin --host=x86_64-pc-cygwin --target=i586-pc-msdosdjgpp --without-libiconv-prefix --without-libintl-prefix --libexecdir=/usr/lib --disable-shared --enable-static --enable-languages=c,c++,ada,fortran,objc,obj-c++ --enable-version-specific-runtime-libs --disable-lto --enable-libquadmath --enable-libquadmath-support --enable-libssp --disable-libstdcxx-pch --with-gnu-as --with-gnu-ld --with-system-zlib
+        Thread model: single
+        gcc version 5.4.0 (GCC) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_2c543.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=pentium' '-march=pentium'
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/cc1plus.exe -quiet -v -remap D:/mingw64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=pentium -march=pentium -auxbase-strip CMakeFiles/cmTC_2c543.dir/CMakeCXXCompilerABI.cpp.obj -version -o /cygdrive/c/Users/30119/AppData/Local/Temp/cc5FMucJ.s
+        GNU C++ (GCC) version 5.4.0 (i586-pc-msdosdjgpp)
+        	compiled by GNU C version 5.4.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3
+        warning: GMP header version 6.1.0 differs from library version 6.3.0.
+        warning: MPFR header version 3.1.4 differs from library version 3.1.6-p1.
+        warning: MPC header version 1.0.3 differs from library version 1.3.1.
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include/c++
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include/c++/i586-pc-msdosdjgpp
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include/c++/backward
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include-fixed
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/sys-include
+        End of search list.
+        GNU C++ (GCC) version 5.4.0 (i586-pc-msdosdjgpp)
+        	compiled by GNU C version 5.4.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3
+        warning: GMP header version 6.1.0 differs from library version 6.3.0.
+        warning: MPFR header version 3.1.4 differs from library version 3.1.6-p1.
+        warning: MPC header version 1.0.3 differs from library version 1.3.1.
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: 9ba7910ec06eba264d9857db13ec5c72
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_2c543.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=pentium' '-march=pentium'
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/as.exe -v -o CMakeFiles/cmTC_2c543.dir/CMakeCXXCompilerABI.cpp.obj /cygdrive/c/Users/30119/AppData/Local/Temp/cc5FMucJ.s
+        GNU assembler version 2.25 (i586-pc-msdosdjgpp) using BFD version (GNU Binutils) 2.25
+        COMPILER_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/
+        LIBRARY_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_2c543.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=pentium' '-march=pentium'
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe  -v -Wl,-v CMakeFiles/cmTC_2c543.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_2c543.exe -Wl,--out-implib,libcmTC_2c543.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        FAILED: cmTC_2c543.exe 
+        C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe  -v -Wl,-v CMakeFiles/cmTC_2c543.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_2c543.exe -Wl,--out-implib,libcmTC_2c543.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/i586-pc-msdosdjgpp-g++
+        COLLECT_LTO_WRAPPER=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/lto-wrapper.exe
+        Target: i586-pc-msdosdjgpp
+        Configured with: /usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0/configure --srcdir=/usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0 --prefix=/usr --exec-prefix=/usr --localstatedir=/var --sysconfdir=/etc --docdir=/usr/share/doc/djgpp-gcc --htmldir=/usr/share/doc/djgpp-gcc/html -C --build=x86_64-pc-cygwin --host=x86_64-pc-cygwin --target=i586-pc-msdosdjgpp --without-libiconv-prefix --without-libintl-prefix --libexecdir=/usr/lib --disable-shared --enable-static --enable-languages=c,c++,ada,fortran,objc,obj-c++ --enable-version-specific-runtime-libs --disable-lto --enable-libquadmath --enable-libquadmath-support --enable-libssp --disable-libstdcxx-pch --with-gnu-as --with-gnu-ld --with-system-zlib
+        Thread model: single
+        gcc version 5.4.0 (GCC) 
+        COMPILER_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/
+        LIBRARY_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_2c543.exe' '-mtune=pentium' '-march=pentium'
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/collect2.exe -o cmTC_2c543.exe /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/crt0.o -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0 -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib -v CMakeFiles/cmTC_2c543.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_2c543.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lm -lgcc -lc -lgcc
+        collect2 version 5.4.0
+        /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/ld -o cmTC_2c543.exe /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/crt0.o -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0 -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib -v CMakeFiles/cmTC_2c543.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_2c543.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lm -lgcc -lc -lgcc
+        GNU ld (GNU Binutils) 2.25/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/ld: unrecognized option '--out-implib'
+        /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/ld: use the --help option for usage information
+        collect2: error: ld returned 1 exit status
         
-      exitCode: 0
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:56 (try_compile)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Check for working CXX compiler: D:/Tools/bin/i586-pc-msdosdjgpp-g++.exe"
+    directories:
+      source: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-7wkm9x"
+      binary: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-7wkm9x"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-7wkm9x'
+        
+        Run Build Command(s): D:/mingw64/bin/ninja.exe -v cmTC_87f41
+        [1/2] D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe    -o CMakeFiles/cmTC_87f41.dir/testCXXCompiler.cxx.obj -c D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-7wkm9x/testCXXCompiler.cxx
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe   CMakeFiles/cmTC_87f41.dir/testCXXCompiler.cxx.obj -o cmTC_87f41.exe -Wl,--out-implib,libcmTC_87f41.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        FAILED: cmTC_87f41.exe 
+        C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe   CMakeFiles/cmTC_87f41.dir/testCXXCompiler.cxx.obj -o cmTC_87f41.exe -Wl,--out-implib,libcmTC_87f41.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        collect2: 鑷村懡閿欒锛歭d 浠ヤ俊鍙?11 [Segmentation fault] 閫€鍑恒€?
+        缂栬瘧涓柇銆?
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
   -
     kind: "message-v1"
     backtrace:
-      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:182 (message)"
-      - "D:/mingw64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
       - "CMakeLists.txt:2 (project)"
     message: |
-      Parsed CXX implicit include dir info: rv=done
-        found start of include info
-        found start of implicit include info
-          add: [D:/mingw64/include/c++/14.2.0]
-          add: [D:/mingw64/include/c++/14.2.0/x86_64-w64-mingw32]
-          add: [D:/mingw64/include/c++/14.2.0/backward]
-          add: [D:/mingw64/lib/clang/18/include]
-          add: [D:/mingw64/x86_64-w64-mingw32/include]
-          add: [D:/mingw64/include]
-        end of search list found
-        collapse include dir [D:/mingw64/include/c++/14.2.0] ==> [D:/mingw64/include/c++/14.2.0]
-        collapse include dir [D:/mingw64/include/c++/14.2.0/x86_64-w64-mingw32] ==> [D:/mingw64/include/c++/14.2.0/x86_64-w64-mingw32]
-        collapse include dir [D:/mingw64/include/c++/14.2.0/backward] ==> [D:/mingw64/include/c++/14.2.0/backward]
-        collapse include dir [D:/mingw64/lib/clang/18/include] ==> [D:/mingw64/lib/clang/18/include]
-        collapse include dir [D:/mingw64/x86_64-w64-mingw32/include] ==> [D:/mingw64/x86_64-w64-mingw32/include]
-        collapse include dir [D:/mingw64/include] ==> [D:/mingw64/include]
-        implicit include dirs: [D:/mingw64/include/c++/14.2.0;D:/mingw64/include/c++/14.2.0/x86_64-w64-mingw32;D:/mingw64/include/c++/14.2.0/backward;D:/mingw64/lib/clang/18/include;D:/mingw64/x86_64-w64-mingw32/include;D:/mingw64/include]
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: D:/Tools/bin/i586-pc-msdosdjgpp-g++.exe 
+      Build flags: 
+      Id flags:  
       
+      The output was:
+      1
+      collect2: 鑷村懡閿欒锛歭d 浠ヤ俊鍙?11 [Segmentation fault] 閫€鍑恒€?缂栬瘧涓柇銆?
       
   -
     kind: "message-v1"
     backtrace:
-      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
-      - "D:/mingw64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
       - "CMakeLists.txt:2 (project)"
     message: |
-      Parsed CXX implicit link information:
-        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
-        ignore line: [Change Dir: 'D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-wzhtf4']
-        ignore line: []
-        ignore line: [Run Build Command(s): c:\\Users\\30119\\.trae\\extensions\\kylinideteam.kylin-cmake-tools-0.0.4-universal\\res\\ninja\\win32-x64\\ninja -v cmTC_63cb1]
-        ignore line: [[1/2] D:\\mingw64\\bin\\clang++.exe   -v -MD -MT CMakeFiles/cmTC_63cb1.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles\\cmTC_63cb1.dir\\CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles/cmTC_63cb1.dir/CMakeCXXCompilerABI.cpp.obj -c D:/mingw64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp]
-        ignore line: [(built by Brecht Sanders  r1) clang version 18.1.8]
-        ignore line: [Target: x86_64-w64-windows-gnu]
-        ignore line: [Thread model: posix]
-        ignore line: [InstalledDir: D:/mingw64/bin]
-        ignore line: [ (in-process)]
-        ignore line: [ "D:/mingw64/bin/clang++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -fno-use-init-array -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-wzhtf4 -v -fcoverage-compilation-dir=D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-wzhtf4 -resource-dir D:/mingw64/lib/clang/18 -dependency-file "CMakeFiles\\\\cmTC_63cb1.dir\\\\CMakeCXXCompilerABI.cpp.obj.d" -MT CMakeFiles/cmTC_63cb1.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -internal-isystem D:/mingw64/x86_64-w64-mingw32/include/c++ -internal-isystem D:/mingw64/x86_64-w64-mingw32/include/c++/x86_64-w64-mingw32 -internal-isystem D:/mingw64/x86_64-w64-mingw32/include/c++/backward -internal-isystem D:/mingw64/x86_64-w64-mingw32/include/c++/14.2.0 -internal-isystem D:/mingw64/x86_64-w64-mingw32/include/c++/14.2.0/x86_64-w64-mingw32 -internal-isystem D:/mingw64/x86_64-w64-mingw32/include/c++/14.2.0/backward -internal-isystem D:/mingw64/include/c++/14.2.0 -internal-isystem D:/mingw64/include/c++/14.2.0/x86_64-w64-mingw32 -internal-isystem D:/mingw64/include/c++/14.2.0/backward -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++ -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/x86_64-w64-mingw32 -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/backward -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2.0 -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2.0/x86_64-w64-mingw32 -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2.0/backward -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2 -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2/x86_64-w64-mingw32 -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2/backward -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14 -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14/x86_64-w64-mingw32 -internal-isystem D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14/backward -internal-isystem D:/mingw64/lib/clang/18/include -internal-isystem D:/mingw64/x86_64-w64-mingw32/include -internal-isystem D:/mingw64/x86_64-w64-mingw32/usr/include -internal-isystem D:/mingw64/include -fdeprecated-macro -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -exception-model=seh -faddrsig -o CMakeFiles/cmTC_63cb1.dir/CMakeCXXCompilerABI.cpp.obj -x c++ D:/mingw64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp]
-        ignore line: [clang -cc1 version 18.1.8 based upon LLVM 18.1.8 default target x86_64-w64-mingw32]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/x86_64-w64-mingw32/include/c++"]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/x86_64-w64-mingw32/include/c++/x86_64-w64-mingw32"]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/x86_64-w64-mingw32/include/c++/backward"]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/x86_64-w64-mingw32/include/c++/14.2.0"]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/x86_64-w64-mingw32/include/c++/14.2.0/x86_64-w64-mingw32"]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/x86_64-w64-mingw32/include/c++/14.2.0/backward"]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++"]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/x86_64-w64-mingw32"]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/backward"]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2.0"]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2.0/x86_64-w64-mingw32"]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2.0/backward"]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2"]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2/x86_64-w64-mingw32"]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14.2/backward"]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14"]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14/x86_64-w64-mingw32"]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/g++-v14/backward"]
-        ignore line: [ignoring nonexistent directory "D:/mingw64/x86_64-w64-mingw32/usr/include"]
-        ignore line: [#include "..." search starts here:\x0d]
-        ignore line: [#include <...> search starts here:\x0d]
-        ignore line: [ D:/mingw64/include/c++/14.2.0\x0d]
-        ignore line: [ D:/mingw64/include/c++/14.2.0/x86_64-w64-mingw32\x0d]
-        ignore line: [ D:/mingw64/include/c++/14.2.0/backward\x0d]
-        ignore line: [ D:/mingw64/lib/clang/18/include\x0d]
-        ignore line: [ D:/mingw64/x86_64-w64-mingw32/include\x0d]
-        ignore line: [ D:/mingw64/include\x0d]
-        ignore line: [End of search list.\x0d]
-        ignore line: [[2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\mingw64\\bin\\clang++.exe  -v -Wl -v CMakeFiles/cmTC_63cb1.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_63cb1.exe -Wl --out-implib libcmTC_63cb1.dll.a -Wl --major-image-version 0 --minor-image-version 0   && cd ."]
-        ignore line: [(built by Brecht Sanders  r1) clang version 18.1.8]
-        ignore line: [Target: x86_64-w64-windows-gnu]
-        ignore line: [Thread model: posix]
-        ignore line: [InstalledDir: D:/mingw64/bin]
-        link line: [ "D:/Tools/bin/x86_64-w64-mingw32-ld.exe" -m i386pep -Bdynamic -o cmTC_63cb1.exe D:/mingw64/x86_64-w64-mingw32/lib/crt2.o D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/crtbegin.o -LD:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0 -LD:/mingw64/x86_64-w64-mingw32/lib -LD:/mingw64/x86_64-w64-mingw32/mingw/lib -LD:/mingw64/lib -v CMakeFiles/cmTC_63cb1.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_63cb1.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/crtend.o\x0d]
-          arg [D:/Tools/bin/x86_64-w64-mingw32-ld.exe] ==> ignore
-          arg [-m] ==> ignore
-          arg [i386pep] ==> ignore
-          arg [-Bdynamic] ==> search dynamic
-          arg [-o] ==> ignore
-          arg [cmTC_63cb1.exe] ==> ignore
-          arg [D:/mingw64/x86_64-w64-mingw32/lib/crt2.o] ==> obj [D:/mingw64/x86_64-w64-mingw32/lib/crt2.o]
-          arg [D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/crtbegin.o] ==> obj [D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/crtbegin.o]
-          arg [-LD:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0] ==> dir [D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0]
-          arg [-LD:/mingw64/x86_64-w64-mingw32/lib] ==> dir [D:/mingw64/x86_64-w64-mingw32/lib]
-          arg [-LD:/mingw64/x86_64-w64-mingw32/mingw/lib] ==> dir [D:/mingw64/x86_64-w64-mingw32/mingw/lib]
-          arg [-LD:/mingw64/lib] ==> dir [D:/mingw64/lib]
-          arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_63cb1.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
-          arg [--out-implib] ==> ignore
-          arg [libcmTC_63cb1.dll.a] ==> ignore
-          arg [--major-image-version] ==> ignore
-          arg [0] ==> ignore
-          arg [--minor-image-version] ==> ignore
-          arg [0] ==> ignore
-          arg [-lstdc++] ==> lib [stdc++]
-          arg [-lmingw32] ==> lib [mingw32]
-          arg [-lgcc_s] ==> lib [gcc_s]
-          arg [-lgcc] ==> lib [gcc]
-          arg [-lmoldname] ==> lib [moldname]
-          arg [-lmingwex] ==> lib [mingwex]
-          arg [-lmsvcrt] ==> lib [msvcrt]
-          arg [-ladvapi32] ==> lib [advapi32]
-          arg [-lshell32] ==> lib [shell32]
-          arg [-luser32] ==> lib [user32]
-          arg [-lkernel32] ==> lib [kernel32]
-          arg [-lmingw32] ==> lib [mingw32]
-          arg [-lgcc_s] ==> lib [gcc_s]
-          arg [-lgcc] ==> lib [gcc]
-          arg [-lmoldname] ==> lib [moldname]
-          arg [-lmingwex] ==> lib [mingwex]
-          arg [-lmsvcrt] ==> lib [msvcrt]
-          arg [-lkernel32] ==> lib [kernel32]
-          arg [D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/crtend.o] ==> obj [D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/crtend.o]
-        ignore line: [GNU ld (GNU Binutils) 2.43.1]
-        ignore line: []
-        ignore line: []
-        remove lib [msvcrt]
-        remove lib [msvcrt]
-        collapse library dir [D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0] ==> [D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0]
-        collapse library dir [D:/mingw64/x86_64-w64-mingw32/lib] ==> [D:/mingw64/x86_64-w64-mingw32/lib]
-        collapse library dir [D:/mingw64/x86_64-w64-mingw32/mingw/lib] ==> [D:/mingw64/x86_64-w64-mingw32/mingw/lib]
-        collapse library dir [D:/mingw64/lib] ==> [D:/mingw64/lib]
-        implicit libs: [stdc++;mingw32;gcc_s;gcc;moldname;mingwex;advapi32;shell32;user32;kernel32;mingw32;gcc_s;gcc;moldname;mingwex;kernel32]
-        implicit objs: [D:/mingw64/x86_64-w64-mingw32/lib/crt2.o;D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/crtbegin.o;D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/crtend.o]
-        implicit dirs: [D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0;D:/mingw64/x86_64-w64-mingw32/lib;D:/mingw64/x86_64-w64-mingw32/mingw/lib;D:/mingw64/lib]
-        implicit fwks: []
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: D:/Tools/bin/i586-pc-msdosdjgpp-g++.exe 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      0
       
       
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
+      
+      The CXX compiler identification is GNU, found in:
+        D:/game/qt/PhantomGenesis/build/CMakeFiles/3.30.2/CompilerIdCXX/CMakeCXXCompilerId.o
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-h8bl64"
+      binary: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-h8bl64"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-h8bl64'
+        
+        Run Build Command(s): D:/mingw64/bin/ninja.exe -v cmTC_397e0
+        [1/2] D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe   -v -o CMakeFiles/cmTC_397e0.dir/CMakeCXXCompilerABI.cpp.obj -c D:/mingw64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/i586-pc-msdosdjgpp-g++
+        Target: i586-pc-msdosdjgpp
+        Configured with: /usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0/configure --srcdir=/usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0 --prefix=/usr --exec-prefix=/usr --localstatedir=/var --sysconfdir=/etc --docdir=/usr/share/doc/djgpp-gcc --htmldir=/usr/share/doc/djgpp-gcc/html -C --build=x86_64-pc-cygwin --host=x86_64-pc-cygwin --target=i586-pc-msdosdjgpp --without-libiconv-prefix --without-libintl-prefix --libexecdir=/usr/lib --disable-shared --enable-static --enable-languages=c,c++,ada,fortran,objc,obj-c++ --enable-version-specific-runtime-libs --disable-lto --enable-libquadmath --enable-libquadmath-support --enable-libssp --disable-libstdcxx-pch --with-gnu-as --with-gnu-ld --with-system-zlib
+        Thread model: single
+        gcc version 5.4.0 (GCC) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_397e0.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=pentium' '-march=pentium'
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/cc1plus.exe -quiet -v -remap D:/mingw64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=pentium -march=pentium -auxbase-strip CMakeFiles/cmTC_397e0.dir/CMakeCXXCompilerABI.cpp.obj -version -o /cygdrive/c/Users/30119/AppData/Local/Temp/cc8JiSy5.s
+        GNU C++ (GCC) version 5.4.0 (i586-pc-msdosdjgpp)
+        	compiled by GNU C version 5.4.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3
+        warning: GMP header version 6.1.0 differs from library version 6.3.0.
+        warning: MPFR header version 3.1.4 differs from library version 3.1.6-p1.
+        warning: MPC header version 1.0.3 differs from library version 1.3.1.
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include/c++
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include/c++/i586-pc-msdosdjgpp
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include/c++/backward
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include-fixed
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/sys-include
+        End of search list.
+        GNU C++ (GCC) version 5.4.0 (i586-pc-msdosdjgpp)
+        	compiled by GNU C version 5.4.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3
+        warning: GMP header version 6.1.0 differs from library version 6.3.0.
+        warning: MPFR header version 3.1.4 differs from library version 3.1.6-p1.
+        warning: MPC header version 1.0.3 differs from library version 1.3.1.
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: 9ba7910ec06eba264d9857db13ec5c72
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_397e0.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=pentium' '-march=pentium'
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/as.exe -v -o CMakeFiles/cmTC_397e0.dir/CMakeCXXCompilerABI.cpp.obj /cygdrive/c/Users/30119/AppData/Local/Temp/cc8JiSy5.s
+        GNU assembler version 2.25 (i586-pc-msdosdjgpp) using BFD version (GNU Binutils) 2.25
+        COMPILER_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/
+        LIBRARY_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_397e0.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=pentium' '-march=pentium'
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe  -v -Wl,-v CMakeFiles/cmTC_397e0.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_397e0.exe -Wl,--out-implib,libcmTC_397e0.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        FAILED: cmTC_397e0.exe 
+        C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe  -v -Wl,-v CMakeFiles/cmTC_397e0.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_397e0.exe -Wl,--out-implib,libcmTC_397e0.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/i586-pc-msdosdjgpp-g++
+        COLLECT_LTO_WRAPPER=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/lto-wrapper.exe
+        Target: i586-pc-msdosdjgpp
+        Configured with: /usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0/configure --srcdir=/usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0 --prefix=/usr --exec-prefix=/usr --localstatedir=/var --sysconfdir=/etc --docdir=/usr/share/doc/djgpp-gcc --htmldir=/usr/share/doc/djgpp-gcc/html -C --build=x86_64-pc-cygwin --host=x86_64-pc-cygwin --target=i586-pc-msdosdjgpp --without-libiconv-prefix --without-libintl-prefix --libexecdir=/usr/lib --disable-shared --enable-static --enable-languages=c,c++,ada,fortran,objc,obj-c++ --enable-version-specific-runtime-libs --disable-lto --enable-libquadmath --enable-libquadmath-support --enable-libssp --disable-libstdcxx-pch --with-gnu-as --with-gnu-ld --with-system-zlib
+        Thread model: single
+        gcc version 5.4.0 (GCC) 
+        COMPILER_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/
+        LIBRARY_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_397e0.exe' '-mtune=pentium' '-march=pentium'
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/collect2.exe -o cmTC_397e0.exe /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/crt0.o -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0 -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib -v CMakeFiles/cmTC_397e0.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_397e0.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lm -lgcc -lc -lgcc
+        collect2 version 5.4.0
+        /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/ld -o cmTC_397e0.exe /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/crt0.o -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0 -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib -v CMakeFiles/cmTC_397e0.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_397e0.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lm -lgcc -lc -lgcc
+        GNU ld (GNU Binutils) 2.25/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/ld: unrecognized option '--out-implib'
+        /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/ld: use the --help option for usage information
+        collect2: error: ld returned 1 exit status
+        
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:56 (try_compile)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Check for working CXX compiler: D:/Tools/bin/i586-pc-msdosdjgpp-g++.exe"
+    directories:
+      source: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-hq40df"
+      binary: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-hq40df"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-hq40df'
+        
+        Run Build Command(s): D:/mingw64/bin/ninja.exe -v cmTC_68988
+        [1/2] D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe    -o CMakeFiles/cmTC_68988.dir/testCXXCompiler.cxx.obj -c D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-hq40df/testCXXCompiler.cxx
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe   CMakeFiles/cmTC_68988.dir/testCXXCompiler.cxx.obj -o cmTC_68988.exe -Wl,--out-implib,libcmTC_68988.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        FAILED: cmTC_68988.exe 
+        C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe   CMakeFiles/cmTC_68988.dir/testCXXCompiler.cxx.obj -o cmTC_68988.exe -Wl,--out-implib,libcmTC_68988.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        collect2: 鑷村懡閿欒锛歭d 浠ヤ俊鍙?11 [Segmentation fault] 閫€鍑恒€?
+        缂栬瘧涓柇銆?
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: D:/Tools/bin/i586-pc-msdosdjgpp-g++.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      collect2: 鑷村懡閿欒锛歭d 浠ヤ俊鍙?11 [Segmentation fault] 閫€鍑恒€?缂栬瘧涓柇銆?
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: D:/Tools/bin/i586-pc-msdosdjgpp-g++.exe 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
+      
+      The CXX compiler identification is GNU, found in:
+        D:/game/qt/PhantomGenesis/build/CMakeFiles/3.30.2/CompilerIdCXX/CMakeCXXCompilerId.o
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-sirxjl"
+      binary: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-sirxjl"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-sirxjl'
+        
+        Run Build Command(s): D:/mingw64/bin/ninja.exe -v cmTC_c256b
+        [1/2] D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe   -v -o CMakeFiles/cmTC_c256b.dir/CMakeCXXCompilerABI.cpp.obj -c D:/mingw64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/i586-pc-msdosdjgpp-g++
+        Target: i586-pc-msdosdjgpp
+        Configured with: /usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0/configure --srcdir=/usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0 --prefix=/usr --exec-prefix=/usr --localstatedir=/var --sysconfdir=/etc --docdir=/usr/share/doc/djgpp-gcc --htmldir=/usr/share/doc/djgpp-gcc/html -C --build=x86_64-pc-cygwin --host=x86_64-pc-cygwin --target=i586-pc-msdosdjgpp --without-libiconv-prefix --without-libintl-prefix --libexecdir=/usr/lib --disable-shared --enable-static --enable-languages=c,c++,ada,fortran,objc,obj-c++ --enable-version-specific-runtime-libs --disable-lto --enable-libquadmath --enable-libquadmath-support --enable-libssp --disable-libstdcxx-pch --with-gnu-as --with-gnu-ld --with-system-zlib
+        Thread model: single
+        gcc version 5.4.0 (GCC) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c256b.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=pentium' '-march=pentium'
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/cc1plus.exe -quiet -v -remap D:/mingw64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=pentium -march=pentium -auxbase-strip CMakeFiles/cmTC_c256b.dir/CMakeCXXCompilerABI.cpp.obj -version -o /cygdrive/c/Users/30119/AppData/Local/Temp/cc7fiowK.s
+        GNU C++ (GCC) version 5.4.0 (i586-pc-msdosdjgpp)
+        	compiled by GNU C version 5.4.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3
+        warning: GMP header version 6.1.0 differs from library version 6.3.0.
+        warning: MPFR header version 3.1.4 differs from library version 3.1.6-p1.
+        warning: MPC header version 1.0.3 differs from library version 1.3.1.
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include/c++
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include/c++/i586-pc-msdosdjgpp
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include/c++/backward
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include-fixed
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/sys-include
+        End of search list.
+        GNU C++ (GCC) version 5.4.0 (i586-pc-msdosdjgpp)
+        	compiled by GNU C version 5.4.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3
+        warning: GMP header version 6.1.0 differs from library version 6.3.0.
+        warning: MPFR header version 3.1.4 differs from library version 3.1.6-p1.
+        warning: MPC header version 1.0.3 differs from library version 1.3.1.
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: 9ba7910ec06eba264d9857db13ec5c72
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c256b.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=pentium' '-march=pentium'
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/as.exe -v -o CMakeFiles/cmTC_c256b.dir/CMakeCXXCompilerABI.cpp.obj /cygdrive/c/Users/30119/AppData/Local/Temp/cc7fiowK.s
+        GNU assembler version 2.25 (i586-pc-msdosdjgpp) using BFD version (GNU Binutils) 2.25
+        COMPILER_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/
+        LIBRARY_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c256b.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=pentium' '-march=pentium'
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe  -v -Wl,-v CMakeFiles/cmTC_c256b.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_c256b.exe -Wl,--out-implib,libcmTC_c256b.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        FAILED: cmTC_c256b.exe 
+        C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe  -v -Wl,-v CMakeFiles/cmTC_c256b.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_c256b.exe -Wl,--out-implib,libcmTC_c256b.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/i586-pc-msdosdjgpp-g++
+        COLLECT_LTO_WRAPPER=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/lto-wrapper.exe
+        Target: i586-pc-msdosdjgpp
+        Configured with: /usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0/configure --srcdir=/usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0 --prefix=/usr --exec-prefix=/usr --localstatedir=/var --sysconfdir=/etc --docdir=/usr/share/doc/djgpp-gcc --htmldir=/usr/share/doc/djgpp-gcc/html -C --build=x86_64-pc-cygwin --host=x86_64-pc-cygwin --target=i586-pc-msdosdjgpp --without-libiconv-prefix --without-libintl-prefix --libexecdir=/usr/lib --disable-shared --enable-static --enable-languages=c,c++,ada,fortran,objc,obj-c++ --enable-version-specific-runtime-libs --disable-lto --enable-libquadmath --enable-libquadmath-support --enable-libssp --disable-libstdcxx-pch --with-gnu-as --with-gnu-ld --with-system-zlib
+        Thread model: single
+        gcc version 5.4.0 (GCC) 
+        COMPILER_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/
+        LIBRARY_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c256b.exe' '-mtune=pentium' '-march=pentium'
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/collect2.exe -o cmTC_c256b.exe /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/crt0.o -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0 -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib -v CMakeFiles/cmTC_c256b.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_c256b.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lm -lgcc -lc -lgcc
+        collect2 version 5.4.0
+        /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/ld -o cmTC_c256b.exe /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/crt0.o -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0 -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib -v CMakeFiles/cmTC_c256b.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_c256b.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lm -lgcc -lc -lgcc
+        GNU ld (GNU Binutils) 2.25/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/ld: unrecognized option '--out-implib'
+        /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/ld: use the --help option for usage information
+        collect2: error: ld returned 1 exit status
+        
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:56 (try_compile)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Check for working CXX compiler: D:/Tools/bin/i586-pc-msdosdjgpp-g++.exe"
+    directories:
+      source: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-95hcuv"
+      binary: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-95hcuv"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-95hcuv'
+        
+        Run Build Command(s): D:/mingw64/bin/ninja.exe -v cmTC_c3e38
+        [1/2] D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe    -o CMakeFiles/cmTC_c3e38.dir/testCXXCompiler.cxx.obj -c D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-95hcuv/testCXXCompiler.cxx
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe   CMakeFiles/cmTC_c3e38.dir/testCXXCompiler.cxx.obj -o cmTC_c3e38.exe -Wl,--out-implib,libcmTC_c3e38.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        FAILED: cmTC_c3e38.exe 
+        C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe   CMakeFiles/cmTC_c3e38.dir/testCXXCompiler.cxx.obj -o cmTC_c3e38.exe -Wl,--out-implib,libcmTC_c3e38.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        collect2: 鑷村懡閿欒锛歭d 浠ヤ俊鍙?11 [Segmentation fault] 閫€鍑恒€?
+        缂栬瘧涓柇銆?
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: D:/Tools/bin/i586-pc-msdosdjgpp-g++.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      collect2: 鑷村懡閿欒锛歭d 浠ヤ俊鍙?11 [Segmentation fault] 閫€鍑恒€?缂栬瘧涓柇銆?
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: D:/Tools/bin/i586-pc-msdosdjgpp-g++.exe 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
+      
+      The CXX compiler identification is GNU, found in:
+        D:/game/qt/PhantomGenesis/build/CMakeFiles/3.30.2/CompilerIdCXX/CMakeCXXCompilerId.o
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-grot8t"
+      binary: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-grot8t"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-grot8t'
+        
+        Run Build Command(s): D:/mingw64/bin/ninja.exe -v cmTC_c89ca
+        [1/2] D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe   -v -o CMakeFiles/cmTC_c89ca.dir/CMakeCXXCompilerABI.cpp.obj -c D:/mingw64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/i586-pc-msdosdjgpp-g++
+        Target: i586-pc-msdosdjgpp
+        Configured with: /usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0/configure --srcdir=/usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0 --prefix=/usr --exec-prefix=/usr --localstatedir=/var --sysconfdir=/etc --docdir=/usr/share/doc/djgpp-gcc --htmldir=/usr/share/doc/djgpp-gcc/html -C --build=x86_64-pc-cygwin --host=x86_64-pc-cygwin --target=i586-pc-msdosdjgpp --without-libiconv-prefix --without-libintl-prefix --libexecdir=/usr/lib --disable-shared --enable-static --enable-languages=c,c++,ada,fortran,objc,obj-c++ --enable-version-specific-runtime-libs --disable-lto --enable-libquadmath --enable-libquadmath-support --enable-libssp --disable-libstdcxx-pch --with-gnu-as --with-gnu-ld --with-system-zlib
+        Thread model: single
+        gcc version 5.4.0 (GCC) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c89ca.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=pentium' '-march=pentium'
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/cc1plus.exe -quiet -v -remap D:/mingw64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=pentium -march=pentium -auxbase-strip CMakeFiles/cmTC_c89ca.dir/CMakeCXXCompilerABI.cpp.obj -version -o /cygdrive/c/Users/30119/AppData/Local/Temp/ccdTqOZj.s
+        GNU C++ (GCC) version 5.4.0 (i586-pc-msdosdjgpp)
+        	compiled by GNU C version 5.4.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3
+        warning: GMP header version 6.1.0 differs from library version 6.3.0.
+        warning: MPFR header version 3.1.4 differs from library version 3.1.6-p1.
+        warning: MPC header version 1.0.3 differs from library version 1.3.1.
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include/c++
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include/c++/i586-pc-msdosdjgpp
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include/c++/backward
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include-fixed
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/sys-include
+        End of search list.
+        GNU C++ (GCC) version 5.4.0 (i586-pc-msdosdjgpp)
+        	compiled by GNU C version 5.4.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3
+        warning: GMP header version 6.1.0 differs from library version 6.3.0.
+        warning: MPFR header version 3.1.4 differs from library version 3.1.6-p1.
+        warning: MPC header version 1.0.3 differs from library version 1.3.1.
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: 9ba7910ec06eba264d9857db13ec5c72
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c89ca.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=pentium' '-march=pentium'
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/as.exe -v -o CMakeFiles/cmTC_c89ca.dir/CMakeCXXCompilerABI.cpp.obj /cygdrive/c/Users/30119/AppData/Local/Temp/ccdTqOZj.s
+        GNU assembler version 2.25 (i586-pc-msdosdjgpp) using BFD version (GNU Binutils) 2.25
+        COMPILER_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/
+        LIBRARY_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c89ca.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=pentium' '-march=pentium'
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe  -v -Wl,-v CMakeFiles/cmTC_c89ca.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_c89ca.exe -Wl,--out-implib,libcmTC_c89ca.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        FAILED: cmTC_c89ca.exe 
+        C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe  -v -Wl,-v CMakeFiles/cmTC_c89ca.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_c89ca.exe -Wl,--out-implib,libcmTC_c89ca.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/i586-pc-msdosdjgpp-g++
+        COLLECT_LTO_WRAPPER=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/lto-wrapper.exe
+        Target: i586-pc-msdosdjgpp
+        Configured with: /usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0/configure --srcdir=/usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0 --prefix=/usr --exec-prefix=/usr --localstatedir=/var --sysconfdir=/etc --docdir=/usr/share/doc/djgpp-gcc --htmldir=/usr/share/doc/djgpp-gcc/html -C --build=x86_64-pc-cygwin --host=x86_64-pc-cygwin --target=i586-pc-msdosdjgpp --without-libiconv-prefix --without-libintl-prefix --libexecdir=/usr/lib --disable-shared --enable-static --enable-languages=c,c++,ada,fortran,objc,obj-c++ --enable-version-specific-runtime-libs --disable-lto --enable-libquadmath --enable-libquadmath-support --enable-libssp --disable-libstdcxx-pch --with-gnu-as --with-gnu-ld --with-system-zlib
+        Thread model: single
+        gcc version 5.4.0 (GCC) 
+        COMPILER_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/
+        LIBRARY_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c89ca.exe' '-mtune=pentium' '-march=pentium'
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/collect2.exe -o cmTC_c89ca.exe /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/crt0.o -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0 -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib -v CMakeFiles/cmTC_c89ca.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_c89ca.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lm -lgcc -lc -lgcc
+        collect2 version 5.4.0
+        /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/ld -o cmTC_c89ca.exe /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/crt0.o -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0 -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib -v CMakeFiles/cmTC_c89ca.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_c89ca.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lm -lgcc -lc -lgcc
+        GNU ld (GNU Binutils) 2.25/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/ld: unrecognized option '--out-implib'
+        /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/ld: use the --help option for usage information
+        collect2: error: ld returned 1 exit status
+        
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:56 (try_compile)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Check for working CXX compiler: D:/Tools/bin/i586-pc-msdosdjgpp-g++.exe"
+    directories:
+      source: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-oi9v2d"
+      binary: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-oi9v2d"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-oi9v2d'
+        
+        Run Build Command(s): D:/mingw64/bin/ninja.exe -v cmTC_68b9e
+        [1/2] D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe    -o CMakeFiles/cmTC_68b9e.dir/testCXXCompiler.cxx.obj -c D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-oi9v2d/testCXXCompiler.cxx
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe   CMakeFiles/cmTC_68b9e.dir/testCXXCompiler.cxx.obj -o cmTC_68b9e.exe -Wl,--out-implib,libcmTC_68b9e.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        FAILED: cmTC_68b9e.exe 
+        C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe   CMakeFiles/cmTC_68b9e.dir/testCXXCompiler.cxx.obj -o cmTC_68b9e.exe -Wl,--out-implib,libcmTC_68b9e.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        collect2: 鑷村懡閿欒锛歭d 浠ヤ俊鍙?11 [Segmentation fault] 閫€鍑恒€?
+        缂栬瘧涓柇銆?
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: D:/Tools/bin/i586-pc-msdosdjgpp-g++.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      collect2: 鑷村懡閿欒锛歭d 浠ヤ俊鍙?11 [Segmentation fault] 閫€鍑恒€?缂栬瘧涓柇銆?
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: D:/Tools/bin/i586-pc-msdosdjgpp-g++.exe 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
+      
+      The CXX compiler identification is GNU, found in:
+        D:/game/qt/PhantomGenesis/build/CMakeFiles/3.30.2/CompilerIdCXX/CMakeCXXCompilerId.o
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-w1bu4k"
+      binary: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-w1bu4k"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-w1bu4k'
+        
+        Run Build Command(s): D:/mingw64/bin/ninja.exe -v cmTC_9b3de
+        [1/2] D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe   -v -o CMakeFiles/cmTC_9b3de.dir/CMakeCXXCompilerABI.cpp.obj -c D:/mingw64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/i586-pc-msdosdjgpp-g++
+        Target: i586-pc-msdosdjgpp
+        Configured with: /usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0/configure --srcdir=/usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0 --prefix=/usr --exec-prefix=/usr --localstatedir=/var --sysconfdir=/etc --docdir=/usr/share/doc/djgpp-gcc --htmldir=/usr/share/doc/djgpp-gcc/html -C --build=x86_64-pc-cygwin --host=x86_64-pc-cygwin --target=i586-pc-msdosdjgpp --without-libiconv-prefix --without-libintl-prefix --libexecdir=/usr/lib --disable-shared --enable-static --enable-languages=c,c++,ada,fortran,objc,obj-c++ --enable-version-specific-runtime-libs --disable-lto --enable-libquadmath --enable-libquadmath-support --enable-libssp --disable-libstdcxx-pch --with-gnu-as --with-gnu-ld --with-system-zlib
+        Thread model: single
+        gcc version 5.4.0 (GCC) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_9b3de.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=pentium' '-march=pentium'
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/cc1plus.exe -quiet -v -remap D:/mingw64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=pentium -march=pentium -auxbase-strip CMakeFiles/cmTC_9b3de.dir/CMakeCXXCompilerABI.cpp.obj -version -o /cygdrive/c/Users/30119/AppData/Local/Temp/ccv1pqtc.s
+        GNU C++ (GCC) version 5.4.0 (i586-pc-msdosdjgpp)
+        	compiled by GNU C version 5.4.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3
+        warning: GMP header version 6.1.0 differs from library version 6.3.0.
+        warning: MPFR header version 3.1.4 differs from library version 3.1.6-p1.
+        warning: MPC header version 1.0.3 differs from library version 1.3.1.
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include/c++
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include/c++/i586-pc-msdosdjgpp
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include/c++/backward
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/include-fixed
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/sys-include
+        End of search list.
+        GNU C++ (GCC) version 5.4.0 (i586-pc-msdosdjgpp)
+        	compiled by GNU C version 5.4.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3
+        warning: GMP header version 6.1.0 differs from library version 6.3.0.
+        warning: MPFR header version 3.1.4 differs from library version 3.1.6-p1.
+        warning: MPC header version 1.0.3 differs from library version 1.3.1.
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: 9ba7910ec06eba264d9857db13ec5c72
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_9b3de.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=pentium' '-march=pentium'
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/as.exe -v -o CMakeFiles/cmTC_9b3de.dir/CMakeCXXCompilerABI.cpp.obj /cygdrive/c/Users/30119/AppData/Local/Temp/ccv1pqtc.s
+        GNU assembler version 2.25 (i586-pc-msdosdjgpp) using BFD version (GNU Binutils) 2.25
+        COMPILER_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/
+        LIBRARY_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_9b3de.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=pentium' '-march=pentium'
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe  -v -Wl,-v CMakeFiles/cmTC_9b3de.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_9b3de.exe -Wl,--out-implib,libcmTC_9b3de.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        FAILED: cmTC_9b3de.exe 
+        C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe  -v -Wl,-v CMakeFiles/cmTC_9b3de.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_9b3de.exe -Wl,--out-implib,libcmTC_9b3de.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/i586-pc-msdosdjgpp-g++
+        COLLECT_LTO_WRAPPER=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/lto-wrapper.exe
+        Target: i586-pc-msdosdjgpp
+        Configured with: /usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0/configure --srcdir=/usr/src/ports/djgpp-gcc/djgpp-gcc-5.4.0-1.x86_64/src/gcc-5.4.0 --prefix=/usr --exec-prefix=/usr --localstatedir=/var --sysconfdir=/etc --docdir=/usr/share/doc/djgpp-gcc --htmldir=/usr/share/doc/djgpp-gcc/html -C --build=x86_64-pc-cygwin --host=x86_64-pc-cygwin --target=i586-pc-msdosdjgpp --without-libiconv-prefix --without-libintl-prefix --libexecdir=/usr/lib --disable-shared --enable-static --enable-languages=c,c++,ada,fortran,objc,obj-c++ --enable-version-specific-runtime-libs --disable-lto --enable-libquadmath --enable-libquadmath-support --enable-libssp --disable-libstdcxx-pch --with-gnu-as --with-gnu-ld --with-system-zlib
+        Thread model: single
+        gcc version 5.4.0 (GCC) 
+        COMPILER_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/
+        LIBRARY_PATH=/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/:/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_9b3de.exe' '-mtune=pentium' '-march=pentium'
+         /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/collect2.exe -o cmTC_9b3de.exe /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/crt0.o -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0 -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib -v CMakeFiles/cmTC_9b3de.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_9b3de.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lm -lgcc -lc -lgcc
+        collect2 version 5.4.0
+        /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/ld -o cmTC_9b3de.exe /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib/crt0.o -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0 -L/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/lib -v CMakeFiles/cmTC_9b3de.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_9b3de.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lm -lgcc -lc -lgcc
+        GNU ld (GNU Binutils) 2.25/usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/ld: unrecognized option '--out-implib'
+        /usr/lib/gcc/i586-pc-msdosdjgpp/5.4.0/../../../../i586-pc-msdosdjgpp/bin/ld: use the --help option for usage information
+        collect2: error: ld returned 1 exit status
+        
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/mingw64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:56 (try_compile)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Check for working CXX compiler: D:/Tools/bin/i586-pc-msdosdjgpp-g++.exe"
+    directories:
+      source: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-ey11qb"
+      binary: "D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-ey11qb"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-ey11qb'
+        
+        Run Build Command(s): D:/mingw64/bin/ninja.exe -v cmTC_a466a
+        [1/2] D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe    -o CMakeFiles/cmTC_a466a.dir/testCXXCompiler.cxx.obj -c D:/game/qt/PhantomGenesis/build/CMakeFiles/CMakeScratch/TryCompile-ey11qb/testCXXCompiler.cxx
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe   CMakeFiles/cmTC_a466a.dir/testCXXCompiler.cxx.obj -o cmTC_a466a.exe -Wl,--out-implib,libcmTC_a466a.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        FAILED: cmTC_a466a.exe 
+        C:\\WINDOWS\\system32\\cmd.exe /C "cd . && D:\\Tools\\bin\\i586-pc-msdosdjgpp-g++.exe   CMakeFiles/cmTC_a466a.dir/testCXXCompiler.cxx.obj -o cmTC_a466a.exe -Wl,--out-implib,libcmTC_a466a.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        collect2: 鑷村懡閿欒锛歭d 浠ヤ俊鍙?11 [Segmentation fault] 閫€鍑恒€?
+        缂栬瘧涓柇銆?
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
 ...

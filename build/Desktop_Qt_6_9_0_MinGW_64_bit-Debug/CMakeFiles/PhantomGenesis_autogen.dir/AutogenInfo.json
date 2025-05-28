@@ -339,6 +339,18 @@
 			null
 		],
 		[
+			"D:/game/qt/PhantomGenesis/PlayerWave.h",
+			"MU",
+			"EWIEGA46WW/moc_PlayerWave.cpp",
+			null
+		],
+		[
+			"D:/game/qt/PhantomGenesis/Wave.h",
+			"MU",
+			"EWIEGA46WW/moc_Wave.cpp",
+			null
+		],
+		[
 			"D:/game/qt/PhantomGenesis/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
@@ -423,6 +435,8 @@
 		[ "D:/game/qt/PhantomGenesis/Map.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/PhantomBase.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/Player.cpp", "MU", null ],
+		[ "D:/game/qt/PhantomGenesis/PlayerWave.cpp", "MU", null ],
+		[ "D:/game/qt/PhantomGenesis/Wave.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/main.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/mainwindow.cpp", "MU", null ]
 	],

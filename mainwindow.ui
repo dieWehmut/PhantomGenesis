@@ -39,7 +39,7 @@
        </sizepolicy>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="startPage">
        <property name="sizePolicy">
@@ -225,6 +225,22 @@
         </property>
         <property name="text">
          <string>设置</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="continueBtn">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>230</y>
+          <width>421</width>
+          <height>261</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(149, 255, 183);</string>
+        </property>
+        <property name="text">
+         <string>继续游戏</string>
         </property>
        </widget>
       </widget>

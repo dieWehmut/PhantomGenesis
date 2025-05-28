@@ -1,6 +1,9 @@
-D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenesis_autogen/EWIEGA46WW/moc_ActiveObject.cpp: D:/game/qt/PhantomGenesis/ActiveObject.h \
+D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenesis_autogen/EWIEGA46WW/moc_PlayerWave.cpp: D:/game/qt/PhantomGenesis/PlayerWave.h \
   D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenesis_autogen/moc_predefs.h \
+  D:/game/qt/PhantomGenesis/ActiveObject.h \
+  D:/game/qt/PhantomGenesis/Wave.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/QObject \
+  E:/qt/6.9.0/mingw_64/include/QtCore/QTimer \
   E:/qt/6.9.0/mingw_64/include/QtCore/Qdebug \
   E:/qt/6.9.0/mingw_64/include/QtCore/q17memory.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/q20algorithm.h \
@@ -135,6 +138,7 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/6.9.0/mingw_64/include/QtCore/qtenvironmentvariables.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qtextstream.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qtformat_impl.h \
+  E:/qt/6.9.0/mingw_64/include/QtCore/qtimer.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qtmetamacros.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qtnoop.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qtpreprocessorsupport.h \
@@ -154,19 +158,29 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/6.9.0/mingw_64/include/QtCore/qxptype_traits.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qyieldcpu.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/QMovie \
+  E:/qt/6.9.0/mingw_64/include/QtGui/QPainter \
+  E:/qt/6.9.0/mingw_64/include/QtGui/QPainterPath \
+  E:/qt/6.9.0/mingw_64/include/QtGui/qbrush.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qcolor.h \
+  E:/qt/6.9.0/mingw_64/include/QtGui/qfont.h \
+  E:/qt/6.9.0/mingw_64/include/QtGui/qfontinfo.h \
+  E:/qt/6.9.0/mingw_64/include/QtGui/qfontmetrics.h \
+  E:/qt/6.9.0/mingw_64/include/QtGui/qfontvariableaxis.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qimage.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qimageiohandler.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qimagereader.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qmovie.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qpaintdevice.h \
+  E:/qt/6.9.0/mingw_64/include/QtGui/qpainter.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qpainterpath.h \
+  E:/qt/6.9.0/mingw_64/include/QtGui/qpen.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qpixelformat.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qpixmap.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qpolygon.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qregion.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qrgb.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qrgba64.h \
+  E:/qt/6.9.0/mingw_64/include/QtGui/qtextoption.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qtgui-config.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qtguiexports.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qtguiglobal.h \

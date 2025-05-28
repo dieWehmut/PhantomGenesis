@@ -3,4 +3,6 @@
 #include "EWIEGA46WW/moc_FlamePhantom.cpp"
 #include "EWIEGA46WW/moc_GameManager.cpp"
 #include "EWIEGA46WW/moc_Player.cpp"
+#include "EWIEGA46WW/moc_PlayerWave.cpp"
+#include "EWIEGA46WW/moc_Wave.cpp"
 #include "EWIEGA46WW/moc_mainwindow.cpp"
