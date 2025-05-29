@@ -18,7 +18,7 @@ public:
     void setCurDistance(float distance);
     float getCurDistance() const;
     void updatePosition() override;
-    bool checkCollision(const QPointF& newPos) override;
+    bool checkCollision(const QPointF& newPos) override;//碰撞检测
 protected:
     QPointF direction;//移动方向
     float maxDistance;//最大飞行距离

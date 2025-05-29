@@ -52,20 +52,22 @@ float Wave::getCurDistance() const {
 void Wave::updatePosition() {
     QPointF newPos = pos() + direction * getSpeed();
     setPos(newPos);
+    checkCollision(newPos);
 }
 
 bool Wave::checkCollision(const QPointF& newPos){
     QPointF oldPos = pos();
-    setPos(newPos);// 设一个新位置
+    setPos(newPos);
     QList<QGraphicsItem *> collidingItems = scene()->collidingItems(this);
-    setPos(oldPos);// 恢复位置
+    setPos(oldPos);
+    bool collided = false;
     for (QGraphicsItem *item : collidingItems){
         if (item != this){
             handleCollision(item);
-            return true;
+            collided = true;
         }
     }
-    return false;
+    return collided;
 }
 void Wave::handleCollision(QGraphicsItem *item) {
     deleteLater();

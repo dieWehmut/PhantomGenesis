@@ -4,27 +4,22 @@
 #include "GameManager.h"
 #include "Player.h"
 #include "PhantomBase.h"
+#include <QGraphicsScene>
+#include <QList>
 PlayerWave::PlayerWave(const QPointF &direction, int damage, QObject *parent)
     : Wave(parent){
-    // 设置属性
-    QPointF normDir = direction;
-    qreal len = qSqrt(direction.x()*direction.x() + direction.y()*direction.y());
-    if (len > 0) {
-        normDir.setX(direction.x() / len);
-        normDir.setY(direction.y() / len);
-    }
-    setDirection(normDir);
-    setSpeed(2.0f);
+    setDirection(direction);
+    setSpeed(3.0f);
     setAtk(damage);
     setMaxDistance(300.0f);
     setPixmap(QPixmap("Resource/playerWave.png").scaled(32, 32));
-setTransformOriginPoint(16, 16);
+    setTransformOriginPoint(16, 16);
+    maxPierceCnt = 3; 
+    curPierceCnt = 0;  
+    aoeRadius = 0;  
 }
-QRectF PlayerWave::boundingRect() const {
-    return QRectF(0, 0, 48, 48);
-}
-
 void PlayerWave::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *) {
+    if (!scene()) return; 
     Player* player = nullptr;
     for (QGraphicsItem* item : scene()->items()) {
         player = dynamic_cast<Player*>(item);
@@ -39,7 +34,7 @@ void PlayerWave::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWid
         }
     }
     painter->save();
-    qreal angle = qAtan2(getDirection().y(), getDirection().x()) * 180 / M_PI + 180;
+    qreal angle = qAtan2(getDirection().y(), getDirection().x()) * 180 / M_PI+180;
     painter->translate(24, 24);
     painter->rotate(angle);
     painter->translate(-24, -24);
@@ -59,9 +54,32 @@ PlayerWave::~PlayerWave() {
 
 }
 void PlayerWave::handleCollision(QGraphicsItem *item) {
-    PhantomBase *enemy = dynamic_cast<PhantomBase*>(item);
-    if (enemy) {
-        enemy->setHp(enemy->getHp() - getAtk());
-        deleteLater();
+    if (dynamic_cast<Player*>(item)) {
+        return;
+    }
+    ActiveObject *obj = dynamic_cast<ActiveObject*>(item);
+    if (obj && !hitObjects.contains(obj) && dynamic_cast<PhantomBase*>(obj)) {
+        obj->setHp(obj->getHp() - getAtk());
+        hitObjects.insert(obj);
+        curPierceCnt++;
+        applyAoeDamage();
+        if (curPierceCnt >= maxPierceCnt) {
+            deleteLater();
+        }
+    }
+}
+void PlayerWave::applyAoeDamage() {
+    if (!scene() || aoeRadius <= 0) return;
+    QList<QGraphicsItem*> items = scene()->items(QRectF(pos().x() - aoeRadius, pos().y() - aoeRadius, aoeRadius * 2, aoeRadius * 2));
+    for (QGraphicsItem *item : items) {
+        ActiveObject *obj = dynamic_cast<ActiveObject*>(item);
+        if (obj && !hitObjects.contains(obj)) {
+            QPointF center = pos() + QPointF(boundingRect().width()/2, boundingRect().height()/2);
+            QPointF objCenter = obj->pos() + QPointF(obj->boundingRect().width()/2, obj->boundingRect().height()/2);
+            if (QLineF(center, objCenter).length() <= aoeRadius) {
+                obj->setHp(obj->getHp() - getAtk());
+                hitObjects.insert(obj);
+            }
+        }
     }
 }

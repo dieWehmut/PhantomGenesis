@@ -8,12 +8,14 @@ class FlamePhantom : public PhantomBase {//继承幽灵基类
 public:
     FlamePhantom(Player* targetPlayer);
     void updateStatus();//状态更新
+    void setRangeAtkCD(int cd) { rangeAtkCD = cd; }
+    int getRangeAtkCD() const { return rangeAtkCD; }
 private:
     void rangeDebuff(); // 范围干扰
     void meleeAtk(); // 近战攻击
-    Player* player;
-    QPixmap rangeIndicator; // 攻击范围指示器
+    Player* player;//目标玩家
     bool isMeleeActive = false;//是否开始近战攻击
-    QGraphicsPixmapItem* rangeIndicatorItem = nullptr;
+    QElapsedTimer rangeAtkTimer;//攻击cd计时
+    int rangeAtkCD;//atkcd
 };
 #endif // FLAMEPHANTOM_H

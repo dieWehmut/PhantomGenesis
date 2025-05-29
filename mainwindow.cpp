@@ -20,6 +20,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     setWindowTitle("PhantomGenesis");
     ui->stackedWidget->setCurrentIndex(0);//初始界面
+    ui->graphicsView->installEventFilter(this);
+    ui->graphicsView->viewport()->installEventFilter(this);
     //各种按钮与界面的连接
     connect(ui->startBtn, &QPushButton::clicked, this, &MainWindow::startGame);
     connect(ui->exitBtn, &QPushButton::clicked, this, &MainWindow::close);
@@ -61,8 +63,13 @@ void MainWindow::changeEvent(QEvent *event) {
     }
     QMainWindow::changeEvent(event);
 }
-bool MainWindow::eventFilter(QObject* obj, QEvent* event)//防滑动
+bool MainWindow::eventFilter(QObject* obj, QEvent* event)
 {
+    if ((obj == ui->graphicsView || obj == ui->graphicsView->viewport()) && 
+    (event->type() == QEvent::Wheel || event->type() == QEvent::GraphicsSceneWheel)) {
+        event->accept();
+        return true;
+    }
     if (obj == ui->graphicsView) {
         switch(event->type()) {
         case QEvent::Wheel:
@@ -71,6 +78,14 @@ bool MainWindow::eventFilter(QObject* obj, QEvent* event)//防滑动
         case QEvent::FocusIn: 
             ui->graphicsView->setFocus();
             return true;
+        case QEvent::MouseButtonPress: 
+            if (gameManager && gameStarted) {
+                Player* player = gameManager->getPlayer();
+                if (player) {
+                    player->setFocus();
+                }
+            }
+            break;
         default:
             break;
         }
@@ -97,12 +112,15 @@ void MainWindow::returnToGame(){
     ui->stackedWidget->setCurrentIndex(1);
     if (gameManager) {
         ui->graphicsView->setGeometry(0, 0, ui->stackedWidget->width(), ui->stackedWidget->height());
-        ui->graphicsView->setFocusPolicy(Qt::StrongFocus);
-        ui->graphicsView->setFocus();
+        ui->graphicsView->setFocusPolicy(Qt::NoFocus);
         emit viewResized();
         if (gameStarted) {
             gameManager->resumeGame();
             ui->pauseBtn->setText("暂停"); 
+        }
+        Player* player = gameManager->getPlayer();
+        if (player) {
+            player->setFocus();
         }
     }
     ui->continueBtn->hide(); 

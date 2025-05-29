@@ -13,11 +13,8 @@ qt_add_executable(PhantomGenesis
     mainwindow.ui
     Map.h Map.cpp
     resources.qrc
-    Resource/map1.png
-
-    Resource/map0.png
     Player.h Player.cpp
-    Resource/player.png
+
     King.h King.cpp
     PhantomBase.h PhantomBase.cpp
     FlamePhantom.h FlamePhantom.cpp
@@ -25,12 +22,19 @@ qt_add_executable(PhantomGenesis
     ActiveObject.h
     GameManager.h GameManager.cpp
     ActiveObject.cpp
-    Resource/player.gif
+
     Resource/black.png
     Resource/portal.png
     Resource/flame.png
     Wave.h Wave.cpp
     PlayerWave.h PlayerWave.cpp
+    Resource/ruins.png
+    Resource/mapExit.png Resource/mazeExit.png
+    Resource/flamePhantomBase.png
+    Resource/flamePhantom.png
+    Resource/player.png
+
+
 
 )
 

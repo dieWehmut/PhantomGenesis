@@ -5,6 +5,8 @@
 #include <QTimer>
 #include "Map.h"
 #include "Player.h"
+#include "FlamePhantom.h"
+#include<QVector>
 #include <QGraphicsView>
 class GameManager : public QObject 
 {
@@ -23,12 +25,16 @@ public slots:
 private:
     QGraphicsView* gameView;//游戏视图
     QGraphicsScene* gameScene;//游戏场景
+    bool gamePaused; // 标记是否暂停
     Map* gameMap;//地图
     Player* player;//玩家
     int curMapId; // 当前地图ID
-    QTimer* gameLoopTimer;//计时器
-    bool gamePaused; // 标记是否暂停
-    void updateVisibleTiles(); // 更新视野地图
+    QTimer* gameLoopTimer;//游戏计时器
+    QVector<FlamePhantom*> flamePhantoms;//幻影容器
+    void spawnFlamePhantoms();//幻影生成
+    void updatePhantoms();//更新所有幻影的状态
+    QTimer* phantomSpawnTimer;//幻影定时器
+    void updateVisibleTiles();//更新视野地图
 };
 
 #endif // GAMEMANAGER_H
