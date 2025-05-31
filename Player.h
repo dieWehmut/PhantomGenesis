@@ -29,6 +29,7 @@ private:
     QPointF lastMoveDirection;//记录最后移动方向
     int atkCD;//攻击冷却时间
     QElapsedTimer atkTimer; //cd计时
+    QTimer* cdUpdateTimer = nullptr;
     bool slowed=false;//是否减速
     float originalSpeed;//减速前的速度
 };

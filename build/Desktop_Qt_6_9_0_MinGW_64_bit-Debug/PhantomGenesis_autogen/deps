@@ -4,6 +4,8 @@ PhantomGenesis_autogen/timestamp: \
 	D:/game/qt/PhantomGenesis/CMakeLists.txt \
 	D:/game/qt/PhantomGenesis/FlamePhantom.cpp \
 	D:/game/qt/PhantomGenesis/FlamePhantom.h \
+	D:/game/qt/PhantomGenesis/FlameWave.cpp \
+	D:/game/qt/PhantomGenesis/FlameWave.h \
 	D:/game/qt/PhantomGenesis/GameManager.cpp \
 	D:/game/qt/PhantomGenesis/GameManager.h \
 	D:/game/qt/PhantomGenesis/King.cpp \

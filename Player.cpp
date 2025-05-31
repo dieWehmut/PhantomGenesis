@@ -9,11 +9,17 @@ Player::Player(QObject *parent) : ActiveObject(parent) {
     setHp(getMaxHp());
     setSpeed(15.0f);
     setOriginSpeed(getSpeed());
-    setSightRange(1000);
+    setSightRange(200);
     setAtkRange(50);
     setAtk(30);
-    setAtkCD(200);
-    atkTimer.start(); 
+    setAtkCD(100);
+    atkTimer.restart();
+    cdUpdateTimer = new QTimer(this);
+    cdUpdateTimer->setInterval(1000/60); 
+        connect(cdUpdateTimer, &QTimer::timeout, this, [this]() {
+        this->update();
+    });
+    cdUpdateTimer->start(); 
     setLastMoveDirection(QPointF(1, 0));
     setStaticPixmap(QPixmap("Resource/player.png").scaled(64, 64));
     setTransformOriginPoint(pixmap().width()/2, pixmap().height()/2);
@@ -96,11 +102,12 @@ void Player::playerStartAtk() {
             QPointF spawnPos = pos() + QPointF(pixmap().width()/2, pixmap().height()/2);
             wave->setPos(spawnPos);
             wave->setCurPierceCnt(0);
-            wave->setMaxPierceCnt(3);
-            wave->setAoeRadius(1000.0f);
+            wave->setMaxPierceCnt(5);
+            wave->setAoeRadius(2000.0f);
             scene()->addItem(wave);
         }
         atkTimer.restart();
+        cdUpdateTimer->start();
     }
 }
 void Player::focusInEvent(QFocusEvent *event) {
@@ -121,9 +128,14 @@ void Player::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     qreal y = -barHeight - 5;
     qreal cdBarY = y + barHeight + 2;
     float cdPercent = 1.0f;
+
     if (atkCD > 0) {
         int elapsed = atkTimer.elapsed();
-        cdPercent = qBound(0.0f, (float)elapsed / atkCD, 1.0f);
+        if (elapsed <= 0 || elapsed >= atkCD) {
+            cdPercent = 1.0f; // 冷却结束或还未攻击过，画满
+        } else {
+            cdPercent = qBound(0.0f, (float)elapsed / atkCD, 1.0f);//按比例
+        }
     }
     painter->setBrush(Qt::gray);
     painter->drawRect(x, cdBarY, barWidth, cdBarHeight);

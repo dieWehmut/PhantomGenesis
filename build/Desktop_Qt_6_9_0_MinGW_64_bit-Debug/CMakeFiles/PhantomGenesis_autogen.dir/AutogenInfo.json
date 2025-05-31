@@ -303,6 +303,12 @@
 			null
 		],
 		[
+			"D:/game/qt/PhantomGenesis/FlameWave.h",
+			"MU",
+			"EWIEGA46WW/moc_FlameWave.cpp",
+			null
+		],
+		[
 			"D:/game/qt/PhantomGenesis/GameManager.h",
 			"MU",
 			"EWIEGA46WW/moc_GameManager.cpp",
@@ -429,6 +435,7 @@
 	[
 		[ "D:/game/qt/PhantomGenesis/ActiveObject.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/FlamePhantom.cpp", "MU", null ],
+		[ "D:/game/qt/PhantomGenesis/FlameWave.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/GameManager.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/King.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/LurkPhantom.cpp", "MU", null ],

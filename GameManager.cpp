@@ -145,7 +145,7 @@ void GameManager::spawnFlamePhantoms() {
             flamePhantoms.remove(i);
         }
     }
-    if (flamePhantoms.size() >= 24) return;//限制
+    if (flamePhantoms.size() >= 24) return;//限制数量
     const QVector<QPoint>& spawnPoints = gameMap->getFlamePhantomBases();
     if (!spawnPoints.isEmpty()) {
         int idx = QRandomGenerator::global()->bounded(spawnPoints.size());
@@ -176,16 +176,31 @@ void GameManager::updatePhantoms() {
                 delete flamePhantoms[i];
             }
             flamePhantoms.remove(i);
+            continue;
         }
     }
+    QPointF playerCenter = player->pos() + QPointF(player->boundingRect().width()/2, player->boundingRect().height()/2);
+    qreal sightRange = player->getSightRange();
     for (auto* phantom : flamePhantoms) {
         if (phantom && phantom->scene()) {
+            QPointF phantomCenter = phantom->pos() + QPointF(phantom->boundingRect().width()/2, phantom->boundingRect().height()/2);
+            qreal dist = QLineF(playerCenter, phantomCenter).length();
+            bool inSight = dist <= sightRange;
             phantom->updateStatus();
+            if (phantom->isExposed() || 
+                (static_cast<FlamePhantom*>(phantom)->getIsLocking()) || 
+                inSight) {
+                phantom->setVisible(true);
+                phantom->setRangeIndicatorVisible(true);
+            } else {
+                phantom->setVisible(false);
+                phantom->setRangeIndicatorVisible(false);
+            }
         }
     }
-        bool playerShouldSlow = false;
+    bool playerShouldSlow = false;
     for (auto* phantom : flamePhantoms) {
-        if (phantom && phantom->scene()) {
+        if (phantom && phantom->scene() && phantom->isVisible()) {
             QPointF center = phantom->pos() + QPointF(phantom->boundingRect().width()/2, phantom->boundingRect().height()/2);
             QPointF pCenter = player->pos() + QPointF(player->boundingRect().width()/2, player->boundingRect().height()/2);
             if (QLineF(center, pCenter).length() <= phantom->getAtkRange()) {

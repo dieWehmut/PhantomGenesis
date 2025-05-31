@@ -33,6 +33,9 @@ qt_add_executable(PhantomGenesis
     Resource/flamePhantomBase.png
     Resource/flamePhantom.png
     Resource/player.png
+    FlameWave.h FlameWave.cpp
+    Resource/flameWave.png
+
 
 
 

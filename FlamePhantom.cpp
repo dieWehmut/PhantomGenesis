@@ -2,47 +2,73 @@
 #include <QGraphicsScene>
 #include <QRandomGenerator>
 #include <QtMath>
-
+#include <QPainter>
+#include "FlameWave.h"
 FlamePhantom::FlamePhantom(Player* targetPlayer) 
     : player(targetPlayer) {
     setStaticPixmap(QPixmap("Resource/flamePhantom.png").scaled(64, 64));
     wanderTarget = pos();
     setMaxHp(200);
     setHp(getMaxHp());
-    setSpeed(1.5f);
-    setSightRange(400);
-    setAtkRange(200);
-    setAtk(1);
-    setRangeAtkCD(5000);
+    setSpeed(2.5f);
+    setSightRange(1000);
+    setAtkRange(1000);
+    setAtk(10);
+    setRangeAtkCD(2000);
     rangeAtkTimer.start();
-}
+    rangeIndicatorItem = new QGraphicsEllipseItem();
+    rangeIndicatorItem->setZValue(0);
+    QPen pen(Qt::red);
+    pen.setWidth(2);
+    rangeIndicatorItem->setPen(pen);
+    rangeIndicatorItem->setBrush(Qt::NoBrush);
+    rangeIndicatorItem->hide();
 
+}
+FlamePhantom::~FlamePhantom() {
+
+}
+void FlamePhantom::shootWave(const QPointF& direction) {
+    if (!scene()) return;
+    FlameWave* wave = new FlameWave(direction, atk);
+    wave->setIgnoreItem(this);
+    QPointF spawnPos = pos() + QPointF(boundingRect().width()/2, boundingRect().height()/2);
+    wave->setPos(spawnPos);
+    scene()->addItem(wave);
+}
 void FlamePhantom::updateStatus() {
     if (!player) return;
-    static bool lastInRange = false;
     QPointF myCenter = pos() + QPointF(boundingRect().width()/2, boundingRect().height()/2);
     QPointF playerCenter = player->pos() + QPointF(player->boundingRect().width()/2, player->boundingRect().height()/2);
     qreal distance = QLineF(myCenter, playerCenter).length();
-    bool inRange = (distance < getAtkRange());
-    if (!rangeIndicatorItem) {
-        rangeIndicatorItem = new QGraphicsEllipseItem();
-        rangeIndicatorItem->setZValue(0);
-        QPen pen(Qt::red);
-        pen.setWidth(2);
-        rangeIndicatorItem->setPen(pen);
-        rangeIndicatorItem->setBrush(Qt::NoBrush);
-        if (scene())
-            scene()->addItem(rangeIndicatorItem);
+    bool inRange = (distance <= getAtkRange());
+    isLocking = inRange;
+    if (rangeIndicatorItem && scene() && !rangeIndicatorItem->scene()) {
+        scene()->addItem(rangeIndicatorItem);
         rangeIndicatorItem->hide();
+    }
+    if (isLocking) {
+        if (rangeAtkTimer.elapsed() >= getRangeAtkCD()) {
+            player->setHp(player->getHp() - atk);//定时扣血
+            // 发射火焰波
+            QPointF dir = playerCenter - myCenter;
+            qreal len = std::hypot(dir.x(), dir.y());
+            if (len > 1e-2) dir /= len;
+            shootWave(dir);
+            rangeAtkTimer.restart();
+        }
     }
     if (inRange != lastInRange) {
         if (inRange) {
+            qreal atkRange = getAtkRange();
+            qDebug() << "myCenter: " << myCenter << ", atkRange: " << atkRange;
             rangeIndicatorItem->setRect(
-                myCenter.x() - getAtkRange(),
-                myCenter.y() - getAtkRange(),
-                getAtkRange() * 2,
-                getAtkRange() * 2
+                myCenter.x() - atkRange,
+                myCenter.y() - atkRange,
+                atkRange * 2,
+                atkRange * 2
             );
+            qDebug() << "rangeIndicatorItem->rect(): " << rangeIndicatorItem->rect();
             rangeIndicatorItem->show();
         } else {
             rangeIndicatorItem->hide();
@@ -109,7 +135,18 @@ void FlamePhantom::rangeDebuff() {
         }
     }
 }
+void FlamePhantom::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
+    PhantomBase::paint(painter, option, widget);
+    if (isLocking && player) {
+        QPointF myCenter = QPointF(boundingRect().width()/2, boundingRect().height()/2);
+        QPointF playerCenter = mapFromScene(player->pos() + QPointF(player->boundingRect().width()/2, player->boundingRect().height()/2));
+        QPen pen(Qt::red, 3);
+        painter->setPen(pen);
+        painter->drawLine(myCenter, playerCenter);
+    }
+}
 
 void FlamePhantom::meleeAtk() {
+    if (!player) return;
     player->setHp(player->getHp() - atk);
 }

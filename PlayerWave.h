@@ -9,17 +9,19 @@ class PlayerWave : public Wave {
 public:
     explicit PlayerWave(const QPointF &direction, int damage, QObject *parent = nullptr);
     ~PlayerWave() override;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;//没有血条和蓝条，但是要画形状
+    void updatePosition() override;//位置更新
+    void onMoveTimerTimeout() override;
     //属性相关
     void setMaxPierceCnt(int count) { maxPierceCnt = count; }
     void setAoeRadius(float r) { aoeRadius = r; }
     void setCurPierceCnt(int cnt) { curPierceCnt = cnt; }
     int getMaxPierceCnt() const { return maxPierceCnt; }
-    int getcurPierceCnt() const { return maxPierceCnt; }
+    int getCurPierceCnt() const { return curPierceCnt; }
     float getAoeRadius() const { return aoeRadius; }
 protected:
-    void handleCollision(QGraphicsItem *item) override;//重写碰撞处理
-    void applyAoeDamage();
+    void handleCollision(QGraphicsItem *item) override;
+    void applyAoeDamage(ActiveObject* directHitObj);
+    void onAoeTimerTimeout() override;
     int maxPierceCnt;//最大穿透数
     int curPierceCnt;//已穿透数
     float aoeRadius;//波及半径
