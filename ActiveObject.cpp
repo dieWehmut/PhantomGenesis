@@ -3,12 +3,19 @@
 #include <QStyleOptionGraphicsItem>
 
 ActiveObject::ActiveObject(QObject *parent) : QObject(parent), QGraphicsPixmapItem() {
+    rangeIndicatorItem = nullptr;
 }
+
 void ActiveObject::setStaticPixmap(const QPixmap& pix) {
     setPixmap(pix);
 }
 
 void ActiveObject::updatePosition() {}
+ActiveObject::~ActiveObject() {
+    if (rangeIndicatorItem) {
+        rangeIndicatorItem->setVisible(false);
+    }
+}
 bool ActiveObject::checkCollision(const QPointF&) { return false; }
 
 void ActiveObject::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
@@ -34,4 +41,29 @@ QRectF ActiveObject::boundingRect() const {
     QRectF imgRect(0, 0, 64, 64);
     QRectF hpBarRect(x, y, barWidth, barHeight + 2);
     return imgRect.united(hpBarRect);
+}
+
+void ActiveObject::handleCollision(QGraphicsItem *item) {
+    Q_UNUSED(item);
+}
+void ActiveObject::createRangeIndicator(const QColor& color, int penWidth) {
+    if (!rangeIndicatorItem) {
+        rangeIndicatorItem = new QGraphicsEllipseItem(this);
+        rangeIndicatorItem->setBrush(color);
+        rangeIndicatorItem->setPen(QPen(color.darker(), penWidth));
+        rangeIndicatorItem->setVisible(false);
+        updateRangeIndicator();
+    }
+}
+void ActiveObject::setRangeIndicatorVisible(bool visible) {
+    if (rangeIndicatorItem) {
+        rangeIndicatorItem->setVisible(visible);
+    }
+}
+void ActiveObject::updateRangeIndicator() {
+    if (rangeIndicatorItem) {
+        QRectF rect(-atkRange, -atkRange, atkRange * 2, atkRange * 2);
+        rangeIndicatorItem->setRect(rect);
+        rangeIndicatorItem->setPos(boundingRect().center());
+    }
 }

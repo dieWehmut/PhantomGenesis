@@ -7,7 +7,7 @@ class FlamePhantom : public PhantomBase {//继承幽灵基类
 public:
     FlamePhantom(Player* targetPlayer);
     ~FlamePhantom();
-    void updateStatus();//状态更新
+    void updateStatus()override;//状态更新
     void shootWave(const QPointF& direction) override;
     bool getIsLocking() const { return isLocking; }
     void setRangeAtkCD(int cd) { rangeAtkCD = cd; }

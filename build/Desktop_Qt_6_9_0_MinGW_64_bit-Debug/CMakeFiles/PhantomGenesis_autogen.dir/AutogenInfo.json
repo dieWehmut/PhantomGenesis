@@ -327,6 +327,12 @@
 			null
 		],
 		[
+			"D:/game/qt/PhantomGenesis/LurkWave.h",
+			"MU",
+			"EWIEGA46WW/moc_LurkWave.cpp",
+			null
+		],
+		[
 			"D:/game/qt/PhantomGenesis/Map.h",
 			"MU",
 			"EWIEGA46WW/moc_Map.cpp",
@@ -348,6 +354,12 @@
 			"D:/game/qt/PhantomGenesis/PlayerWave.h",
 			"MU",
 			"EWIEGA46WW/moc_PlayerWave.cpp",
+			null
+		],
+		[
+			"D:/game/qt/PhantomGenesis/VisionMaskItem.h",
+			"MU",
+			"EWIEGA46WW/moc_VisionMaskItem.cpp",
 			null
 		],
 		[
@@ -439,10 +451,12 @@
 		[ "D:/game/qt/PhantomGenesis/GameManager.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/King.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/LurkPhantom.cpp", "MU", null ],
+		[ "D:/game/qt/PhantomGenesis/LurkWave.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/Map.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/PhantomBase.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/Player.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/PlayerWave.cpp", "MU", null ],
+		[ "D:/game/qt/PhantomGenesis/VisionMaskItem.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/Wave.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/main.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/mainwindow.cpp", "MU", null ]

@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-3078124184980ca3e516.json",
+					"jsonFile" : "directory-.-Debug-93a451c23825ca1bb621.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -44,7 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "PhantomGenesis::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-PhantomGenesis-Debug-9b789f7e2f3dd080e5d9.json",
+					"jsonFile" : "target-PhantomGenesis-Debug-6a8607c16e15986d9856.json",
 					"name" : "PhantomGenesis",
 					"projectIndex" : 0
 				},

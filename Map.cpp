@@ -7,10 +7,9 @@ Map::Map(QGraphicsScene* scene) : gameScene(scene) {
     for (int i = 0; i < GRID_ROW; i++) {
         for (int j = 0; j < GRID_COL; j++) {
             mapItems[i][j] = nullptr;
-            currentMapData[i][j] = 0; // 开始时是黑暗视野
+            currentMapData[i][j] = 0;
         }
     }
-     // 初始化所有地图布局
     allMapLayouts.resize(3); 
     allMapLayouts[0].resize(GRID_ROW);
     for (int i = 0; i < GRID_ROW; ++i) {
@@ -28,13 +27,13 @@ Map::Map(QGraphicsScene* scene) : gameScene(scene) {
         {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },//5
         {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },//6
         {2, 2, 2, 2, 2, 2, 2, 2,-1,-1,-1,-1,-1,-1,-2,-1,-1, 2, 2, 2, 2, 2, 2, 2, 1 },//7
-        {2, 2, 2, 2, 2, 2, 2, 2,-1, 2, 3, 2, 2, 2, 2, 2,-1, 2, 2, 2, 2, 2, 2, 2, 1 },//8
+        {2, 2, 2, 2, 2, 2, 2, 2,-1, 2, 3, 2, 2, 4, 2, 2,-1, 2, 2, 2, 2, 2, 2, 2, 1 },//8
         {2, 2, 2, 2, 2, 2, 2, 2,-2, 2, 2, 2, 2, 2, 2, 3,-1, 2, 2, 2, 2, 2, 2, 2, 1 },//9
-        {2, 2, 2, 2, 2, 2, 2, 2,-1, 2, 2, 2, 2, 2, 2, 2,-1, 2, 2, 2, 2, 2, 2, 2, 1 },//10
+        {2, 2, 2, 2, 2, 2, 2, 2,-1, 4, 2, 2, 2, 2, 2, 2,-1, 2, 2, 2, 2, 2, 2, 2, 1 },//10
         {2, 2, 2, 2, 2, 2, 2, 2,-1, 2, 2, 2, 0, 2, 2, 2,-1, 2, 2, 2, 2, 2, 2, 2, 1 },//11
-        {2, 2, 2, 2, 2, 2, 2, 2,-1, 2, 2, 2, 2, 2, 2, 2,-1, 2, 2, 2, 2, 2, 2, 2, 1 },//12
+        {2, 2, 2, 2, 2, 2, 2, 2,-1, 2, 2, 2, 2, 2, 2, 4,-1, 2, 2, 2, 2, 2, 2, 2, 1 },//12
         {2, 2, 2, 2, 2, 2, 2, 2,-1, 3, 2, 2, 2, 2, 2, 2,-2, 2, 2, 2, 2, 2, 2, 2, 1 },//13
-        {2, 2, 2, 2, 2, 2, 2, 2,-1, 2, 2, 2, 2, 2, 3, 2,-1, 2, 2, 2, 2, 2, 2, 2, 1 },//14
+        {2, 2, 2, 2, 2, 2, 2, 2,-1, 2, 2, 4, 2, 2, 3, 2,-1, 2, 2, 2, 2, 2, 2, 2, 1 },//14
         {2, 2, 2, 2, 2, 2, 2, 2,-1,-1,-2,-1,-1,-1,-1,-1,-1, 2, 2, 2, 2, 2, 2, 2, 1 },//15
         {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },//16
         {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },//17
@@ -92,27 +91,14 @@ int Map::getGridCol()const{
 void Map::loadMapTile(int row, int col, int tileType) {
     QString imagePath;
     switch(tileType) {
-        case -3://地图出口
-            imagePath = "Resource/mapExit.png";
-            break;
-        case -2://迷宫出口
-            imagePath = "Resource/mazeExit.png";
-            break;
-        case -1://传送门
-            imagePath = "Resource/portal.png";
-            break;
-        case 0://纯黑视野专用
-            imagePath = "Resource/black.png";
-            break;
-        case 1:
-            imagePath = "Resource/flame.png";
-            break;
-        case 2:
-            imagePath = "Resource/ruins.png";
-            break;
-        case 3:
-            imagePath = "Resource/flamePhantomBase.png";
-            break;
+        case -3: imagePath = "Resource/mapExit.png"; break;// 地图出口
+        case -2: imagePath = "Resource/mazeExit.png"; break;// 迷宫出口
+        case -1: imagePath = "Resource/portal.png"; break;// 传送门
+        case 1: imagePath = "Resource/flame.png"; break;// 火焰
+        case 2: imagePath = "Resource/ruins.png"; break;// 废墟
+        case 3: imagePath = "Resource/flamePhantomBase.png"; break;//flamePhantom生成点
+        case 4: imagePath = "Resource/lurkPhantomBase.png"; break;//lurkPhantom生成点
+        default: imagePath = "Resource/ruins.png"; break; 
     }
     QGraphicsPixmapItem* item = new QGraphicsPixmapItem(QPixmap(imagePath));
     item->setPos(col * GRID_SIZE, row * GRID_SIZE);
@@ -120,6 +106,7 @@ void Map::loadMapTile(int row, int col, int tileType) {
     gameScene->addItem(item);
     mapItems[row][col] = item;
 }
+
 void Map::updateSingleTile(int row, int col, int tileType) {
     if (mapItems[row][col]) {
         gameScene->removeItem(mapItems[row][col]);
@@ -127,13 +114,13 @@ void Map::updateSingleTile(int row, int col, int tileType) {
         mapItems[row][col] = nullptr;
     }
     loadMapTile(row, col, tileType);
-    currentMapData[row][col] = tileType; // 更新当前地图数据
+    currentMapData[row][col] = tileType;
 }
 int Map::getTileType(int row, int col) const {//获取当前地图数据
     if (row >= 0 && row < GRID_ROW && col >= 0 && col < GRID_COL) {
         return currentMapData[row][col];
     }
-    return 0; // 默认返回纯黑
+    return 0;
 }
 int Map::getOriginalTileType(int row, int col, int mapId) const {//获取原始地图数据
     if (mapId >= 0 && mapId < allMapLayouts.size() &&
@@ -145,6 +132,8 @@ int Map::getOriginalTileType(int row, int col, int mapId) const {//获取原始�
 }
 void Map::initMap(int mapId) {
     // 清理地图
+    flamePhantomBases.clear();
+    lurkPhantomBases.clear();
     for (int i = 0; i < GRID_ROW; i++) {
         for (int j = 0; j < GRID_COL; j++) {
             if (mapItems[i][j]) {
@@ -163,8 +152,11 @@ void Map::initMap(int mapId) {
         for(int j=0; j<GRID_COL; j++) {
             currentMapData[i][j] = srcMap[i][j];
             loadMapTile(i, j, currentMapData[i][j]);
-            if (currentMapData[i][j] == 3) {//添加幻影生成点
+            if (currentMapData[i][j] == 3) {//添加flamePhantom生成点
                 flamePhantomBases.append(QPoint(j, i));
+            }
+            if (currentMapData[i][j] == 4) {//添加lurkPhantom生成点
+                lurkPhantomBases.append(QPoint(j, i));
             }
         }
     }

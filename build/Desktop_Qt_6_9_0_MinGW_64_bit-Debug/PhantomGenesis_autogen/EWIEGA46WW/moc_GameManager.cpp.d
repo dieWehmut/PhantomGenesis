@@ -2,9 +2,11 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenesis_autogen/moc_predefs.h \
   D:/game/qt/PhantomGenesis/ActiveObject.h \
   D:/game/qt/PhantomGenesis/FlamePhantom.h \
+  D:/game/qt/PhantomGenesis/LurkPhantom.h \
   D:/game/qt/PhantomGenesis/Map.h \
   D:/game/qt/PhantomGenesis/PhantomBase.h \
   D:/game/qt/PhantomGenesis/Player.h \
+  D:/game/qt/PhantomGenesis/VisionMaskItem.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/QElapsedTimer \
   E:/qt/6.9.0/mingw_64/include/QtCore/QObject \
   E:/qt/6.9.0/mingw_64/include/QtCore/QString \
@@ -142,6 +144,7 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/6.9.0/mingw_64/include/QtCore/qversiontagging.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qxptype_traits.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qyieldcpu.h \
+  E:/qt/6.9.0/mingw_64/include/QtGui/QPainter \
   E:/qt/6.9.0/mingw_64/include/QtGui/qaction.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qbitmap.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qbrush.h \
@@ -173,6 +176,7 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/6.9.0/mingw_64/include/QtGui/qwindowdefs.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qwindowdefs_win.h \
   E:/qt/6.9.0/mingw_64/include/QtWidgets/QGraphicsEllipseItem \
+  E:/qt/6.9.0/mingw_64/include/QtWidgets/QGraphicsItem \
   E:/qt/6.9.0/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
   E:/qt/6.9.0/mingw_64/include/QtWidgets/QGraphicsScene \
   E:/qt/6.9.0/mingw_64/include/QtWidgets/QGraphicsView \

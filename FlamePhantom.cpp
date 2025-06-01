@@ -10,11 +10,11 @@ FlamePhantom::FlamePhantom(Player* targetPlayer)
     wanderTarget = pos();
     setMaxHp(200);
     setHp(getMaxHp());
-    setSpeed(2.5f);
-    setSightRange(1000);
-    setAtkRange(1000);
+    setSpeed(2.0f);
+    setSightRange(400);
+    setAtkRange(200);
     setAtk(10);
-    setRangeAtkCD(2000);
+    setRangeAtkCD(5000);
     rangeAtkTimer.start();
     rangeIndicatorItem = new QGraphicsEllipseItem();
     rangeIndicatorItem->setZValue(0);
@@ -61,14 +61,12 @@ void FlamePhantom::updateStatus() {
     if (inRange != lastInRange) {
         if (inRange) {
             qreal atkRange = getAtkRange();
-            qDebug() << "myCenter: " << myCenter << ", atkRange: " << atkRange;
             rangeIndicatorItem->setRect(
                 myCenter.x() - atkRange,
                 myCenter.y() - atkRange,
                 atkRange * 2,
                 atkRange * 2
             );
-            qDebug() << "rangeIndicatorItem->rect(): " << rangeIndicatorItem->rect();
             rangeIndicatorItem->show();
         } else {
             rangeIndicatorItem->hide();
@@ -143,6 +141,8 @@ void FlamePhantom::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
         QPen pen(Qt::red, 3);
         painter->setPen(pen);
         painter->drawLine(myCenter, playerCenter);
+        QColor lightRed(255, 100, 100, 30); 
+    rangeIndicatorItem->setBrush(lightRed);
     }
 }
 

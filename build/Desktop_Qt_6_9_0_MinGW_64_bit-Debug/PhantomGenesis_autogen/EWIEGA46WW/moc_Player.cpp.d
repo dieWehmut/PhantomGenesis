@@ -150,6 +150,7 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/6.9.0/mingw_64/include/QtGui/qtransform.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qwindowdefs.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qwindowdefs_win.h \
+  E:/qt/6.9.0/mingw_64/include/QtWidgets/QGraphicsEllipseItem \
   E:/qt/6.9.0/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
   E:/qt/6.9.0/mingw_64/include/QtWidgets/qgraphicsitem.h \
   E:/qt/6.9.0/mingw_64/include/QtWidgets/qtwidgets-config.h \

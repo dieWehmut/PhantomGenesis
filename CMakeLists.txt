@@ -35,6 +35,12 @@ qt_add_executable(PhantomGenesis
     Resource/player.png
     FlameWave.h FlameWave.cpp
     Resource/flameWave.png
+    Resource/lurkPhantomBase.png
+    Resource/lurkPhantom.png
+    LurkWave.h LurkWave.cpp
+    Resource/lurkWave.png
+    VisionMaskItem.h
+    VisionMaskItem.cpp
 
 
 
