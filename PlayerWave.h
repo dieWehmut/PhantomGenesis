@@ -20,17 +20,17 @@ public:
     float getAoeRadius() const { return aoeRadius; }
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;//多画一个蓝条
 protected:
-    void handleCollision(QGraphicsItem *item) override;
-    void applyAoeDamage(ActiveObject* directHitObj);
-    void onAoeTimerTimeout() override;
+    void handleCollision(QGraphicsItem *item) override;//增加波及处理
+    void applyAoeDamage(ActiveObject* directHitObj);//波及伤害加成
+    void onAoeTimerTimeout() override;//波及定时器槽函数
     int maxPierceCnt;//最大穿透数
     int curPierceCnt;//已穿透数
     float aoeRadius;//波及半径
     QSet<ActiveObject*> hitObjects;//防止重复
     float originalSpeed = 10.0f;
-    int originalAtk = 0;
-    bool boosted = false;
-    void updateBoostState();
+    int originalAtk = 0;//原始伤害
+    bool boosted = false;//是否加成
+    void updateBoostState();//更新加成状态
 };
 
 #endif // PLAYERWAVE_H

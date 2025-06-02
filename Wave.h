@@ -27,9 +27,8 @@ explicit Wave(const QPointF& dir, int atk, float maxDist, float speed, const QPi
     qreal getAngle() const { return angle; }
     QRectF boundingRect() const override;
 protected:
-TargetType targetType = None;
+    TargetType targetType = None;
     void handleCollision(QGraphicsItem *item) override;
-    
     QPointF direction;//移动方向
     float maxDistance;//最大飞行距离
     float curDistance;//已飞距离
@@ -46,7 +45,7 @@ TargetType targetType = None;
     void stopRotate();//停止旋转
     virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
 private slots:
-    virtual void onMoveTimerTimeout();//计时器超时
-    void onRotateTimerTimeout();
+    virtual void onMoveTimerTimeout();
+    void onRotateTimerTimeout();//旋转
 };
 #endif // WAVE_H

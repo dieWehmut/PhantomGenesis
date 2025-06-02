@@ -39,7 +39,7 @@
        </sizepolicy>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="startPage">
        <property name="sizePolicy">
@@ -49,12 +49,12 @@
         </sizepolicy>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(190, 255, 253);</string>
+        <string notr="true"/>
        </property>
        <widget class="QPushButton" name="startBtn">
         <property name="geometry">
          <rect>
-          <x>40</x>
+          <x>130</x>
           <y>230</y>
           <width>181</width>
           <height>51</height>
@@ -76,7 +76,7 @@
        <widget class="QPushButton" name="loadBtn">
         <property name="geometry">
          <rect>
-          <x>40</x>
+          <x>130</x>
           <y>320</y>
           <width>181</width>
           <height>61</height>
@@ -89,7 +89,7 @@
        <widget class="QPushButton" name="edBtn">
         <property name="geometry">
          <rect>
-          <x>40</x>
+          <x>130</x>
           <y>430</y>
           <width>181</width>
           <height>51</height>
@@ -102,7 +102,7 @@
        <widget class="QPushButton" name="exitBtn">
         <property name="geometry">
          <rect>
-          <x>40</x>
+          <x>130</x>
           <y>520</y>
           <width>181</width>
           <height>51</height>
@@ -110,19 +110,6 @@
         </property>
         <property name="text">
          <string>退出游戏</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="saveBtn">
-        <property name="geometry">
-         <rect>
-          <x>319</x>
-          <y>462</y>
-          <width>121</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>保存</string>
         </property>
        </widget>
       </widget>
@@ -162,7 +149,7 @@
          <string>返回标题</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="saveBtn_2">
+       <widget class="QPushButton" name="saveBtn">
         <property name="geometry">
          <rect>
           <x>149</x>
@@ -298,7 +285,20 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="edScene"/>
+      <widget class="QWidget" name="edScene">
+       <widget class="QStackedWidget" name="stackedWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>-1</x>
+          <y>-1</y>
+          <width>1081</width>
+          <height>601</height>
+         </rect>
+        </property>
+        <widget class="QWidget" name="dePage"/>
+        <widget class="QWidget" name="tePage"/>
+       </widget>
+      </widget>
      </widget>
     </item>
    </layout>

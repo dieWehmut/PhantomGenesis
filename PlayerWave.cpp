@@ -7,7 +7,7 @@
 #include <QList>
 PlayerWave::PlayerWave(const QPointF &direction, int damage, QObject *parent)
     : Wave(direction, damage, 800, 5.0f, QPixmap("Resource/playerWave.png").scaled(64,64), parent),
-      hitObjects(){
+    hitObjects(){
     setDirection(direction);
     setSpeed(10.0f);
     setAtk(damage);

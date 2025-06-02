@@ -5,11 +5,11 @@
 #include"PlayerWave.h"
 Player::Player(QObject *parent) : ActiveObject(parent) {
     //属性初始值设置
-    setMaxHp(10000);
+    setMaxHp(100);
     setHp(getMaxHp());
     setSpeed(8.0f);
     setOriginSpeed(getSpeed());
-    setSightRange(400);
+    setSightRange(350);
     setAtkRange(150);
     setAtk(50);
     setAtkCD(500);
@@ -19,7 +19,7 @@ Player::Player(QObject *parent) : ActiveObject(parent) {
     connect(cdUpdateTimer, &QTimer::timeout, this, [this]() {
         this->update();
     });
-    cdUpdateTimer->start(); 
+    cdUpdateTimer->start();
     setLastMoveDirection(QPointF(1, 0));
     setStaticPixmap(QPixmap("Resource/player.png").scaled(64, 64));
     setTransformOriginPoint(pixmap().width()/2, pixmap().height()/2);

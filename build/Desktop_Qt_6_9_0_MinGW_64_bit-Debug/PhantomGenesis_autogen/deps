@@ -2,6 +2,8 @@ PhantomGenesis_autogen/timestamp: \
 	D:/game/qt/PhantomGenesis/ActiveObject.cpp \
 	D:/game/qt/PhantomGenesis/ActiveObject.h \
 	D:/game/qt/PhantomGenesis/CMakeLists.txt \
+	D:/game/qt/PhantomGenesis/DropItem.cpp \
+	D:/game/qt/PhantomGenesis/DropItem.h \
 	D:/game/qt/PhantomGenesis/FlamePhantom.cpp \
 	D:/game/qt/PhantomGenesis/FlamePhantom.h \
 	D:/game/qt/PhantomGenesis/FlameWave.cpp \
@@ -67,7 +69,11 @@ PhantomGenesis_autogen/timestamp: \
 	D:/mingw64/share/cmake-3.30/Modules/Platform/Windows.cmake \
 	D:/mingw64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake \
 	E:/qt/6.9.0/mingw_64/include/QtCore/QElapsedTimer \
+	E:/qt/6.9.0/mingw_64/include/QtCore/QList \
 	E:/qt/6.9.0/mingw_64/include/QtCore/QObject \
+	E:/qt/6.9.0/mingw_64/include/QtCore/QRect \
+	E:/qt/6.9.0/mingw_64/include/QtCore/QSize \
+	E:/qt/6.9.0/mingw_64/include/QtCore/QSizeF \
 	E:/qt/6.9.0/mingw_64/include/QtCore/QString \
 	E:/qt/6.9.0/mingw_64/include/QtCore/QTimer \
 	E:/qt/6.9.0/mingw_64/include/QtCore/QVector \
@@ -105,6 +111,9 @@ PhantomGenesis_autogen/timestamp: \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qcontainerinfo.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qcontainertools_impl.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qcontiguouscache.h \
+	E:/qt/6.9.0/mingw_64/include/QtCore/qcoreapplication.h \
+	E:/qt/6.9.0/mingw_64/include/QtCore/qcoreapplication_platform.h \
+	E:/qt/6.9.0/mingw_64/include/QtCore/qcoreevent.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qdarwinhelpers.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qdatastream.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qdeadlinetimer.h \
@@ -129,6 +138,7 @@ PhantomGenesis_autogen/timestamp: \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qlatin1stringview.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qline.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qlist.h \
+	E:/qt/6.9.0/mingw_64/include/QtCore/qlocale.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qlogging.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qmalloc.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qmap.h \
@@ -138,6 +148,7 @@ PhantomGenesis_autogen/timestamp: \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qmetatype.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qminmax.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qnamespace.h \
+	E:/qt/6.9.0/mingw_64/include/QtCore/qnativeinterface.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qnumeric.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qobject.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qobject_impl.h \
@@ -196,6 +207,7 @@ PhantomGenesis_autogen/timestamp: \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qtversionchecks.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qtypeinfo.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qtypes.h \
+	E:/qt/6.9.0/mingw_64/include/QtCore/qurl.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qutf8stringview.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qvariant.h \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qvarlengtharray.h \
@@ -205,6 +217,8 @@ PhantomGenesis_autogen/timestamp: \
 	E:/qt/6.9.0/mingw_64/include/QtCore/qyieldcpu.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/QPainter \
 	E:/qt/6.9.0/mingw_64/include/QtGui/QPainterPath \
+	E:/qt/6.9.0/mingw_64/include/QtGui/QScreen \
+	E:/qt/6.9.0/mingw_64/include/QtGui/QTransform \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qaction.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qbitmap.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qbrush.h \
@@ -214,8 +228,11 @@ PhantomGenesis_autogen/timestamp: \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qfontinfo.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qfontmetrics.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qfontvariableaxis.h \
+	E:/qt/6.9.0/mingw_64/include/QtGui/qguiapplication.h \
+	E:/qt/6.9.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qicon.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qimage.h \
+	E:/qt/6.9.0/mingw_64/include/QtGui/qinputmethod.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qkeysequence.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qpaintdevice.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qpainter.h \
@@ -228,6 +245,8 @@ PhantomGenesis_autogen/timestamp: \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qregion.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qrgb.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qrgba64.h \
+	E:/qt/6.9.0/mingw_64/include/QtGui/qscreen.h \
+	E:/qt/6.9.0/mingw_64/include/QtGui/qscreen_platform.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qtextoption.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qtgui-config.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qtguiexports.h \
@@ -235,6 +254,15 @@ PhantomGenesis_autogen/timestamp: \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qtransform.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qwindowdefs.h \
 	E:/qt/6.9.0/mingw_64/include/QtGui/qwindowdefs_win.h \
+	E:/qt/6.9.0/mingw_64/include/QtMultimedia/QAudioOutput \
+	E:/qt/6.9.0/mingw_64/include/QtMultimedia/QMediaPlayer \
+	E:/qt/6.9.0/mingw_64/include/QtMultimedia/qaudio.h \
+	E:/qt/6.9.0/mingw_64/include/QtMultimedia/qaudiooutput.h \
+	E:/qt/6.9.0/mingw_64/include/QtMultimedia/qmediaplayer.h \
+	E:/qt/6.9.0/mingw_64/include/QtMultimedia/qtaudio.h \
+	E:/qt/6.9.0/mingw_64/include/QtMultimedia/qtmultimedia-config.h \
+	E:/qt/6.9.0/mingw_64/include/QtMultimedia/qtmultimediaexports.h \
+	E:/qt/6.9.0/mingw_64/include/QtMultimedia/qtmultimediaglobal.h \
 	E:/qt/6.9.0/mingw_64/include/QtWidgets/QGraphicsEllipseItem \
 	E:/qt/6.9.0/mingw_64/include/QtWidgets/QGraphicsItem \
 	E:/qt/6.9.0/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
@@ -391,6 +419,63 @@ PhantomGenesis_autogen/timestamp: \
 	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargets-relwithdebinfo.cmake \
 	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargets.cmake \
 	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsVersionlessTargets.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia/Qt6MultimediaAdditionalTargetInfo.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia/Qt6MultimediaConfig.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia/Qt6MultimediaConfigVersion.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia/Qt6MultimediaConfigVersionImpl.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia/Qt6MultimediaDependencies.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia/Qt6MultimediaMacros.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia/Qt6MultimediaPlugins.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia/Qt6MultimediaTargets-relwithdebinfo.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia/Qt6MultimediaTargets.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia/Qt6MultimediaVersionlessAliasTargets.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia/Qt6QFFmpegMediaPluginAdditionalTargetInfo.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia/Qt6QFFmpegMediaPluginConfig.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia/Qt6QFFmpegMediaPluginTargets-relwithdebinfo.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia/Qt6QFFmpegMediaPluginTargets.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia/Qt6QWindowsMediaPluginAdditionalTargetInfo.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia/Qt6QWindowsMediaPluginConfig.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia/Qt6QWindowsMediaPluginTargets-relwithdebinfo.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia/Qt6QWindowsMediaPluginTargets.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6MultimediaPrivate/Qt6MultimediaPrivateAdditionalTargetInfo.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6MultimediaPrivate/Qt6MultimediaPrivateConfig.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6MultimediaPrivate/Qt6MultimediaPrivateConfigVersion.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6MultimediaPrivate/Qt6MultimediaPrivateConfigVersionImpl.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6MultimediaPrivate/Qt6MultimediaPrivateDependencies.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6MultimediaPrivate/Qt6MultimediaPrivateTargets.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6MultimediaPrivate/Qt6MultimediaPrivateVersionlessAliasTargets.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6NetworkAdditionalTargetInfo.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6NetworkConfig.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6NetworkConfigVersion.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6NetworkConfigVersionImpl.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6NetworkDependencies.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6NetworkPlugins.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6NetworkTargets-relwithdebinfo.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6NetworkTargets.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6NetworkVersionlessAliasTargets.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6QNLMNIPluginAdditionalTargetInfo.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6QNLMNIPluginConfig.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6QNLMNIPluginTargets-relwithdebinfo.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6QNLMNIPluginTargets.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6QSchannelBackendPluginAdditionalTargetInfo.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6QSchannelBackendPluginConfig.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6QSchannelBackendPluginTargets-relwithdebinfo.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6QSchannelBackendPluginTargets.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6QTlsBackendCertOnlyPluginAdditionalTargetInfo.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6QTlsBackendCertOnlyPluginConfig.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6QTlsBackendCertOnlyPluginTargets-relwithdebinfo.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6QTlsBackendCertOnlyPluginTargets.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6QTlsBackendOpenSSLPluginAdditionalTargetInfo.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6QTlsBackendOpenSSLPluginConfig.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6QTlsBackendOpenSSLPluginTargets-relwithdebinfo.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Network/Qt6QTlsBackendOpenSSLPluginTargets.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6NetworkPrivate/Qt6NetworkPrivateAdditionalTargetInfo.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6NetworkPrivate/Qt6NetworkPrivateConfig.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6NetworkPrivate/Qt6NetworkPrivateConfigVersion.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6NetworkPrivate/Qt6NetworkPrivateConfigVersionImpl.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6NetworkPrivate/Qt6NetworkPrivateDependencies.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6NetworkPrivate/Qt6NetworkPrivateTargets.cmake \
+	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6NetworkPrivate/Qt6NetworkPrivateVersionlessAliasTargets.cmake \
 	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginAdditionalTargetInfo.cmake \
 	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginConfig.cmake \
 	E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginTargets-relwithdebinfo.cmake \

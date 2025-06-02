@@ -17,7 +17,7 @@ public:
     int getAtkRange() const{return atkRange;}
     int getSightRange() const{return sightRange;}
     float getSpeed() const{return speed;}
-    virtual void setHp(int v) { hp = v; update(); }//血条跟着变，敌人扣血要重写
+    virtual void setHp(int v) { hp = v; update(); }//血条跟着变，子类要重写
     void setMaxHp(int v){maxHp = v;update();}
     void setAtk(int v){atk = v;}
     void setAtkRange(int v){atkRange = v; updateRangeIndicator();}

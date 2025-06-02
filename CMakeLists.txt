@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.19)
 project(PhantomGenesis LANGUAGES CXX)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets Multimedia)
 
 qt_standard_project_setup()
 
@@ -41,8 +41,14 @@ qt_add_executable(PhantomGenesis
     Resource/lurkWave.png
     VisionMaskItem.h
     VisionMaskItem.cpp
-
-
+    DropItem.h DropItem.cpp
+    Resource/lurkPhantomDrop.png
+    Resource/flamePhantomDrop.png
+    Resource/PhantomGenesis.ico
+    Resource/startPage.gif
+    Resource/startPage.mp3
+    Resource/trapped0.mp3
+    Resource/deadEnd.flac
 
 
 )
@@ -51,6 +57,7 @@ target_link_libraries(PhantomGenesis
     PRIVATE
         Qt::Core
         Qt::Widgets
+        Qt::Multimedia
 )
 
 include(GNUInstallDirs)

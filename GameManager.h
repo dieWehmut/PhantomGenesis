@@ -43,9 +43,11 @@ private:
     void updateLurkPhantoms();//更新所有lurkPhantom的状态
     template<typename PhantomType>
     void spawnPhantoms(QVector<PhantomType*>& container, const QVector<QPoint>& spawnPoints, int maxCount, std::function<PhantomType*()> createPhantom);
-    QTimer* phantomSpawnTimer;//phantom定时器
+    QTimer* phantomSpawnTimer;//phantom生成定时器
     void separatePhantoms(QVector<PhantomBase*>& phantoms);//分离重叠的PhantomBase
     VisionMaskItem* visionMask = nullptr;//视野遮罩
+signals:
+    void playerDead();
 };
 
 #endif // GAMEMANAGER_H

@@ -9,25 +9,20 @@ class GameManager;
 class VisionMaskItem : public QGraphicsItem {
 public:
     VisionMaskItem(Player* player, const QRectF& sceneRect, GameManager* gm = nullptr)
-        : m_player(player), m_sceneRect(sceneRect), m_gm(gm) {}
-
-    QRectF boundingRect() const override {
-        return m_sceneRect;
+        : player0(player), sceneRect0(sceneRect), gm0(gm) {}
+    QRectF boundingRect() const override {//返回场景大小
+        return sceneRect0;
     }
-
-    void setSceneRect(const QRectF& rect) {
+    void setSceneRect(const QRectF& rect) {//设置场景大小
         prepareGeometryChange();
-        m_sceneRect = rect;
+        sceneRect0=rect;
     }
-
-    void setGameManager(GameManager* gm) { m_gm = gm; }
-
-    void paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*) override;
-
+    void setGameManager(GameManager* gm) { gm0 = gm; }//设置游戏管理器
+    void paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*) override;//绘制遮罩
 private:
-    Player* m_player;
-    QRectF m_sceneRect;
-    GameManager* m_gm = nullptr;
+    Player* player0;
+    QRectF sceneRect0;
+    GameManager* gm0 = nullptr;
 };
 
 #endif // VISIONMASKITEM_H

@@ -10,15 +10,8 @@ Map::Map(QGraphicsScene* scene) : gameScene(scene) {
             currentMapData[i][j] = 0;
         }
     }
-    allMapLayouts.resize(3); 
-    allMapLayouts[0].resize(GRID_ROW);
-    for (int i = 0; i < GRID_ROW; ++i) {
-        allMapLayouts[0][i].resize(GRID_COL);
-        for (int j = 0; j < GRID_COL; ++j) {
-            allMapLayouts[0][i][j] = 0;
-        }
-    }
-    allMapLayouts[1] = {
+    allMapLayouts.resize(2); 
+    allMapLayouts[0] = {
        //1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25  
         {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },//1
         {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },//2
@@ -42,7 +35,7 @@ Map::Map(QGraphicsScene* scene) : gameScene(scene) {
         {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },//20
         {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 }//21
     };
-    allMapLayouts[2] = {
+    allMapLayouts[1] = {
        //1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25  
         {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },//1
         {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },//2

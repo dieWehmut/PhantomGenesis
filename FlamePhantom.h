@@ -8,8 +8,8 @@ public:
     FlamePhantom(Player* targetPlayer);
     ~FlamePhantom();
     void updateStatus()override;//状态更新
-    void shootWave(const QPointF& direction) override;
-    bool getIsLocking() const { return isLocking; }
+    void shootWave(const QPointF& direction) override;//发射波
+    bool getIsLocking() const { return isLocking; }//获取锁定信息
     void setRangeAtkCD(int cd) { rangeAtkCD = cd; }
     int getRangeAtkCD() const { return rangeAtkCD; }
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;//画射线

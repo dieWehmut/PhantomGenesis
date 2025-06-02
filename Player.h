@@ -32,12 +32,12 @@ private:
     QPointF lastMoveDirection;//记录最后移动方向
     int atkCD;//攻击冷却
     QElapsedTimer atkTimer; //cd计时
-    QTimer* cdUpdateTimer = nullptr;
+    QTimer* cdUpdateTimer = nullptr;//攻击cd更新定时器
     bool slowed=false;//是否减速
     float originalSpeed;//减速前的速度
     bool shieldActive = false;//护盾是否激活
     QElapsedTimer shieldTimer;//护盾计时器
-    static const int shieldDuration = 5000;//护盾持续时间
+    static const int shieldDuration = 3000;//护盾持续时间
 };
 
 #endif // PLAYER_H

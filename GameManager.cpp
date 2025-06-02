@@ -3,6 +3,7 @@
 #include <QtMath>
 #include <QRandomGenerator>
 #include <QEvent>
+#include"DropItem.h"
 template<typename PhantomType>
 void GameManager::spawnPhantoms(QVector<PhantomType*>& container, const QVector<QPoint>& spawnPoints, int maxCount, std::function<PhantomType*()> createPhantom)
 {
@@ -79,11 +80,11 @@ void GameManager::startGame() {
     gameScene = new QGraphicsScene(this);//创建场景
     gameView->setScene(gameScene);
     gameMap = new Map(gameScene);
-    curMapId = 1; //初始地图1
+    curMapId = 0;//初始地图0
     gameMap->initMap(curMapId); //初始化地图
     player = new Player();//创建玩家
     gameScene->addItem(player);//放玩家
-    phantomSpawnTimer->start(5000); //幻影生成时间间隔
+    phantomSpawnTimer->start(1000); //phantom生成时间间隔
     player->setPos(gameMap->getMapBounds().center());
 
     // 各种阻止鼠标滚轮的滑动
@@ -105,6 +106,13 @@ void GameManager::startGame() {
 
     //游戏主循环
     connect(gameLoopTimer, &QTimer::timeout, this, [=]() {
+        //各种结局
+        if (player->getHp() <= 0) {
+            emit playerDead();
+            gameLoopTimer->stop();
+            phantomSpawnTimer->stop();
+            return;
+        }
         player->updatePosition();
         player->setPos(qBound(0.0, player->x(), gameMap->getMapBounds().width() - player->pixmap().width()),qBound(0.0, player->y(), gameMap->getMapBounds().height() - player->pixmap().height()));
         int gridSize = gameMap->getGridSize();
@@ -117,6 +125,7 @@ void GameManager::startGame() {
         }
         gameView->centerOn(player); // 视野居中
         gameView->viewport()->update();
+        gameScene->advance();
         updateFlamePhantoms();
         updateLurkPhantoms();
         if (visionMask) visionMask->update();
@@ -142,9 +151,10 @@ void GameManager::handleViewResize() {//处理视图的改变
         if (visionMask) {
         visionMask->setSceneRect(mapBounds);
     }
+    gameView->viewport()->update();
 }
 void GameManager::separatePhantoms(QVector<PhantomBase*>& phantoms) {
-    const qreal minDist = 32.0;
+    const qreal minDist = 32.0;//最小距离
     for (int i = 0; i < phantoms.size(); ++i) {
         PhantomBase* a = phantoms[i];
         if (!a || !a->scene()) continue;
@@ -176,6 +186,12 @@ void GameManager::updateFlamePhantoms() {
     for (int i = flamePhantoms.size() - 1; i >= 0; i--) {
         if (!flamePhantoms[i] || !flamePhantoms[i]->scene() || flamePhantoms[i]->getHp() <= 0) {
             if (flamePhantoms[i]) {
+                // 先生成掉落物
+                if (flamePhantoms[i]->getHp() <= 0 && flamePhantoms[i]->scene()) {
+                    DropItem* drop = new DropItem(flamePhantomDrop);
+                    drop->setPos(flamePhantoms[i]->pos());
+                    gameScene->addItem(drop);
+                }
                 gameScene->removeItem(flamePhantoms[i]);
                 delete flamePhantoms[i];
             }
@@ -217,6 +233,12 @@ void GameManager::updateLurkPhantoms() {
     for (int i = lurkPhantoms.size() - 1; i >= 0; i--) {
         if (!lurkPhantoms[i] || !lurkPhantoms[i]->scene() || lurkPhantoms[i]->getHp() <= 0) {
             if (lurkPhantoms[i]) {
+                // 先生成掉落物
+                if (lurkPhantoms[i]->getHp() <= 0 && lurkPhantoms[i]->scene()) {
+                    DropItem* drop = new DropItem(lurkPhantomDrop);
+                    drop->setPos(lurkPhantoms[i]->pos());
+                    gameScene->addItem(drop);
+                }
                 gameScene->removeItem(lurkPhantoms[i]);
                 delete lurkPhantoms[i];
             }
@@ -229,7 +251,7 @@ void GameManager::updateLurkPhantoms() {
             phantom->updateStatus();
         }
     }
-        QVector<PhantomBase*> allPhantoms;
+    QVector<PhantomBase*> allPhantoms;
     for (auto* p : lurkPhantoms) if (p && p->scene()) allPhantoms.append(p);
     separatePhantoms(allPhantoms);
 }

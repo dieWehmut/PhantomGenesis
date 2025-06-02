@@ -31,11 +31,10 @@ public:
     QPushButton *loadBtn;
     QPushButton *edBtn;
     QPushButton *exitBtn;
-    QPushButton *saveBtn;
     QWidget *gamePage;
     QGraphicsView *graphicsView;
     QPushButton *backBtn_4;
-    QPushButton *saveBtn_2;
+    QPushButton *saveBtn;
     QPushButton *loadBtn_2;
     QPushButton *pauseBtn;
     QPushButton *helpBtn;
@@ -48,6 +47,9 @@ public:
     QWidget *edPage;
     QPushButton *backBtn;
     QWidget *edScene;
+    QStackedWidget *stackedWidget_2;
+    QWidget *dePage;
+    QWidget *tePage;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -73,25 +75,22 @@ public:
         startPage->setObjectName("startPage");
         sizePolicy.setHeightForWidth(startPage->sizePolicy().hasHeightForWidth());
         startPage->setSizePolicy(sizePolicy);
-        startPage->setStyleSheet(QString::fromUtf8("background-color: rgb(190, 255, 253);"));
+        startPage->setStyleSheet(QString::fromUtf8(""));
         startBtn = new QPushButton(startPage);
         startBtn->setObjectName("startBtn");
-        startBtn->setGeometry(QRect(40, 230, 181, 51));
+        startBtn->setGeometry(QRect(130, 230, 181, 51));
         sizePolicy.setHeightForWidth(startBtn->sizePolicy().hasHeightForWidth());
         startBtn->setSizePolicy(sizePolicy);
         startBtn->setStyleSheet(QString::fromUtf8("background-color: rgb(188, 255, 196);"));
         loadBtn = new QPushButton(startPage);
         loadBtn->setObjectName("loadBtn");
-        loadBtn->setGeometry(QRect(40, 320, 181, 61));
+        loadBtn->setGeometry(QRect(130, 320, 181, 61));
         edBtn = new QPushButton(startPage);
         edBtn->setObjectName("edBtn");
-        edBtn->setGeometry(QRect(40, 430, 181, 51));
+        edBtn->setGeometry(QRect(130, 430, 181, 51));
         exitBtn = new QPushButton(startPage);
         exitBtn->setObjectName("exitBtn");
-        exitBtn->setGeometry(QRect(40, 520, 181, 51));
-        saveBtn = new QPushButton(startPage);
-        saveBtn->setObjectName("saveBtn");
-        saveBtn->setGeometry(QRect(319, 462, 121, 71));
+        exitBtn->setGeometry(QRect(130, 520, 181, 51));
         stackedWidget->addWidget(startPage);
         gamePage = new QWidget();
         gamePage->setObjectName("gamePage");
@@ -105,9 +104,9 @@ public:
         backBtn_4 = new QPushButton(gamePage);
         backBtn_4->setObjectName("backBtn_4");
         backBtn_4->setGeometry(QRect(-10, -10, 151, 51));
-        saveBtn_2 = new QPushButton(gamePage);
-        saveBtn_2->setObjectName("saveBtn_2");
-        saveBtn_2->setGeometry(QRect(149, -8, 151, 51));
+        saveBtn = new QPushButton(gamePage);
+        saveBtn->setObjectName("saveBtn");
+        saveBtn->setGeometry(QRect(149, -8, 151, 51));
         loadBtn_2 = new QPushButton(gamePage);
         loadBtn_2->setObjectName("loadBtn_2");
         loadBtn_2->setGeometry(QRect(309, -8, 141, 51));
@@ -148,6 +147,15 @@ public:
         stackedWidget->addWidget(edPage);
         edScene = new QWidget();
         edScene->setObjectName("edScene");
+        stackedWidget_2 = new QStackedWidget(edScene);
+        stackedWidget_2->setObjectName("stackedWidget_2");
+        stackedWidget_2->setGeometry(QRect(-1, -1, 1081, 601));
+        dePage = new QWidget();
+        dePage->setObjectName("dePage");
+        stackedWidget_2->addWidget(dePage);
+        tePage = new QWidget();
+        tePage->setObjectName("tePage");
+        stackedWidget_2->addWidget(tePage);
         stackedWidget->addWidget(edScene);
 
         verticalLayout->addWidget(stackedWidget);
@@ -156,7 +164,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(4);
+        stackedWidget->setCurrentIndex(5);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -169,9 +177,8 @@ public:
         loadBtn->setText(QCoreApplication::translate("MainWindow", "\350\257\273\345\217\226\345\255\230\346\241\243", nullptr));
         edBtn->setText(QCoreApplication::translate("MainWindow", "ED\351\211\264\350\265\217", nullptr));
         exitBtn->setText(QCoreApplication::translate("MainWindow", "\351\200\200\345\207\272\346\270\270\346\210\217", nullptr));
-        saveBtn->setText(QCoreApplication::translate("MainWindow", "\344\277\235\345\255\230", nullptr));
         backBtn_4->setText(QCoreApplication::translate("MainWindow", "\350\277\224\345\233\236\346\240\207\351\242\230", nullptr));
-        saveBtn_2->setText(QCoreApplication::translate("MainWindow", "\344\277\235\345\255\230", nullptr));
+        saveBtn->setText(QCoreApplication::translate("MainWindow", "\344\277\235\345\255\230", nullptr));
         loadBtn_2->setText(QCoreApplication::translate("MainWindow", "\350\257\273\345\217\226", nullptr));
         pauseBtn->setText(QCoreApplication::translate("MainWindow", "\346\232\202\345\201\234", nullptr));
         helpBtn->setText(QCoreApplication::translate("MainWindow", "\345\270\256\345\212\251", nullptr));

@@ -2,7 +2,6 @@
 #include <QRandomGenerator>
 #include <QtMath>
 #include "LurkWave.h"
-
 LurkPhantom::LurkPhantom(Player* targetPlayer)
     : player(targetPlayer)
 {
@@ -19,7 +18,9 @@ LurkPhantom::LurkPhantom(Player* targetPlayer)
     createRangeIndicator(QColor(0, 128, 255, 80), 1);
 }
 
-LurkPhantom::~LurkPhantom() {}
+LurkPhantom::~LurkPhantom() {
+
+}
 
 void LurkPhantom::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
     if (shieldActive) {

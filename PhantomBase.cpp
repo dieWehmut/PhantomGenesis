@@ -1,10 +1,10 @@
 #include "PhantomBase.h"
 #include <QPointer>
-
 PhantomBase::PhantomBase() {}
 
-PhantomBase::~PhantomBase() {}
+PhantomBase::~PhantomBase() {
 
+}
 void PhantomBase::setHp(int v) {
     showForAWhile(3000);
     ActiveObject::setHp(v);

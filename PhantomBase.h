@@ -9,17 +9,16 @@ class PhantomBase : public ActiveObject {
 public:
     PhantomBase();
     virtual ~PhantomBase();
-    int getAtkRange() const { return atkRange; }
-    virtual void updateStatus() = 0;
-    virtual void shootWave(const QPointF& direction);
+    virtual void updateStatus() = 0;//状态更新
+    virtual void shootWave(const QPointF& direction);//发射波
     void setHp(int v) override;//扣血时暴露
     void showForAWhile(int ms);//显示一段时间
     bool isExposed() const { return exposed; }
 protected:
-    QPointF wanderTarget;
-    QElapsedTimer showTimer;
-    int showDuration = 0;
-    bool exposed = false;
+    QPointF wanderTarget;//随机移动
+    QElapsedTimer showTimer;//显示计时器
+    int showDuration = 0;//显示时长
+    bool exposed = false;//是否暴露
 };
 
 #endif // PHANTOMBASE_H
