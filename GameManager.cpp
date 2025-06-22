@@ -84,7 +84,7 @@ void GameManager::startGame() {
     gameMap->initMap(curMapId); //初始化地图
     player = new Player();//创建玩家
     gameScene->addItem(player);//放玩家
-    phantomSpawnTimer->start(1000); //phantom生成时间间隔
+    phantomSpawnTimer->start(2000); //phantom生成时间间隔
     player->setPos(gameMap->getMapBounds().center());
 
     // 各种阻止鼠标滚轮的滑动
@@ -113,15 +113,37 @@ void GameManager::startGame() {
             phantomSpawnTimer->stop();
             return;
         }
+
+        //王的消失
+        if (king && king->getHp() <= 0) {
+            if (king->scene()) {
+                gameScene->removeItem(king);
+            }
+            delete king;
+            king = nullptr;
+        }
         player->updatePosition();
         player->setPos(qBound(0.0, player->x(), gameMap->getMapBounds().width() - player->pixmap().width()),qBound(0.0, player->y(), gameMap->getMapBounds().height() - player->pixmap().height()));
         int gridSize = gameMap->getGridSize();
         int playerRow = static_cast<int>((player->y() + player->pixmap().height() / 2) / gridSize);
         int playerCol = static_cast<int>((player->x() + player->pixmap().width() / 2) / gridSize);
         if (gameMap->getTileType(playerRow, playerCol) == -1) {//传送
-            int centerRow = 10;
-            int centerCol = 12;
-            player->setPos(centerCol * gridSize, centerRow * gridSize);
+            QVector<QPoint> portalEnds;
+            for (int r = 0; r < gameMap->getGridRow(); ++r) {
+                for (int c = 0; c < gameMap->getGridCol(); ++c) {
+                    if (gameMap->getTileType(r, c) == -2) {
+                        portalEnds.append(QPoint(c, r));
+                    }
+                }
+            }
+            if (!portalEnds.isEmpty()) {
+                int idx = QRandomGenerator::global()->bounded(portalEnds.size());
+                QPoint target = portalEnds[idx];
+                // 传送到格子中心
+                qreal x = target.x() * gridSize + (gridSize - player->pixmap().width()) / 2.0;
+                qreal y = target.y() * gridSize + (gridSize - player->pixmap().height()) / 2.0;
+                player->setPos(x, y);
+            }
         }
         gameView->centerOn(player); // 视野居中
         gameView->viewport()->update();
@@ -173,12 +195,33 @@ void GameManager::separatePhantoms(QVector<PhantomBase*>& phantoms) {
         }
     }
 }
+void GameManager::checkKingSpawn()
+{
+    if (king && king->scene()) return;
+    QVector<QGraphicsItem*> all;
+    for (auto* p : flamePhantoms) if (p && p->scene()) all.append(p);
+    for (auto* p : lurkPhantoms) if (p && p->scene()) all.append(p);
+    if (all.size() < 5) return;
+    for (int i = 0; i <= all.size() - 5; ++i) {//5个聚集生成1个
+        int closeCount = 1;
+        for (int j = i+1; j < all.size(); ++j) {
+            if (QLineF(all[i]->pos(), all[j]->pos()).length() < 200)
+                ++closeCount;
+            if (closeCount >= 5) {
+                king = new King();
+                king->setPos(all[i]->pos());
+                gameScene->addItem(king);
+                return;
+            }
+        }
+    }
+}
 void GameManager::spawnFlamePhantoms() {
     if (!gameMap || !gameScene || !player) return;
     spawnPhantoms<FlamePhantom>(
         flamePhantoms,
         gameMap->getFlamePhantomBases(),
-        20,
+        50,
         [this]() { return new FlamePhantom(player); }
     );
 }
@@ -219,13 +262,14 @@ void GameManager::updateFlamePhantoms() {
         QVector<PhantomBase*> allPhantoms;
     for (auto* p : flamePhantoms) if (p && p->scene()) allPhantoms.append(p);
     separatePhantoms(allPhantoms);
+    checkKingSpawn();
 }
 void GameManager::spawnLurkPhantoms() {
     if (!gameMap || !gameScene || !player) return;
     spawnPhantoms<LurkPhantom>(
         lurkPhantoms,
         gameMap->getLurkPhantomBases(),
-        12,
+        40,
         [this]() { return new LurkPhantom(player); }
     );
 }
@@ -254,4 +298,5 @@ void GameManager::updateLurkPhantoms() {
     QVector<PhantomBase*> allPhantoms;
     for (auto* p : lurkPhantoms) if (p && p->scene()) allPhantoms.append(p);
     separatePhantoms(allPhantoms);
+    checkKingSpawn();
 }

@@ -5,19 +5,19 @@
 #include "PhantomBase.h"
 #include <QGraphicsScene>
 #include <QList>
+#include <QSoundEffect>
 PlayerWave::PlayerWave(const QPointF &direction, int damage, QObject *parent)
     : Wave(direction, damage, 800, 5.0f, QPixmap("Resource/playerWave.png").scaled(64,64), parent),
-    hitObjects(){
+    hitObjects(), aoeRadius(0), playerWaveEffectInitialized(false) {
     setDirection(direction);
-    setSpeed(10.0f);
+
     setAtk(damage);
     originalAtk = damage;
     setMaxDistance(1000.0f);
     setStaticPixmap(QPixmap("Resource/playerWave.png").scaled(96, 96)); 
     maxPierceCnt = 3; 
     curPierceCnt = 0;
-    aoeRadius = 100;
-    startAoeTimer(3000);
+    startAoeTimer(2000);
     startRotate(16);
 }
 void PlayerWave::onAoeTimerTimeout() {
@@ -42,6 +42,12 @@ void PlayerWave::handleCollision(QGraphicsItem *item) {
         obj->setHp(obj->getHp() - getAtk());
         hitObjects.insert(obj);
         curPierceCnt++;
+        if (!playerWaveEffectInitialized) {
+            playerWaveHitEffect.setSource(QUrl::fromLocalFile("Resource/playerWaveHit.wav"));
+            playerWaveHitEffect.setVolume(1.0f);//大一点
+            playerWaveEffectInitialized = true;
+        }
+        playerWaveHitEffect.play();
         QPointF bulletCenter = pos() + QPointF(boundingRect().width()/2, boundingRect().height()/2);
         QPointF objCenter = obj->pos() + QPointF(obj->boundingRect().width()/2, obj->boundingRect().height()/2);
         QPointF knockbackDir = objCenter - bulletCenter;
@@ -60,9 +66,9 @@ void PlayerWave::handleCollision(QGraphicsItem *item) {
 }
 
 void PlayerWave::applyAoeDamage(ActiveObject* directHitObj) {
-    if (!scene() || aoeRadius <= 0) return;
+    if (!scene() || getAoeRadius() <= 0) return;
     QPointF waveCenter = pos() + QPointF(boundingRect().width()/2, boundingRect().height()/2);
-    qreal searchRadius = aoeRadius * 1.5;
+    qreal searchRadius = getAoeRadius() * 1.5;
     QRectF searchArea(
         waveCenter.x() - searchRadius,
         waveCenter.y() - searchRadius,
@@ -83,7 +89,13 @@ void PlayerWave::applyAoeDamage(ActiveObject* directHitObj) {
                 damage = qMax(damage, int(getAtk() * 0.7));
                 obj->setHp(obj->getHp() - damage);
                 hitObjects.insert(obj);
-                QPointF knockbackDir = objCenter - waveCenter;//击退效果
+            if (!playerWaveEffectInitialized) {
+                playerWaveHitEffect.setSource(QUrl::fromLocalFile("Resource/playerWaveHit.wav"));  // 使用成员变量
+                playerWaveHitEffect.setVolume(0.7f);
+                playerWaveEffectInitialized = true;
+            }
+            playerWaveHitEffect.play();
+                QPointF knockbackDir = objCenter - waveCenter;//击退
                 qreal len = std::hypot(knockbackDir.x(), knockbackDir.y());
                 if (len > 1e-3) {
                     knockbackDir /= len;
@@ -113,13 +125,11 @@ void PlayerWave::updateBoostState() {
     float atkRange = player->getAtkRange();
     if (dist <= atkRange) {
         if (!boosted) {
-            setSpeed(originalSpeed * 5.0f);//速度加成
             setAtk(int(originalAtk * 2.5f));//伤害加成
             boosted = true;
         }
     } else {
         if (boosted) {
-            setSpeed(originalSpeed);
             setAtk(originalAtk);
             boosted = false;
         }
@@ -139,4 +149,11 @@ void PlayerWave::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
     painter->drawEllipse(center, aoeRadius, aoeRadius);
     painter->restore();
     Wave::paint(painter, option, widget);
+}
+void PlayerWave::playCollisionEffect(QGraphicsItem* item) {
+
+}
+
+void PlayerWave::playCollisionSound(QGraphicsItem* item) {
+
 }

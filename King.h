@@ -1,10 +1,22 @@
 #ifndef KING_H
 #define KING_H
 
-class King
+#include "PhantomBase.h"
+#include <QTimer>
+class Player;
+class King : public PhantomBase
 {
+    Q_OBJECT
 public:
-    King();
+    explicit King(QObject* parent = nullptr);
+    ~King();
+    void updateStatus() override;
+    void shootWave(const QPointF& direction) override;
+private:
+    void shootAllDirections();
+    QTimer* rangeTimer = nullptr;
+    QTimer* waveTimer = nullptr;
+    Player* player = nullptr;
 };
 
 #endif // KING_H

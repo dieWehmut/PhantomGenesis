@@ -5,14 +5,14 @@
 #include"PlayerWave.h"
 Player::Player(QObject *parent) : ActiveObject(parent) {
     //属性初始值设置
-    setMaxHp(100);
+    setMaxHp(100000);
     setHp(getMaxHp());
-    setSpeed(8.0f);
+    setSpeed(12.0f);
     setOriginSpeed(getSpeed());
-    setSightRange(350);
-    setAtkRange(150);
-    setAtk(50);
-    setAtkCD(500);
+    setSightRange(200);
+    setAtkRange(100);
+    setAtk(100);
+    setAtkCD(2000);
     atkTimer.restart();
     cdUpdateTimer = new QTimer(this);
     cdUpdateTimer->setInterval(1000/60); 
@@ -106,6 +106,8 @@ void Player::playerStartAtk() {
             QPointF spawnPos = pos() + QPointF(pixmap().width()/2, pixmap().height()/2);
             PlayerWave* centerWave = new PlayerWave(atkDir, getAtk());
             centerWave->setPos(spawnPos);
+            centerWave->setAoeRadius(getPlayerWaveAoeRadius());
+            centerWave->setSpeed(getPlayerWaveSpeed());
             scene()->addItem(centerWave);
             qreal leftAngle = -30.0 * M_PI / 180.0;
             QPointF leftDir(
@@ -114,6 +116,8 @@ void Player::playerStartAtk() {
             );
             PlayerWave* leftWave = new PlayerWave(leftDir, getAtk());
             leftWave->setPos(spawnPos);
+            leftWave->setAoeRadius(getPlayerWaveAoeRadius());
+            leftWave->setSpeed(getPlayerWaveSpeed());
             scene()->addItem(leftWave);
             qreal rightAngle = 30.0 * M_PI / 180.0;
             QPointF rightDir(
@@ -122,6 +126,8 @@ void Player::playerStartAtk() {
             );
             PlayerWave* rightWave = new PlayerWave(rightDir, getAtk());
             rightWave->setPos(spawnPos);
+            rightWave->setAoeRadius(getPlayerWaveAoeRadius());
+            rightWave->setSpeed(getPlayerWaveSpeed());
             scene()->addItem(rightWave);
         }
         atkTimer.restart();

@@ -2,6 +2,7 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenesis_autogen/moc_predefs.h \
   D:/game/qt/PhantomGenesis/ActiveObject.h \
   D:/game/qt/PhantomGenesis/Wave.h \
+  E:/qt/6.9.0/mingw_64/include/QtCore/QFile \
   E:/qt/6.9.0/mingw_64/include/QtCore/QObject \
   E:/qt/6.9.0/mingw_64/include/QtCore/QTimer \
   E:/qt/6.9.0/mingw_64/include/QtCore/q17memory.h \
@@ -46,6 +47,8 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/6.9.0/mingw_64/include/QtCore/qendian.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qeventloop.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qexceptionhandling.h \
+  E:/qt/6.9.0/mingw_64/include/QtCore/qfile.h \
+  E:/qt/6.9.0/mingw_64/include/QtCore/qfiledevice.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qflags.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qfloat16.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qforeach.h \
@@ -56,6 +59,7 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/6.9.0/mingw_64/include/QtCore/qglobalstatic.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qhash.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qhashfunctions.h \
+  E:/qt/6.9.0/mingw_64/include/QtCore/qiodevice.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qiodevicebase.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qiterable.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qiterator.h \
@@ -129,6 +133,7 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/6.9.0/mingw_64/include/QtCore/qtversionchecks.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qtypeinfo.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qtypes.h \
+  E:/qt/6.9.0/mingw_64/include/QtCore/qurl.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qutf8stringview.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qvariant.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qvarlengtharray.h \
@@ -161,9 +166,17 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/6.9.0/mingw_64/include/QtGui/qtransform.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qwindowdefs.h \
   E:/qt/6.9.0/mingw_64/include/QtGui/qwindowdefs_win.h \
+  E:/qt/6.9.0/mingw_64/include/QtMultimedia/QSoundEffect \
+  E:/qt/6.9.0/mingw_64/include/QtMultimedia/qaudio.h \
+  E:/qt/6.9.0/mingw_64/include/QtMultimedia/qsoundeffect.h \
+  E:/qt/6.9.0/mingw_64/include/QtMultimedia/qtmultimedia-config.h \
+  E:/qt/6.9.0/mingw_64/include/QtMultimedia/qtmultimediaexports.h \
+  E:/qt/6.9.0/mingw_64/include/QtMultimedia/qtmultimediaglobal.h \
   E:/qt/6.9.0/mingw_64/include/QtWidgets/QGraphicsEllipseItem \
   E:/qt/6.9.0/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
+  E:/qt/6.9.0/mingw_64/include/QtWidgets/QGraphicsScene \
   E:/qt/6.9.0/mingw_64/include/QtWidgets/qgraphicsitem.h \
+  E:/qt/6.9.0/mingw_64/include/QtWidgets/qgraphicsscene.h \
   E:/qt/6.9.0/mingw_64/include/QtWidgets/qtwidgets-config.h \
   E:/qt/6.9.0/mingw_64/include/QtWidgets/qtwidgetsexports.h \
   E:/qt/6.9.0/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -180,11 +193,14 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/allocator.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/atomic_base.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/atomic_lockfree_defines.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/basic_ios.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/basic_ios.tcc \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/basic_string.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/basic_string.tcc \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/char_traits.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/charconv.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/chrono.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/codecvt.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/concept_check.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/cpp_type_traits.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/cxxabi_forced.h \
@@ -194,6 +210,10 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception_defines.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception_ptr.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_dir.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_fwd.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_ops.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_path.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/functexcept.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/functional_hash.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/hash_bytes.h \
@@ -201,9 +221,15 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/hashtable_policy.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/invoke.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ios_base.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/istream.tcc \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/list.tcc \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_classes.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_classes.tcc \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_conv.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_facets.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_facets.tcc \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_facets_nonio.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_facets_nonio.tcc \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/localefwd.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/memory_resource.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/memoryfwd.h \
@@ -211,11 +237,13 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/nested_exception.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/new_allocator.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/node_handle.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ostream.tcc \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ostream_insert.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/parse_numbers.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/postypes.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/predefined_ops.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ptr_traits.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/quoted_string.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/range_access.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/refwrap.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/requires_hosted.h \
@@ -223,6 +251,7 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/shared_ptr_atomic.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/shared_ptr_base.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/specfun.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/sstream.tcc \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_abs.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_function.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_algo.h \
@@ -267,6 +296,7 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/climits \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/clocale \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cmath \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/codecvt \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/compare \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstddef \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstdint \
@@ -275,6 +305,7 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstring \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ctime \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cwchar \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cwctype \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/debug/assertions.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/debug/debug.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/exception \
@@ -285,23 +316,30 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/numeric_traits.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/string_conversions.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/type_traits.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/filesystem \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/functional \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/initializer_list \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iomanip \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ios \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iosfwd \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/istream \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iterator \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/limits \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/list \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/locale \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/map \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/memory \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/new \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/numeric \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/optional \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ostream \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/execution_defs.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/glue_algorithm_defs.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/glue_memory_defs.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/glue_numeric_defs.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ratio \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/set \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/sstream \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/stdexcept \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/stdlib.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/streambuf \
@@ -333,10 +371,14 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++locale.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/cpu_defines.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/ctype_base.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/ctype_inline.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/error_constants.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/gthr-default.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/gthr.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/messages_members.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h \
+  E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/time_members.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/limits.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdarg.h \
   E:/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdbool.h \
@@ -377,4 +419,5 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/sys/types.h \
   E:/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/time.h \
   E:/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
-  E:/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h
+  E:/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
+  E:/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h

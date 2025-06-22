@@ -394,6 +394,12 @@
 			null
 		],
 		[
+			"D:/game/qt/PhantomGenesis/KingWave.h",
+			"MU",
+			"EWIEGA46WW/moc_KingWave.cpp",
+			null
+		],
+		[
 			"D:/game/qt/PhantomGenesis/LurkPhantom.h",
 			"MU",
 			"EWIEGA46WW/moc_LurkPhantom.cpp",
@@ -528,6 +534,7 @@
 		[ "D:/game/qt/PhantomGenesis/FlameWave.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/GameManager.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/King.cpp", "MU", null ],
+		[ "D:/game/qt/PhantomGenesis/KingWave.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/LurkPhantom.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/LurkWave.cpp", "MU", null ],
 		[ "D:/game/qt/PhantomGenesis/Map.cpp", "MU", null ],

@@ -70,7 +70,7 @@ void MainWindow::playBgm(BgmType type) {
         bgmPlayer->setSource(QUrl::fromLocalFile("Resource/startPage.mp3"));
         break;
     case BgmType::GamePage:
-        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/trapped0.mp3"));
+        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/trapped0.flac"));
         break;
     default:
         bgmPlayer->setSource(QUrl());

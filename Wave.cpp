@@ -2,7 +2,6 @@
 #include <QGraphicsScene>
 #include <QtMath>
 #include "Player.h"
-
 Wave::Wave(const QPointF& dir, int atk, float maxDist, float speed, const QPixmap& pix, QObject *parent)
     : ActiveObject(parent),
       maxDistance(maxDist), curDistance(0.0f), direction(1, 0),
@@ -53,7 +52,16 @@ QRectF Wave::boundingRect() const {
 void Wave::stopAoeTimer() {
     if (aoeTimer) aoeTimer->stop();
 }
+void Wave::playCollisionEffect(QGraphicsItem* item) {
+
+}
+
+void Wave::playCollisionSound(QGraphicsItem* item) {
+
+}
 void Wave::handleCollision(QGraphicsItem *item) {
+    playCollisionEffect(item);
+    playCollisionSound(item);
     if (targetType == PlayerTarget) {
         Player* player = dynamic_cast<Player*>(item);
         if (player && item != ignoreItem) {

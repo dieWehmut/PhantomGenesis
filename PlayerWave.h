@@ -27,10 +27,14 @@ protected:
     int curPierceCnt;//已穿透数
     float aoeRadius;//波及半径
     QSet<ActiveObject*> hitObjects;//防止重复
-    float originalSpeed = 10.0f;
     int originalAtk = 0;//原始伤害
     bool boosted = false;//是否加成
     void updateBoostState();//更新加成状态
+    void playCollisionEffect(QGraphicsItem* item) override;
+    void playCollisionSound(QGraphicsItem* item) override;
+private:
+    QSoundEffect playerWaveHitEffect;
+    bool playerWaveEffectInitialized = false;
 };
 
 #endif // PLAYERWAVE_H

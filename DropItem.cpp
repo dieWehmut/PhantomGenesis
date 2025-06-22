@@ -14,11 +14,31 @@ DropItem::DropItem(DropType type, QObject* parent)
     setZValue(10);
 }
 
-
 void DropItem::strengthenPlayer(Player* player) {
-    switch (dropType) {
-        case DropType::flamePhantomDrop: player->setAtk(player->getAtk() +100); break;
-        case DropType::lurkPhantomDrop: player->setAtkRange(player->getAtkRange() + 10); break;
+    player->setHp(player->getHp()+100);
+    switch (dropType){
+        case DropType::flamePhantomDrop:
+            if(player->getAtk()<=500) { 
+                player->setAtk(player->getAtk()+100);
+            } else if(player->getSightRange()<300){
+                player->setSightRange(player->getSightRange()+10);
+            } else if(player->getPlayerWaveAoeRadius()<300.0f) {
+                player->setPlayerWaveAoeRadius(player->getPlayerWaveAoeRadius() + 30.0f);
+            }else if(player->getAtkRange()<300){
+                player->setAtkRange(player->getAtkRange()+100);
+            } else if(player->getPlayerWaveSpeed()<20.0f) {
+                player->setPlayerWaveSpeed(player->getPlayerWaveSpeed() + 2.0f);
+            } else if(player->getMaxHp()<20000) {
+                player->setMaxHp(player->getMaxHp() + 1000);
+            }
+        break;
+        case DropType::lurkPhantomDrop: 
+            if(player->getSpeed()<20.0f) {
+                player->setSpeed(player->getSpeed() + 0.5f);
+            } else if(player->getAtkCD()>=200) {
+                player->setAtkCD(player->getAtkCD() - 100);
+            }
+        break;
     }
 }
 

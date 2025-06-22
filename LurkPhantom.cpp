@@ -7,13 +7,13 @@ LurkPhantom::LurkPhantom(Player* targetPlayer)
 {
     setStaticPixmap(QPixmap("Resource/lurkPhantom.png").scaled(64, 64));
     wanderTarget = pos();
-    setMaxHp(120);
+    setMaxHp(3000);
     setHp(getMaxHp());
     setSpeed(2.0f);
     setSightRange(500);
-    setAtkRange(150);
+    setAtkRange(250);
     setAtk(100);
-    blinkCooldown = 5000;
+    blinkCooldown = 4000;
     lastBlinkTimer.start();
     createRangeIndicator(QColor(0, 128, 255, 80), 1);
 }

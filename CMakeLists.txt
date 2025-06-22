@@ -49,6 +49,14 @@ qt_add_executable(PhantomGenesis
     Resource/startPage.mp3
     Resource/trapped0.mp3
     Resource/deadEnd.flac
+    Resource/king.png
+    KingWave.h KingWave.cpp
+    Resource/kingWave.png
+    Resource/trapped0.flac
+    Resource/portalStart.png
+    Resource/portalEnd.png
+    Resource/fog.png
+    Resource/flameWaveHit.wav Resource/kingWaveHit.wav Resource/lurkWaveHit.wav Resource/playerWaveHit.wav
 
 
 )

@@ -2,10 +2,12 @@
 #define WAVE_H
 
 #include "ActiveObject.h"
-
+#include <QGraphicsScene>
 #include <QTimer>
 #include <QPainter>
 #include <QPainterPath>
+#include <QSoundEffect>
+#include <QGraphicsEllipseItem>
 class Wave : public ActiveObject {
     Q_OBJECT
 public:
@@ -44,6 +46,8 @@ protected:
     void startRotate(int intervalMs = 16);//启动旋转
     void stopRotate();//停止旋转
     virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
+    virtual void playCollisionEffect(QGraphicsItem* item);//碰撞特效
+    virtual void playCollisionSound(QGraphicsItem* item);//碰撞音效
 private slots:
     virtual void onMoveTimerTimeout();
     void onRotateTimerTimeout();//旋转

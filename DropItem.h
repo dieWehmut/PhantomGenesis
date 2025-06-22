@@ -9,7 +9,7 @@ enum DropType {
     flamePhantomDrop,
     lurkPhantomDrop
 };
-
+class PlayerWave;
 class DropItem : public QObject, public QGraphicsPixmapItem {
     Q_OBJECT
 public:

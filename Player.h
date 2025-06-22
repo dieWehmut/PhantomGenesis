@@ -14,6 +14,10 @@ public:
     void clearPressedKeys();//清除按键集
     void playerStartAtk();//攻击
     //多的属性设置
+    void setPlayerWaveAoeRadius(float r) { playerWaveAoeRadius = r; }
+    float getPlayerWaveAoeRadius() const { return playerWaveAoeRadius; }
+    void setPlayerWaveSpeed(float s) { playerWaveSpeed = s; }
+    float getPlayerWaveSpeed() const { return playerWaveSpeed; }
     int getAtkCD() const { return atkCD; }
     void setAtkCD(int value) { atkCD = value; }
     void setLastMoveDirection(const QPointF &value) { lastMoveDirection = value; }
@@ -38,6 +42,8 @@ private:
     bool shieldActive = false;//护盾是否激活
     QElapsedTimer shieldTimer;//护盾计时器
     static const int shieldDuration = 3000;//护盾持续时间
+    float playerWaveAoeRadius = 100.0f;//波的波及半径
+    float playerWaveSpeed = 15.0f;//波的速度
 };
 
 #endif // PLAYER_H

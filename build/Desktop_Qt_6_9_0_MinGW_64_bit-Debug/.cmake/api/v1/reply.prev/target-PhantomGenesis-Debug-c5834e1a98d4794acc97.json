@@ -80,13 +80,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 65,
+				"line" : 73,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 56,
+				"line" : 64,
 				"parent" : 0
 			},
 			{
@@ -460,7 +460,8 @@
 				36,
 				41,
 				44,
-				46
+				46,
+				56
 			]
 		}
 	],
@@ -597,8 +598,8 @@
 			"sourceIndexes" : 
 			[
 				0,
-				54,
-				55
+				66,
+				67
 			]
 		},
 		{
@@ -620,7 +621,8 @@
 				36,
 				41,
 				44,
-				46
+				46,
+				56
 			]
 		},
 		{
@@ -641,7 +643,8 @@
 				35,
 				40,
 				43,
-				45
+				45,
+				55
 			]
 		},
 		{
@@ -672,7 +675,12 @@
 				47,
 				48,
 				49,
-				50
+				50,
+				54,
+				57,
+				59,
+				60,
+				61
 			]
 		},
 		{
@@ -681,14 +689,19 @@
 			[
 				51,
 				52,
-				53
+				53,
+				58,
+				62,
+				63,
+				64,
+				65
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				56
+				68
 			]
 		}
 	],
@@ -818,12 +831,12 @@
 		},
 		{
 			"backtrace" : 4,
-			"path" : "Resource/black.png",
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/Resource/black.png",
 			"sourceGroupIndex" : 4
 		},
 		{
 			"backtrace" : 4,
-			"path" : "Resource/portal.png",
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/Resource/portal.png",
 			"sourceGroupIndex" : 4
 		},
 		{
@@ -860,7 +873,7 @@
 		},
 		{
 			"backtrace" : 4,
-			"path" : "Resource/mapExit.png",
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/Resource/mapExit.png",
 			"sourceGroupIndex" : 4
 		},
 		{
@@ -974,12 +987,73 @@
 		},
 		{
 			"backtrace" : 4,
-			"path" : "Resource/trapped0.mp3",
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/Resource/trapped0.mp3",
 			"sourceGroupIndex" : 5
 		},
 		{
 			"backtrace" : 4,
 			"path" : "Resource/deadEnd.flac",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/king.png",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 4,
+			"path" : "KingWave.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "KingWave.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/kingWave.png",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/trapped0.flac",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/portalStart.png",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/portalEnd.png",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/fog.png",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/flameWaveHit.wav",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/kingWaveHit.wav",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/lurkWaveHit.mp3",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/playerWaveHit.wav",
 			"sourceGroupIndex" : 5
 		},
 		{

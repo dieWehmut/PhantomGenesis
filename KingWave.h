@@ -1,0 +1,15 @@
+#ifndef KINGWAVE_H
+#define KINGWAVE_H
+
+#include "Wave.h"
+
+class KingWave : public Wave {
+public:
+    KingWave(const QPointF& dir, int atk, QObject* parent = nullptr);
+protected:
+    void handleCollision(QGraphicsItem* item) override;
+    void playCollisionEffect(QGraphicsItem* item) override;
+    void playCollisionSound(QGraphicsItem* item) override;
+};
+
+#endif // KINGWAVE_H

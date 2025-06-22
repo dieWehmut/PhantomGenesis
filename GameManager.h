@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "FlamePhantom.h"
 #include "LurkPhantom.h"
+#include "King.h"
 #include<QVector>
 #include <QGraphicsView>
 #include "VisionMaskItem.h"
@@ -45,6 +46,8 @@ private:
     void spawnPhantoms(QVector<PhantomType*>& container, const QVector<QPoint>& spawnPoints, int maxCount, std::function<PhantomType*()> createPhantom);
     QTimer* phantomSpawnTimer;//phantom生成定时器
     void separatePhantoms(QVector<PhantomBase*>& phantoms);//分离重叠的PhantomBase
+    King* king = nullptr;
+    void checkKingSpawn();
     VisionMaskItem* visionMask = nullptr;//视野遮罩
 signals:
     void playerDead();

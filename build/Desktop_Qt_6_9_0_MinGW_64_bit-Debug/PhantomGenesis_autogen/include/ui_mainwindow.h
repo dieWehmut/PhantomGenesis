@@ -15,6 +15,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -49,6 +50,7 @@ public:
     QWidget *edScene;
     QStackedWidget *stackedWidget_2;
     QWidget *dePage;
+    QTextBrowser *textBrowser;
     QWidget *tePage;
 
     void setupUi(QMainWindow *MainWindow)
@@ -152,6 +154,9 @@ public:
         stackedWidget_2->setGeometry(QRect(-1, -1, 1081, 601));
         dePage = new QWidget();
         dePage->setObjectName("dePage");
+        textBrowser = new QTextBrowser(dePage);
+        textBrowser->setObjectName("textBrowser");
+        textBrowser->setGeometry(QRect(0, 0, 1071, 611));
         stackedWidget_2->addWidget(dePage);
         tePage = new QWidget();
         tePage->setObjectName("tePage");
@@ -187,6 +192,16 @@ public:
         backBtn_2->setText(QCoreApplication::translate("MainWindow", "\350\277\224\345\233\236\346\240\207\351\242\230", nullptr));
         backBtn_3->setText(QCoreApplication::translate("MainWindow", "\350\277\224\345\233\236\346\240\207\351\242\230", nullptr));
         backBtn->setText(QCoreApplication::translate("MainWindow", "\350\277\224\345\233\236\346\240\207\351\242\230", nullptr));
+        textBrowser->setHtml(QCoreApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
+"</style></head><body style=\" font-family:'Microsoft YaHei UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:22pt; font-style:italic; color:#ff0000;\">\344\275\240\357\274\214\350\277\231\350\266\237\345\220\215\344\270\272\342\200\234\345\255\230\345\234\250\342\200\235\347\232\204\346\202\240\351\225\277\346\227\205\350\241\214\347\232\204\346\227\205\350\200\205\357\274\214\350\204\232\346\255\245\343\200\202\344\270\207\347\261\201\344\277\261\345\257\202"
+                        "\357\274\214\344\273\277\344\275\233\350\277\236\345\221\274\345\220\270\351\203\275\345\267\262\345\275\222\350\277\230\347\273\231\346\265\251\346\270\272\347\232\204\350\231\232\347\251\272\343\200\202</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:22pt; font-style:italic; color:#ff0000;\"><br /></p></body></html>", nullptr));
     } // retranslateUi
 
 };

@@ -8,13 +8,13 @@ FlamePhantom::FlamePhantom(Player* targetPlayer)
     : player(targetPlayer) {
     setStaticPixmap(QPixmap("Resource/flamePhantom.png").scaled(64, 64));
     wanderTarget = pos();
-    setMaxHp(200);
+    setMaxHp(5000);
     setHp(getMaxHp());
     setSpeed(2.0f);
-    setSightRange(400);
-    setAtkRange(200);
-    setAtk(10);
-    setRangeAtkCD(5000);
+    setSightRange(1000);
+    setAtkRange(600);
+    setAtk(100);
+    setRangeAtkCD(3000);
     rangeAtkTimer.start();
     rangeIndicatorItem = new QGraphicsEllipseItem();
     rangeIndicatorItem->setZValue(0);
