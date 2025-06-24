@@ -5,7 +5,7 @@
 ActiveObject::ActiveObject(QObject *parent) : QObject(parent), QGraphicsPixmapItem() {
     rangeIndicatorItem = nullptr;
 }
-
+ 
 void ActiveObject::setStaticPixmap(const QPixmap& pix) {
     setPixmap(pix);
 }

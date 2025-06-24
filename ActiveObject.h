@@ -11,7 +11,7 @@ public:
     explicit ActiveObject(QObject *parent = nullptr);
     virtual ~ActiveObject();
     //各种属性获取和设置
-    int getHp() const{return hp;}
+    int getHp() const{return hp;} 
     int getMaxHp() const{return maxHp;}
     int getAtk() const{return atk;}
     int getAtkRange() const{return atkRange;}

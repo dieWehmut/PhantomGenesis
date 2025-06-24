@@ -5,14 +5,14 @@
 #include"PlayerWave.h"
 Player::Player(QObject *parent) : ActiveObject(parent) {
     //属性初始值设置
-    setMaxHp(100000);
+    setMaxHp(50000);
     setHp(getMaxHp());
-    setSpeed(12.0f);
+    setSpeed(14.0f);
     setOriginSpeed(getSpeed());
     setSightRange(200);
     setAtkRange(100);
     setAtk(100);
-    setAtkCD(2000);
+    setAtkCD(1000);
     atkTimer.restart();
     cdUpdateTimer = new QTimer(this);
     cdUpdateTimer->setInterval(1000/60); 
@@ -21,7 +21,10 @@ Player::Player(QObject *parent) : ActiveObject(parent) {
     });
     cdUpdateTimer->start();
     setLastMoveDirection(QPointF(1, 0));
-    setStaticPixmap(QPixmap("Resource/player.png").scaled(64, 64));
+    normalPixmap = QPixmap("Resource/playerNormal.png").scaled(64, 64);
+    burningPixmap = QPixmap("Resource/playerBurned.png").scaled(64, 64);
+    lowHpPixmap = QPixmap("Resource/playerLowHp.png").scaled(64, 64);
+    setStaticPixmap(normalPixmap);
     setTransformOriginPoint(pixmap().width()/2, pixmap().height()/2);
     setFlag(QGraphicsItem::ItemIsFocusable); 
     setBoundingRegionGranularity(1.0);
@@ -178,5 +181,42 @@ void Player::setHp(int v) {
         ActiveObject::setHp(v + recovery);
     } else {
         ActiveObject::setHp(v);
+    }
+    if (!burning) {
+        if (getHp() <= getMaxHp() / 2) {
+            setStaticPixmap(lowHpPixmap);
+        } else {
+            setStaticPixmap(normalPixmap);
+        }
+    }
+}
+void Player::setBurning(bool on) {
+    if (on) {
+        if (burning) return;
+        burning = true;
+        setStaticPixmap(burningPixmap);
+        burnTimer.restart();
+        if (!burnTickTimer) {
+            burnTickTimer = new QTimer(this);
+            connect(burnTickTimer, &QTimer::timeout, this, [this]() { burnTick(); });
+        }
+        burnTickTimer->start(burnTickInterval);
+    } else {
+        if (!burning) return;
+        burning = false;
+        if (getHp() <= getMaxHp() / 2) {
+            setStaticPixmap(lowHpPixmap);
+        } else {
+            setStaticPixmap(normalPixmap);
+        }
+        if (burnTickTimer) burnTickTimer->stop();
+    }
+}
+
+void Player::burnTick() {
+    if (!burning) return;
+    setHp(getHp() - burnDamagePerTick);
+    if (burnTimer.elapsed() >= burnDurationMs) {
+        setBurning(false);
     }
 }

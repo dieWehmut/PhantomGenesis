@@ -1,7 +1,7 @@
 #include "PhantomBase.h"
 #include <QPointer>
 PhantomBase::PhantomBase() {}
-
+bool PhantomBase::forceChasePlayer = false; 
 PhantomBase::~PhantomBase() {
 
 }

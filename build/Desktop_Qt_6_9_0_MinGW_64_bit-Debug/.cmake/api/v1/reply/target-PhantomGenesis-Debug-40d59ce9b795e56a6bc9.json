@@ -80,13 +80,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 73,
+				"line" : 77,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 64,
+				"line" : 68,
 				"parent" : 0
 			},
 			{
@@ -598,8 +598,8 @@
 			"sourceIndexes" : 
 			[
 				0,
-				66,
-				67
+				70,
+				71
 			]
 		},
 		{
@@ -680,7 +680,9 @@
 				57,
 				59,
 				60,
-				61
+				61,
+				68,
+				69
 			]
 		},
 		{
@@ -694,14 +696,16 @@
 				62,
 				63,
 				64,
-				65
+				65,
+				66,
+				67
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				68
+				72
 			]
 		}
 	],
@@ -893,7 +897,7 @@
 		},
 		{
 			"backtrace" : 4,
-			"path" : "Resource/player.png",
+			"path" : "Resource/playerNormal.png",
 			"sourceGroupIndex" : 4
 		},
 		{
@@ -1048,13 +1052,33 @@
 		},
 		{
 			"backtrace" : 4,
-			"path" : "Resource/lurkWaveHit.mp3",
+			"path" : "Resource/lurkWaveHit.wav",
 			"sourceGroupIndex" : 5
 		},
 		{
 			"backtrace" : 4,
 			"path" : "Resource/playerWaveHit.wav",
 			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/trapped1.flac",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/lurkPhantomLaser.wav",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/playerBurned.png",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/playerLowHp.png",
+			"sourceGroupIndex" : 4
 		},
 		{
 			"backtrace" : 0,

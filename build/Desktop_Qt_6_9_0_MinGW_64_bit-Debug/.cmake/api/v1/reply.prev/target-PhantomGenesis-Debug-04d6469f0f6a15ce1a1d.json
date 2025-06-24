@@ -80,13 +80,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 73,
+				"line" : 76,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 64,
+				"line" : 67,
 				"parent" : 0
 			},
 			{
@@ -468,11 +468,11 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 0,
-			"id" : "PhantomGenesis_autogen::@6890427a1f51a3e7e1df"
+			"id" : "PhantomGenesis_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		},
 		{
-			"id" : "PhantomGenesis_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+			"backtrace" : 0,
+			"id" : "PhantomGenesis_autogen::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "PhantomGenesis::@6890427a1f51a3e7e1df",
@@ -598,8 +598,8 @@
 			"sourceIndexes" : 
 			[
 				0,
-				66,
-				67
+				69,
+				70
 			]
 		},
 		{
@@ -680,7 +680,8 @@
 				57,
 				59,
 				60,
-				61
+				61,
+				68
 			]
 		},
 		{
@@ -694,14 +695,16 @@
 				62,
 				63,
 				64,
-				65
+				65,
+				66,
+				67
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				68
+				71
 			]
 		}
 	],
@@ -893,7 +896,7 @@
 		},
 		{
 			"backtrace" : 4,
-			"path" : "Resource/player.png",
+			"path" : "Resource/playerNormal.png",
 			"sourceGroupIndex" : 4
 		},
 		{
@@ -1055,6 +1058,21 @@
 			"backtrace" : 4,
 			"path" : "Resource/playerWaveHit.wav",
 			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/trapped1.flac",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/lurkPhantomLaser.wav",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Resource/playerBurned.png",
+			"sourceGroupIndex" : 4
 		},
 		{
 			"backtrace" : 0,

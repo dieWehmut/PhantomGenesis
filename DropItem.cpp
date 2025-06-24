@@ -24,7 +24,7 @@ void DropItem::strengthenPlayer(Player* player) {
                 player->setSightRange(player->getSightRange()+10);
             } else if(player->getPlayerWaveAoeRadius()<300.0f) {
                 player->setPlayerWaveAoeRadius(player->getPlayerWaveAoeRadius() + 30.0f);
-            }else if(player->getAtkRange()<300){
+            }else if(player->getAtkRange()<250){
                 player->setAtkRange(player->getAtkRange()+100);
             } else if(player->getPlayerWaveSpeed()<20.0f) {
                 player->setPlayerWaveSpeed(player->getPlayerWaveSpeed() + 2.0f);

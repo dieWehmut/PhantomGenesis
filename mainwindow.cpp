@@ -214,7 +214,33 @@ void MainWindow::startGame() {
     }
     ui->pauseBtn->setText("暂停");//显示暂停
     ui->continueBtn->hide();//隐藏继续按钮
-    
+    // 倒计时初始化
+    setCountdownTimer(30);
+    portalEnabled = true;
+    ui->countdownLabel->setText("00:30");
+    if (!countdownTimer) {
+        countdownTimer = new QTimer(this);
+        connect(countdownTimer, &QTimer::timeout, this, [this]() {
+            if (countdownSeconds > 0) {
+                countdownSeconds--;
+                int min = countdownSeconds / 60;
+                int sec = countdownSeconds % 60;
+                ui->countdownLabel->setText(QString("%1:%2").arg(min, 2, 10, QChar('0')).arg(sec, 2, 10, QChar('0')));
+                if (countdownSeconds == 0) {
+                    portalEnabled = false;
+                    emit forcePhantomsChasePlayer();
+                    if (bgmPlayer) {
+                        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/trapped1.flac"));
+                        bgmPlayer->play();
+                    }
+                    if (gameManager) {
+                        gameManager->accelerateAllPhantoms();
+                    }
+                }
+            }
+        });
+    }
+    countdownTimer->start(1000);
 }
 void MainWindow::togglePause() {
     if (gameManager) {
@@ -353,6 +379,7 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     }
     else if (currentIndex == 1) { 
         double widthRatio = width() / 1080.0;
+        double heightRatio = height() / 720.0;
         int backBtnWidth = 151;
         int backBtnHeight = 51;
         int saveBtnWidth = 151;
@@ -394,6 +421,9 @@ void MainWindow::resizeEvent(QResizeEvent *event)
         int btnX = (width() - btnWidth) / 2;
         int btnY = (height() - btnHeight) / 2;
         ui->continueBtn->setGeometry(btnX, btnY, btnWidth, btnHeight);
+        int countdownWidth = int(101 * widthRatio);
+        int countdownHeight = int(41 * heightRatio);
+        ui->countdownLabel->setGeometry(width() - countdownWidth, 0, countdownWidth, countdownHeight);
     }
     else if (currentIndex == 2) {
         double heightRatio = height() / 720.0;

@@ -28,6 +28,8 @@ public:
     const QVector<LurkPhantom*>& getLurkPhantoms() const { return lurkPhantoms; }
 public slots:
     void handleViewResize(); // 处理视图的改变
+    void onForcePhantomsChasePlayer();// 强制锁定
+    void accelerateAllPhantoms();//加快所有幽灵速度
 private:
     QGraphicsView* gameView;//游戏视图
     QGraphicsScene* gameScene;//游戏场景
@@ -47,7 +49,7 @@ private:
     QTimer* phantomSpawnTimer;//phantom生成定时器
     void separatePhantoms(QVector<PhantomBase*>& phantoms);//分离重叠的PhantomBase
     King* king = nullptr;
-    void checkKingSpawn();
+    void checkKingSpawn();//检查是否生成King
     VisionMaskItem* visionMask = nullptr;//视野遮罩
 signals:
     void playerDead();

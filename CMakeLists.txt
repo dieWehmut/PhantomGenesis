@@ -32,7 +32,7 @@ qt_add_executable(PhantomGenesis
     Resource/mapExit.png Resource/mazeExit.png
     Resource/flamePhantomBase.png
     Resource/flamePhantom.png
-    Resource/player.png
+    Resource/playerNormal.png
     FlameWave.h FlameWave.cpp
     Resource/flameWave.png
     Resource/lurkPhantomBase.png
@@ -57,6 +57,10 @@ qt_add_executable(PhantomGenesis
     Resource/portalEnd.png
     Resource/fog.png
     Resource/flameWaveHit.wav Resource/kingWaveHit.wav Resource/lurkWaveHit.wav Resource/playerWaveHit.wav
+    Resource/trapped1.flac
+    Resource/lurkPhantomLaser.wav
+    Resource/playerBurned.png
+    Resource/playerLowHp.png
 
 
 )

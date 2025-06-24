@@ -41,6 +41,7 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "MainWindow",
         "viewResized",
         "",
+        "forcePhantomsChasePlayer",
         "startGame",
         "loadGame",
         "showEdPage",
@@ -55,24 +56,26 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
     QtMocHelpers::UintData qt_methods {
         // Signal 'viewResized'
         QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'forcePhantomsChasePlayer'
+        QtMocHelpers::SignalData<void()>(3, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'startGame'
-        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'loadGame'
         QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'showEdPage'
+        // Slot 'loadGame'
         QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'saveGame'
+        // Slot 'showEdPage'
         QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'goBackToStartPage'
+        // Slot 'saveGame'
         QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'returnToGame'
+        // Slot 'goBackToStartPage'
         QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'togglePause'
+        // Slot 'returnToGame'
         QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'togglePause'
+        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onPlayerDead'
-        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'onDeadEndMusicFinished'
         QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'onDeadEndMusicFinished'
+        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPublic, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -97,20 +100,23 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->viewResized(); break;
-        case 1: _t->startGame(); break;
-        case 2: _t->loadGame(); break;
-        case 3: _t->showEdPage(); break;
-        case 4: _t->saveGame(); break;
-        case 5: _t->goBackToStartPage(); break;
-        case 6: _t->returnToGame(); break;
-        case 7: _t->togglePause(); break;
-        case 8: _t->onPlayerDead(); break;
-        case 9: _t->onDeadEndMusicFinished(); break;
+        case 1: _t->forcePhantomsChasePlayer(); break;
+        case 2: _t->startGame(); break;
+        case 3: _t->loadGame(); break;
+        case 4: _t->showEdPage(); break;
+        case 5: _t->saveGame(); break;
+        case 6: _t->goBackToStartPage(); break;
+        case 7: _t->returnToGame(); break;
+        case 8: _t->togglePause(); break;
+        case 9: _t->onPlayerDead(); break;
+        case 10: _t->onDeadEndMusicFinished(); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
         if (QtMocHelpers::indexOfMethod<void (MainWindow::*)()>(_a, &MainWindow::viewResized, 0))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (MainWindow::*)()>(_a, &MainWindow::forcePhantomsChasePlayer, 1))
             return;
     }
 }
@@ -134,14 +140,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 11;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 11)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 10;
+        _id -= 11;
     }
     return _id;
 }
@@ -150,5 +156,11 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void MainWindow::viewResized()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+}
+
+// SIGNAL 1
+void MainWindow::forcePhantomsChasePlayer()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 QT_WARNING_POP

@@ -6,18 +6,19 @@
 #include <QGraphicsScene>
 #include <QList>
 #include <QSoundEffect>
+#include "LurkWave.h"
+#include "FlameWave.h"
 PlayerWave::PlayerWave(const QPointF &direction, int damage, QObject *parent)
     : Wave(direction, damage, 800, 5.0f, QPixmap("Resource/playerWave.png").scaled(64,64), parent),
     hitObjects(), aoeRadius(0), playerWaveEffectInitialized(false) {
     setDirection(direction);
-
     setAtk(damage);
     originalAtk = damage;
     setMaxDistance(1000.0f);
     setStaticPixmap(QPixmap("Resource/playerWave.png").scaled(96, 96)); 
     maxPierceCnt = 3; 
     curPierceCnt = 0;
-    startAoeTimer(2000);
+    startAoeTimer(100);
     startRotate(16);
 }
 void PlayerWave::onAoeTimerTimeout() {
@@ -35,6 +36,36 @@ PlayerWave::~PlayerWave() {
 void PlayerWave::handleCollision(QGraphicsItem *item) {
     if (!scene()) return;
     if (dynamic_cast<Player*>(item)) {
+        return;
+    }
+        if (auto* lurkWave = dynamic_cast<LurkWave*>(item)) {
+        curPierceCnt++;
+        if (!playerWaveEffectInitialized) {
+            playerWaveHitEffect.setSource(QUrl::fromLocalFile("Resource/playerWaveHit.wav"));
+            playerWaveHitEffect.setVolume(1.0f);
+            playerWaveEffectInitialized = true;
+        }
+        playerWaveHitEffect.play();
+        lurkWave->deleteLater();
+        if (curPierceCnt >= maxPierceCnt) {
+            deleteLater();
+            return;
+        }
+        return;
+    }
+    if (auto* flameWave = dynamic_cast<FlameWave*>(item)) {
+        curPierceCnt++;
+        if (!playerWaveEffectInitialized) {
+            playerWaveHitEffect.setSource(QUrl::fromLocalFile("Resource/playerWaveHit.wav"));
+            playerWaveHitEffect.setVolume(1.0f);
+            playerWaveEffectInitialized = true;
+        }
+        playerWaveHitEffect.play();
+        flameWave->deleteLater();
+        if (curPierceCnt >= maxPierceCnt) {
+            deleteLater();
+            return;
+        }
         return;
     }
     ActiveObject *obj = dynamic_cast<ActiveObject*>(item);
@@ -86,11 +117,11 @@ void PlayerWave::applyAoeDamage(ActiveObject* directHitObj) {
             if (distance <= aoeRadius) {
                 qreal damageRatio = 1.0 - (distance / aoeRadius) * 0.3;
                 int damage = int(getAtk() * damageRatio);
-                damage = qMax(damage, int(getAtk() * 0.7));
+                damage = qMax(damage, int(getAtk() * 0.5));
                 obj->setHp(obj->getHp() - damage);
                 hitObjects.insert(obj);
             if (!playerWaveEffectInitialized) {
-                playerWaveHitEffect.setSource(QUrl::fromLocalFile("Resource/playerWaveHit.wav"));  // 使用成员变量
+                playerWaveHitEffect.setSource(QUrl::fromLocalFile("Resource/playerWaveHit.wav"));
                 playerWaveHitEffect.setVolume(0.7f);
                 playerWaveEffectInitialized = true;
             }

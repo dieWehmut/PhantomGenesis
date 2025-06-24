@@ -8,10 +8,10 @@ FlamePhantom::FlamePhantom(Player* targetPlayer)
     : player(targetPlayer) {
     setStaticPixmap(QPixmap("Resource/flamePhantom.png").scaled(64, 64));
     wanderTarget = pos();
-    setMaxHp(5000);
+    setMaxHp(2000);
     setHp(getMaxHp());
     setSpeed(2.0f);
-    setSightRange(1000);
+    setSightRange(800);
     setAtkRange(600);
     setAtk(100);
     setRangeAtkCD(3000);
@@ -47,7 +47,8 @@ void FlamePhantom::updateStatus() {
         scene()->addItem(rangeIndicatorItem);
         rangeIndicatorItem->hide();
     }
-    if (isLocking) {
+    if (inRange) {
+        rangeDebuff();
         if (rangeAtkTimer.elapsed() >= getRangeAtkCD()) {
             player->setHp(player->getHp() - atk);//定时扣血
             // 发射火焰波
@@ -58,6 +59,7 @@ void FlamePhantom::updateStatus() {
             rangeAtkTimer.restart();
         }
     }
+
     if (inRange != lastInRange) {
         if (inRange) {
             qreal atkRange = getAtkRange();
@@ -74,7 +76,7 @@ void FlamePhantom::updateStatus() {
         lastInRange = inRange;
     }
     bool moved = false;
-    if (distance < getSightRange()) {
+    if (distance < getSightRange() || PhantomBase::isForceChasePlayer()) {
         QPointF dir = playerCenter - myCenter;
         qreal len = std::hypot(dir.x(), dir.y());
         if (len > 1e-2) {
@@ -83,10 +85,6 @@ void FlamePhantom::updateStatus() {
             moved = true;
         }
         if (inRange) {
-            if(rangeAtkTimer.elapsed() >= getRangeAtkCD()) {
-                rangeDebuff();
-                rangeAtkTimer.restart();
-            }
             if (collidesWithItem(player)) {
                 meleeAtk();
             }
@@ -128,7 +126,8 @@ void FlamePhantom::rangeDebuff() {
             QPointF center = pos() + QPointF(boundingRect().width()/2, boundingRect().height()/2);
             QPointF pCenter = p->pos() + QPointF(p->boundingRect().width()/2, p->boundingRect().height()/2);
             if (QLineF(center, pCenter).length() <= getAtkRange()) {
-                p->setHp(p->getHp() - atk);
+                p->setHp(p->getHp() - 0.1*atk);
+                p->setBurning(true); 
             }
         }
     }
@@ -149,4 +148,14 @@ void FlamePhantom::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 void FlamePhantom::meleeAtk() {
     if (!player) return;
     player->setHp(player->getHp() - atk);
+    player->setBurning(true);
+    QPointF myCenter = pos() + QPointF(boundingRect().width()/2, boundingRect().height()/2);
+    QPointF playerCenter = player->pos() + QPointF(player->boundingRect().width()/2, player->boundingRect().height()/2);
+    QPointF knockbackDir = playerCenter - myCenter;
+    qreal len = std::hypot(knockbackDir.x(), knockbackDir.y());
+    if (len > 1e-3) {
+        knockbackDir /= len;
+        qreal knockbackDist = 300.0;
+        player->setPos(player->pos() + knockbackDir * knockbackDist);
+    }
 }

@@ -7,13 +7,13 @@ LurkPhantom::LurkPhantom(Player* targetPlayer)
 {
     setStaticPixmap(QPixmap("Resource/lurkPhantom.png").scaled(64, 64));
     wanderTarget = pos();
-    setMaxHp(3000);
+    setMaxHp(2000);
     setHp(getMaxHp());
-    setSpeed(2.0f);
-    setSightRange(500);
-    setAtkRange(250);
+    setSpeed(4.0f);
+    setSightRange(600);
+    setAtkRange(300);
     setAtk(100);
-    blinkCooldown = 4000;
+    blinkCooldown = 3000;
     lastBlinkTimer.start();
     createRangeIndicator(QColor(0, 128, 255, 80), 1);
 }
@@ -49,12 +49,25 @@ void LurkPhantom::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
             QPointF myCenter = boundingRect().center();
             qreal distance = QLineF(myCenter, playerCenter).length();
             if (distance <= getAtkRange()) {
-                QPen lockPen(QColor(0, 64, 255), 4);
-                painter->setPen(lockPen);
-                painter->drawLine(myCenter, playerCenter);
                 if (!hasDealtDamage) {
                     player->setHp(player->getHp() - getAtk());
+                    static QSoundEffect laserEffect;
+                    if (laserEffect.source().isEmpty())
+                        laserEffect.setSource(QUrl::fromLocalFile("Resource/lurkPhantomLaser.wav"));
+                    laserEffect.setVolume(1.0f);
+                    laserEffect.play();
                     hasDealtDamage = true;
+                }
+                QPen lockPen(QColor(0, 64, 255), 4);
+                painter->setPen(lockPen);
+                QPointF dir = playerCenter - myCenter;
+                if (!qFuzzyIsNull(dir.x()) || !qFuzzyIsNull(dir.y())) {
+                    qreal len = std::hypot(dir.x(), dir.y());
+                    QPointF unitDir = dir / len;
+                    QPointF extendedEnd = playerCenter + unitDir * len;
+                    painter->drawLine(myCenter, extendedEnd);
+                } else {
+                    painter->drawLine(myCenter, playerCenter);
                 }
             }
         }
@@ -62,7 +75,6 @@ void LurkPhantom::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     }
     PhantomBase::paint(painter, option, widget);
 }
-
 void LurkPhantom::activateShield() {
     shieldActive = true;
     shieldTimer.start();
@@ -78,9 +90,12 @@ void LurkPhantom::updateStatus() {
     }
     QPointF myCenter = pos() + QPointF(boundingRect().width()/2, boundingRect().height()/2);
     QPointF playerCenter = player->pos() + QPointF(player->boundingRect().width()/2, player->boundingRect().height()/2);
-    qreal distance = QLineF(myCenter, playerCenter).length();
+    qreal dx = myCenter.x() - playerCenter.x();
+    qreal dy = myCenter.y() - playerCenter.y();
+    qreal distanceSquared = dx*dx + dy*dy;
+    qreal atkRangeSquared = getAtkRange() * getAtkRange();
     setRangeIndicatorVisible(shieldActive);
-    if (distance < getSightRange()) {
+    if (distanceSquared < getSightRange() * getSightRange() || PhantomBase::isForceChasePlayer()) {
         if (lastBlinkTimer.elapsed() >= blinkCooldown) {
             QPointF V = playerCenter - myCenter;
             QPointF blinkPos = playerCenter + V - QPointF(boundingRect().width()/2, boundingRect().height()/2);
@@ -91,7 +106,7 @@ void LurkPhantom::updateStatus() {
             if (len > 1e-2) dir /= len;
             shootWave(dir);
         }
-        if (distance < player->getAtkRange() + 50) {
+        if (distanceSquared < (player->getAtkRange() + 50)*(player->getAtkRange() + 50)) {
             QPointF dir = myCenter - playerCenter;
             qreal len = std::hypot(dir.x(), dir.y());
             if (len > 1e-2) {

@@ -22,7 +22,10 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-protected:
+    void setCountdownTimer(int seconds){countdownSeconds = seconds;}//设置倒计时
+    int getCountdownSeconds() const {return countdownSeconds;}//获取剩余秒数
+    bool isPortalEnabled() const { return portalEnabled; }
+    protected:
     bool eventFilter(QObject *obj, QEvent *event) override;//游戏内专用
     void resizeEvent(QResizeEvent *event) override;//窗口大小调整
     void changeEvent(QEvent *event) override;//窗口状态改变
@@ -44,6 +47,9 @@ private:
     void playBgm(BgmType type);//播放bgm
     bool deadEndPlayed = false;
     void cleanupGame();//清理游戏资源
+    QTimer* countdownTimer = nullptr; //倒计时定时器
+    int countdownSeconds;//剩余秒数
+    bool portalEnabled = true;//传送门是否可用
 private slots://页面跳转
     void startGame();//开始游戏
     void loadGame();//读取
@@ -54,6 +60,7 @@ private slots://页面跳转
     void togglePause();//暂停
 signals:
     void viewResized();//窗口改变
+    void forcePhantomsChasePlayer();//强制锁定
 public slots:
     void onPlayerDead();//玩家死亡时调用
     void onDeadEndMusicFinished();//死亡音乐播放结束

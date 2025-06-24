@@ -2,7 +2,7 @@
 #include <QPixmap>
 #include "Player.h"
 FlameWave::FlameWave(const QPointF& dir, int atk, QObject* parent)
-    : Wave(dir, atk, 800, 5.0f, QPixmap("Resource/flameWave.png").scaled(64,64), parent)
+    : Wave(dir, atk, 500, 5.0f, QPixmap("Resource/flameWave.png").scaled(64,64), parent)
 {
     setTargetType(PlayerTarget);
 }

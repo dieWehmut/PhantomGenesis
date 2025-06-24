@@ -8,7 +8,7 @@
 #include "Player.h"
 King::King(QObject* parent) : PhantomBase()
 {
-    setMaxHp(50000);
+    setMaxHp(10000);
     setHp(getMaxHp());
     setAtk(80);
     setAtkRange(2000);

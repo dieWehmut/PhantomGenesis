@@ -14,11 +14,15 @@ public:
     void setHp(int v) override;//扣血时暴露
     void showForAWhile(int ms);//显示一段时间
     bool isExposed() const { return exposed; }
+    void setWanderTarget(const QPointF& target) { wanderTarget = target; }
+    static void setForceChasePlayer(bool v) { forceChasePlayer = v; }
+    static bool isForceChasePlayer() { return forceChasePlayer; }
 protected:
     QPointF wanderTarget;//随机移动
     QElapsedTimer showTimer;//显示计时器
     int showDuration = 0;//显示时长
     bool exposed = false;//是否暴露
+    static bool forceChasePlayer;//强制锁定
 };
 
 #endif // PHANTOMBASE_H

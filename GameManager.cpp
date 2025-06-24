@@ -4,6 +4,7 @@
 #include <QRandomGenerator>
 #include <QEvent>
 #include"DropItem.h"
+#include "mainwindow.h"
 template<typename PhantomType>
 void GameManager::spawnPhantoms(QVector<PhantomType*>& container, const QVector<QPoint>& spawnPoints, int maxCount, std::function<PhantomType*()> createPhantom)
 {
@@ -18,31 +19,38 @@ void GameManager::spawnPhantoms(QVector<PhantomType*>& container, const QVector<
     }
     if (container.size() >= maxCount) return;
     if (spawnPoints.isEmpty()) return;
-    int idx = QRandomGenerator::global()->bounded(spawnPoints.size());
-    QPoint pt = spawnPoints[idx];
-    bool occupied = false;
-    for (auto* phantom : container) {
-        if (phantom && phantom->scene() &&
-            (phantom->pos().x() / gameMap->getGridSize() == pt.x()) &&
-            (phantom->pos().y() / gameMap->getGridSize() == pt.y())) {
-            occupied = true;
-            break;
+    for (const QPoint& pt : spawnPoints) {
+        bool occupied = false;
+        for (auto* phantom : container) {
+            if (phantom && phantom->scene() &&
+                (phantom->pos().x() / gameMap->getGridSize() == pt.x()) &&
+                (phantom->pos().y() / gameMap->getGridSize() == pt.y())) {
+                occupied = true;
+                break;
+            }
         }
-    }
-    if (!occupied) {
-        PhantomType* phantom = createPhantom();
-        phantom->setPos(pt.x() * gameMap->getGridSize(), pt.y() * gameMap->getGridSize());
-        gameScene->addItem(phantom);
-        container.append(phantom);
+        if (!occupied) {
+    PhantomType* phantom = createPhantom();
+    phantom->setPos(
+        pt.x() * gameMap->getGridSize() + (gameMap->getGridSize() - phantom->boundingRect().width()) / 2.0,
+        pt.y() * gameMap->getGridSize() + (gameMap->getGridSize() - phantom->boundingRect().height()) / 2.0
+    );
+    phantom->setWanderTarget(phantom->pos() + QPointF(phantom->boundingRect().width()/2, phantom->boundingRect().height()/2));
+    gameScene->addItem(phantom);
+    container.append(phantom);
+    break;
+        }
     }
 }
 GameManager::GameManager(QGraphicsView* graphicsView, QObject *parent) : QObject(parent), gameView(graphicsView), gameScene(nullptr), gameMap(nullptr), player(nullptr), gameLoopTimer(nullptr), gamePaused(false) { 
     if (parent) {
         connect(parent, SIGNAL(viewResized()), this, SLOT(handleViewResize()));
+        connect(parent, SIGNAL(forcePhantomsChasePlayer()), this, SLOT(onForcePhantomsChasePlayer()));
     }
     phantomSpawnTimer = new QTimer(this);
     connect(phantomSpawnTimer, &QTimer::timeout, this, &GameManager::spawnFlamePhantoms);
     connect(phantomSpawnTimer, &QTimer::timeout, this, &GameManager::spawnLurkPhantoms);
+    
 }
 void GameManager::pauseGame() {
     if (gameLoopTimer && gameLoopTimer->isActive()) {
@@ -50,7 +58,9 @@ void GameManager::pauseGame() {
         gamePaused = true;
     }
 }
-
+void GameManager::onForcePhantomsChasePlayer() {
+    PhantomBase::setForceChasePlayer(true);
+}
 void GameManager::resumeGame() {
     if (gameLoopTimer && !gameLoopTimer->isActive()) {
         gameLoopTimer->start(1000/60);
@@ -84,7 +94,7 @@ void GameManager::startGame() {
     gameMap->initMap(curMapId); //初始化地图
     player = new Player();//创建玩家
     gameScene->addItem(player);//放玩家
-    phantomSpawnTimer->start(2000); //phantom生成时间间隔
+    phantomSpawnTimer->start(3000); //phantom生成时间间隔
     player->setPos(gameMap->getMapBounds().center());
 
     // 各种阻止鼠标滚轮的滑动
@@ -128,21 +138,25 @@ void GameManager::startGame() {
         int playerRow = static_cast<int>((player->y() + player->pixmap().height() / 2) / gridSize);
         int playerCol = static_cast<int>((player->x() + player->pixmap().width() / 2) / gridSize);
         if (gameMap->getTileType(playerRow, playerCol) == -1) {//传送
-            QVector<QPoint> portalEnds;
-            for (int r = 0; r < gameMap->getGridRow(); ++r) {
-                for (int c = 0; c < gameMap->getGridCol(); ++c) {
-                    if (gameMap->getTileType(r, c) == -2) {
-                        portalEnds.append(QPoint(c, r));
+            MainWindow* mw = qobject_cast<MainWindow*>(parent());
+            bool portalEnabled = true;
+            if (mw) portalEnabled = mw->isPortalEnabled();
+            if (portalEnabled) {
+                QVector<QPoint> portalEnds;
+                for (int r = 0; r < gameMap->getGridRow(); ++r) {
+                    for (int c = 0; c < gameMap->getGridCol(); ++c) {
+                        if (gameMap->getTileType(r, c) == -2) {
+                            portalEnds.append(QPoint(c, r));
+                        }
                     }
                 }
-            }
-            if (!portalEnds.isEmpty()) {
-                int idx = QRandomGenerator::global()->bounded(portalEnds.size());
-                QPoint target = portalEnds[idx];
-                // 传送到格子中心
-                qreal x = target.x() * gridSize + (gridSize - player->pixmap().width()) / 2.0;
-                qreal y = target.y() * gridSize + (gridSize - player->pixmap().height()) / 2.0;
-                player->setPos(x, y);
+                if (!portalEnds.isEmpty()) {
+                    int idx = QRandomGenerator::global()->bounded(portalEnds.size());
+                    QPoint target = portalEnds[idx];
+                    qreal x = target.x() * gridSize + (gridSize - player->pixmap().width()) / 2.0;
+                    qreal y = target.y() * gridSize + (gridSize - player->pixmap().height()) / 2.0;
+                    player->setPos(x, y);
+                }
             }
         }
         gameView->centerOn(player); // 视野居中
@@ -176,7 +190,7 @@ void GameManager::handleViewResize() {//处理视图的改变
     gameView->viewport()->update();
 }
 void GameManager::separatePhantoms(QVector<PhantomBase*>& phantoms) {
-    const qreal minDist = 32.0;//最小距离
+    const qreal minDist = 64.0;//最小距离
     for (int i = 0; i < phantoms.size(); ++i) {
         PhantomBase* a = phantoms[i];
         if (!a || !a->scene()) continue;
@@ -221,7 +235,7 @@ void GameManager::spawnFlamePhantoms() {
     spawnPhantoms<FlamePhantom>(
         flamePhantoms,
         gameMap->getFlamePhantomBases(),
-        50,
+        10,
         [this]() { return new FlamePhantom(player); }
     );
 }
@@ -269,7 +283,7 @@ void GameManager::spawnLurkPhantoms() {
     spawnPhantoms<LurkPhantom>(
         lurkPhantoms,
         gameMap->getLurkPhantomBases(),
-        40,
+        10,
         [this]() { return new LurkPhantom(player); }
     );
 }
@@ -299,4 +313,16 @@ void GameManager::updateLurkPhantoms() {
     for (auto* p : lurkPhantoms) if (p && p->scene()) allPhantoms.append(p);
     separatePhantoms(allPhantoms);
     checkKingSpawn();
+}
+void GameManager::accelerateAllPhantoms() {
+    for (auto* phantom : flamePhantoms) {
+        if (phantom) {
+            phantom->setSpeed(phantom->getSpeed() * 3.0f);
+        }
+    }
+    for (auto* phantom : lurkPhantoms) {
+        if (phantom) {
+            phantom->setSpeed(phantom->getSpeed() * 4.0f);
+        }
+    }
 }
