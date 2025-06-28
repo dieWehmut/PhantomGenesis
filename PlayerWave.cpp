@@ -9,14 +9,14 @@
 #include "LurkWave.h"
 #include "FlameWave.h"
 PlayerWave::PlayerWave(const QPointF &direction, int damage, QObject *parent)
-    : Wave(direction, damage, 800, 5.0f, QPixmap("Resource/playerWave.png").scaled(64,64), parent),
+    : Wave(direction, damage, 800, 10.0f, QPixmap("Resource/playerWave.png").scaled(64,64), parent),
     hitObjects(), aoeRadius(0), playerWaveEffectInitialized(false) {
     setDirection(direction);
     setAtk(damage);
     originalAtk = damage;
-    setMaxDistance(1000.0f);
-    setStaticPixmap(QPixmap("Resource/playerWave.png").scaled(96, 96)); 
-    maxPierceCnt = 3; 
+    setMaxDistance(800.0f);
+    setStaticPixmap(QPixmap("Resource/playerWave.png").scaled(96, 96));
+    maxPierceCnt = 10;
     curPierceCnt = 0;
     startAoeTimer(100);
     startRotate(16);
@@ -187,4 +187,12 @@ void PlayerWave::playCollisionEffect(QGraphicsItem* item) {
 
 void PlayerWave::playCollisionSound(QGraphicsItem* item) {
 
+}
+void PlayerWave::startTimers() {
+    if (moveTimer) moveTimer->start();
+    if (aoeTimer) aoeTimer->start();
+}
+void PlayerWave::stopTimers() {
+    if (moveTimer) moveTimer->stop();
+    if (aoeTimer) aoeTimer->stop();
 }

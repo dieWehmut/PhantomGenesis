@@ -21,7 +21,7 @@ public:
     void updateSingleTile(int row, int col, int tileType);//单格子更新
 private:
     QGraphicsScene* gameScene;//game场景
-    static const int GRID_SIZE = 1024;//格子大小，要调
+    static const int GRID_SIZE = 1024;//格子大小
     static const int GRID_ROW = 21; //行数
     static const int GRID_COL = 25; //列数
     QGraphicsPixmapItem* mapItems[GRID_ROW][GRID_COL];//格子数组

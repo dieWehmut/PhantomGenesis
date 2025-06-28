@@ -5,13 +5,13 @@
 #include"PlayerWave.h"
 Player::Player(QObject *parent) : ActiveObject(parent) {
     //属性初始值设置
-    setMaxHp(50000);
-    setHp(getMaxHp());
-    setSpeed(14.0f);
+    setMaxHp(100000);
+    hp = maxHp;
+    setSpeed(10.0f);
     setOriginSpeed(getSpeed());
     setSightRange(200);
     setAtkRange(100);
-    setAtk(100);
+    setAtk(500);
     setAtkCD(1000);
     atkTimer.restart();
     cdUpdateTimer = new QTimer(this);
@@ -36,7 +36,7 @@ void Player::setSlowed(bool s) {
     if (slowed == s) return;
     slowed = s;
     if (slowed) {
-        setSpeed(originalSpeed * 0.4f);
+        setSpeed(originalSpeed * 0.5f);
     } else {
         setSpeed(originalSpeed);
     }
@@ -189,6 +189,13 @@ void Player::setHp(int v) {
             setStaticPixmap(normalPixmap);
         }
     }
+    if (!burning) {
+        if (getHp() <= getMaxHp() / 2) {
+            setStaticPixmap(lowHpPixmap);
+        } else {
+            setStaticPixmap(normalPixmap);
+        }
+    }
 }
 void Player::setBurning(bool on) {
     if (on) {
@@ -219,4 +226,12 @@ void Player::burnTick() {
     if (burnTimer.elapsed() >= burnDurationMs) {
         setBurning(false);
     }
+}
+void Player::stopTimers() {
+    if (cdUpdateTimer) cdUpdateTimer->stop();
+    if (burnTickTimer) burnTickTimer->stop();
+}
+void Player::startTimers() {
+    if (cdUpdateTimer && !cdUpdateTimer->isActive()) cdUpdateTimer->start();
+    if (burning && burnTickTimer && !burnTickTimer->isActive()) burnTickTimer->start(burnTickInterval);
 }

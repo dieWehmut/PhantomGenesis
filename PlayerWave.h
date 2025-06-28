@@ -32,6 +32,8 @@ protected:
     void updateBoostState();//更新加成状态
     void playCollisionEffect(QGraphicsItem* item) override;
     void playCollisionSound(QGraphicsItem* item) override;
+    void startTimers() override;
+    void stopTimers() override;
 private:
     QSoundEffect playerWaveHitEffect;
     bool playerWaveEffectInitialized = false;

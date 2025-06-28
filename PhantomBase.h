@@ -16,7 +16,9 @@ public:
     bool isExposed() const { return exposed; }
     void setWanderTarget(const QPointF& target) { wanderTarget = target; }
     static void setForceChasePlayer(bool v) { forceChasePlayer = v; }
-    static bool isForceChasePlayer() { return forceChasePlayer; }
+    static bool isForceChasePlayer() { return forceChasePlayer; } 
+    virtual void stopTimers() override {}
+    virtual void startTimers() override {}
 protected:
     QPointF wanderTarget;//随机移动
     QElapsedTimer showTimer;//显示计时器

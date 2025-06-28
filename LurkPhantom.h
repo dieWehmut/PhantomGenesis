@@ -13,6 +13,8 @@ public:
     bool isShieldActive() const { return shieldActive; } //获取护盾状态
     void setHp(int v) override;//增加回血效果
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;//锁定玩家，画护盾
+    void stopTimers() override;
+    void startTimers() override;
 private:
     Player* player;
     QElapsedTimer lastBlinkTimer;//闪现计时器

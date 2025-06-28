@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.19)
 project(PhantomGenesis LANGUAGES CXX)
 
+
+
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets Multimedia)
 
 qt_standard_project_setup()
@@ -23,13 +25,12 @@ qt_add_executable(PhantomGenesis
     GameManager.h GameManager.cpp
     ActiveObject.cpp
 
-    Resource/black.png
-    Resource/portal.png
+
     Resource/flame.png
     Wave.h Wave.cpp
     PlayerWave.h PlayerWave.cpp
     Resource/ruins.png
-    Resource/mapExit.png Resource/mazeExit.png
+    Resource/mazeExit.png
     Resource/flamePhantomBase.png
     Resource/flamePhantom.png
     Resource/playerNormal.png
@@ -48,19 +49,27 @@ qt_add_executable(PhantomGenesis
     Resource/startPage.gif
     Resource/startPage.mp3
     Resource/trapped0.mp3
-    Resource/deadEnd.flac
+    Resource/deadEnd.mp3
     Resource/king.png
     KingWave.h KingWave.cpp
     Resource/kingWave.png
-    Resource/trapped0.flac
+    Resource/trapped0.mp3
     Resource/portalStart.png
     Resource/portalEnd.png
-    Resource/fog.png
+    Resource/optimize.png
     Resource/flameWaveHit.wav Resource/kingWaveHit.wav Resource/lurkWaveHit.wav Resource/playerWaveHit.wav
-    Resource/trapped1.flac
+    Resource/trapped1.mp3
     Resource/lurkPhantomLaser.wav
     Resource/playerBurned.png
     Resource/playerLowHp.png
+
+    Resource/teleport.wav
+    Resource/lostEnd.mp3
+
+    Resource/fakeEnd.mp3
+    Resource/saveAndLoadPage.png Resource/settingsPage.png
+    Resource/edPage.png
+    Resource/helpPage.png
 
 
 )

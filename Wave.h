@@ -11,7 +11,7 @@
 class Wave : public ActiveObject {
     Q_OBJECT
 public:
-explicit Wave(const QPointF& dir, int atk, float maxDist, float speed, const QPixmap& pix, QObject *parent = nullptr);
+    explicit Wave(const QPointF& dir, int atk, float maxDist, float speed, const QPixmap& pix, QObject *parent = nullptr);
     virtual ~Wave();//消失
     enum TargetType { None, PlayerTarget, PhantomTarget };
     void setTargetType(TargetType t) { targetType = t; }
@@ -28,6 +28,8 @@ explicit Wave(const QPointF& dir, int atk, float maxDist, float speed, const QPi
     void setAngle(qreal a) { angle = a; }
     qreal getAngle() const { return angle; }
     QRectF boundingRect() const override;
+    virtual void startTimers() {}
+    virtual void stopTimers() {}
 protected:
     TargetType targetType = None;
     void handleCollision(QGraphicsItem *item) override;

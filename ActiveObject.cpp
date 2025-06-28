@@ -9,7 +9,10 @@ ActiveObject::ActiveObject(QObject *parent) : QObject(parent), QGraphicsPixmapIt
 void ActiveObject::setStaticPixmap(const QPixmap& pix) {
     setPixmap(pix);
 }
-
+void ActiveObject::setHp(int v) {
+    hp = qBound(0, v, maxHp);
+    update();
+}
 void ActiveObject::updatePosition() {}
 ActiveObject::~ActiveObject() {
     if (rangeIndicatorItem) {

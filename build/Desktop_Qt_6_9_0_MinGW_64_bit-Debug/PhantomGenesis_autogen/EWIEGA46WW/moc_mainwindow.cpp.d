@@ -11,6 +11,9 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   D:/game/qt/PhantomGenesis/VisionMaskItem.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/QElapsedTimer \
   E:/qt/6.9.0/mingw_64/include/QtCore/QFile \
+  E:/qt/6.9.0/mingw_64/include/QtCore/QFileSystemWatcher \
+  E:/qt/6.9.0/mingw_64/include/QtCore/QJsonDocument \
+  E:/qt/6.9.0/mingw_64/include/QtCore/QJsonObject \
   E:/qt/6.9.0/mingw_64/include/QtCore/QList \
   E:/qt/6.9.0/mingw_64/include/QtCore/QObject \
   E:/qt/6.9.0/mingw_64/include/QtCore/QRect \
@@ -42,6 +45,9 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/6.9.0/mingw_64/include/QtCore/qbytearrayalgorithms.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qbytearraylist.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qbytearrayview.h \
+  E:/qt/6.9.0/mingw_64/include/QtCore/qcalendar.h \
+  E:/qt/6.9.0/mingw_64/include/QtCore/qcborcommon.h \
+  E:/qt/6.9.0/mingw_64/include/QtCore/qcborvalue.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qchar.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qcompare.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qcompare_impl.h \
@@ -58,6 +64,7 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/6.9.0/mingw_64/include/QtCore/qcoreevent.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qdarwinhelpers.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qdatastream.h \
+  E:/qt/6.9.0/mingw_64/include/QtCore/qdatetime.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qdeadlinetimer.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qdebug.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qelapsedtimer.h \
@@ -66,6 +73,7 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/6.9.0/mingw_64/include/QtCore/qexceptionhandling.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qfile.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qfiledevice.h \
+  E:/qt/6.9.0/mingw_64/include/QtCore/qfilesystemwatcher.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qflags.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qfloat16.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qforeach.h \
@@ -80,6 +88,10 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/6.9.0/mingw_64/include/QtCore/qiodevicebase.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qiterable.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qiterator.h \
+  E:/qt/6.9.0/mingw_64/include/QtCore/qjsondocument.h \
+  E:/qt/6.9.0/mingw_64/include/QtCore/qjsonobject.h \
+  E:/qt/6.9.0/mingw_64/include/QtCore/qjsonparseerror.h \
+  E:/qt/6.9.0/mingw_64/include/QtCore/qjsonvalue.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qlatin1stringview.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qline.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qlist.h \
@@ -105,6 +117,7 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/6.9.0/mingw_64/include/QtCore/qprocessordetection.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qrect.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qrefcount.h \
+  E:/qt/6.9.0/mingw_64/include/QtCore/qregularexpression.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qscopedpointer.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qscopeguard.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qset.h \
@@ -154,6 +167,7 @@ D:/game/qt/PhantomGenesis/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/PhantomGenes
   E:/qt/6.9.0/mingw_64/include/QtCore/qtypes.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qurl.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qutf8stringview.h \
+  E:/qt/6.9.0/mingw_64/include/QtCore/quuid.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qvariant.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qvarlengtharray.h \
   E:/qt/6.9.0/mingw_64/include/QtCore/qvector.h \

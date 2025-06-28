@@ -43,14 +43,23 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "",
         "forcePhantomsChasePlayer",
         "startGame",
-        "loadGame",
         "showEdPage",
-        "saveGame",
+        "saveAndLoadGame",
         "goBackToStartPage",
+        "skipEnd",
         "returnToGame",
         "togglePause",
-        "onPlayerDead",
-        "onDeadEndMusicFinished"
+        "showHelpPage",
+        "showSettingsPage",
+        "onEnd",
+        "BgmType",
+        "type",
+        "QWidget*",
+        "page",
+        "bool*",
+        "playedFlag",
+        "onEndFinished",
+        "fromGame"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -60,22 +69,32 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SignalData<void()>(3, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'startGame'
         QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'loadGame'
-        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'showEdPage'
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'saveAndLoadGame'
         QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'saveGame'
-        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'goBackToStartPage'
+        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'skipEnd'
         QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'returnToGame'
         QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'togglePause'
         QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onPlayerDead'
-        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'onDeadEndMusicFinished'
-        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'showHelpPage'
+        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'showSettingsPage'
+        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onEnd'
+        QtMocHelpers::SlotData<void(BgmType, QWidget *, bool *)>(13, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 14, 15 }, { 0x80000000 | 16, 17 }, { 0x80000000 | 18, 19 },
+        }}),
+        // Slot 'onEndFinished'
+        QtMocHelpers::SlotData<void(bool)>(20, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Bool, 21 },
+        }}),
+        // Slot 'onEndFinished'
+        QtMocHelpers::SlotData<void()>(20, 2, QMC::AccessPublic | QMC::MethodCloned, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -102,15 +121,30 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->viewResized(); break;
         case 1: _t->forcePhantomsChasePlayer(); break;
         case 2: _t->startGame(); break;
-        case 3: _t->loadGame(); break;
-        case 4: _t->showEdPage(); break;
-        case 5: _t->saveGame(); break;
-        case 6: _t->goBackToStartPage(); break;
+        case 3: _t->showEdPage(); break;
+        case 4: _t->saveAndLoadGame(); break;
+        case 5: _t->goBackToStartPage(); break;
+        case 6: _t->skipEnd(); break;
         case 7: _t->returnToGame(); break;
         case 8: _t->togglePause(); break;
-        case 9: _t->onPlayerDead(); break;
-        case 10: _t->onDeadEndMusicFinished(); break;
+        case 9: _t->showHelpPage(); break;
+        case 10: _t->showSettingsPage(); break;
+        case 11: _t->onEnd((*reinterpret_cast< std::add_pointer_t<BgmType>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QWidget*>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<bool*>>(_a[3]))); break;
+        case 12: _t->onEndFinished((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
+        case 13: _t->onEndFinished(); break;
         default: ;
+        }
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+        case 11:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 1:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QWidget* >(); break;
+            }
+            break;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
@@ -140,14 +174,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 14;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
-            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 11;
+        if (_id < 14)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 14;
     }
     return _id;
 }

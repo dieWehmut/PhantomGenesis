@@ -6,7 +6,7 @@
 #include <QPixmap>
 
 KingWave::KingWave(const QPointF& dir, int atk, QObject* parent)
-    : Wave(dir, atk, 600, 12.0f, QPixmap("Resource/kingWave.png").scaled(128,128), parent)
+    : Wave(dir, atk, 1000, 15.0f, QPixmap("Resource/kingWave.png").scaled(128,128), parent)
 {
     setTargetType(None); // 可伤害所有非King对象
 }
@@ -37,7 +37,7 @@ void KingWave::handleCollision(QGraphicsItem* item)
         qreal len = std::hypot(knockbackDir.x(), knockbackDir.y());
         if (len > 1e-3) {
             knockbackDir /= len;
-            qreal knockbackDist = 400.0;//击退距离
+            qreal knockbackDist = 200.0;//击退距离
             player->setPos(player->pos() + knockbackDir * knockbackDist);
         }
         deleteLater();
@@ -48,4 +48,10 @@ void KingWave::handleCollision(QGraphicsItem* item)
         lurk->setHp(lurk->getHp() - getAtk());
         deleteLater();
     }
+}
+void KingWave::startTimers() {
+    if (moveTimer) moveTimer->start();
+}
+void KingWave::stopTimers() {
+    if (moveTimer) moveTimer->stop();
 }

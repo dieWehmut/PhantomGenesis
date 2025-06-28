@@ -1,0 +1,185 @@
+{
+    "bgmType": 2,
+    "countdownSeconds": 222,
+    "curMapId": 0,
+    "dropItems": [
+    ],
+    "flamePhantoms": [
+        {
+            "atk": 10,
+            "atkRange": 500,
+            "hp": 10000,
+            "speed": 2,
+            "x": 11493.944937469758,
+            "y": 8799.51047262561
+        },
+        {
+            "atk": 10,
+            "atkRange": 500,
+            "hp": 10000,
+            "speed": 2,
+            "x": 11257.091098847695,
+            "y": 8445.425371089324
+        },
+        {
+            "atk": 10,
+            "atkRange": 500,
+            "hp": 10000,
+            "speed": 2,
+            "x": 10812.295157773,
+            "y": 7780.4768236033415
+        }
+    ],
+    "inSecondCountdown": false,
+    "lurkPhantoms": [
+        {
+            "atk": 200,
+            "atkRange": 300,
+            "hp": 5000,
+            "speed": 4,
+            "x": 12731.203449411913,
+            "y": 11704.647173458967
+        },
+        {
+            "atk": 200,
+            "atkRange": 300,
+            "hp": 5000,
+            "speed": 4,
+            "x": 12988.798848924445,
+            "y": 8110.343728218333
+        },
+        {
+            "atk": 200,
+            "atkRange": 300,
+            "hp": 5000,
+            "speed": 4,
+            "x": 12826.400838583519,
+            "y": 7563.241737917945
+        }
+    ],
+    "player_atk": 500,
+    "player_atkCD": 1000,
+    "player_atkRange": 100,
+    "player_hp": 100000,
+    "player_maxHp": 100000,
+    "player_sightRange": 200,
+    "player_speed": 10,
+    "player_teleportCount": 0,
+    "player_waveAoeRadius": 100,
+    "player_waveSpeed": 12,
+    "player_x": 12800,
+    "player_y": 10752,
+    "save_time": "2025-06-29 02:20:09",
+    "waves": [
+        {
+            "angle": 180,
+            "atk": 200,
+            "curDistance": 80,
+            "direction_x": 0.1852201978688145,
+            "direction_y": 0.982697042990075,
+            "maxDistance": 300,
+            "type": "Wave",
+            "x": 13047.371817672467,
+            "y": 8222.439709276054
+        },
+        {
+            "angle": 180,
+            "atk": 200,
+            "curDistance": 80,
+            "direction_x": -0.33094312484666366,
+            "direction_y": 0.9436507023876609,
+            "maxDistance": 300,
+            "type": "Wave",
+            "x": 13006.078751855226,
+            "y": 8219.316002027865
+        },
+        {
+            "angle": 180,
+            "atk": 200,
+            "curDistance": 80,
+            "direction_x": 0.055367910272277845,
+            "direction_y": 0.9984660207098092,
+            "maxDistance": 300,
+            "type": "Wave",
+            "x": 13036.983634664752,
+            "y": 8223.701227493628
+        },
+        {
+            "angle": 180,
+            "atk": 200,
+            "curDistance": 80,
+            "direction_x": -0.20494072756777768,
+            "direction_y": 0.9787743857416733,
+            "maxDistance": 300,
+            "type": "Wave",
+            "x": 13016.158943637553,
+            "y": 8222.125896696181
+        },
+        {
+            "angle": 180,
+            "atk": 200,
+            "curDistance": 125,
+            "direction_x": -0.07543173761990259,
+            "direction_y": 0.9971509679881188,
+            "maxDistance": 300,
+            "type": "Wave",
+            "x": 13023.125234640487,
+            "y": 8268.467816835373
+        },
+        {
+            "angle": 270,
+            "atk": 200,
+            "curDistance": 125,
+            "direction_x": -0.47685823476506595,
+            "direction_y": -0.8789802181714588,
+            "maxDistance": 300,
+            "type": "Wave",
+            "x": 13620.83227842986,
+            "y": 14224.463607391464
+        },
+        {
+            "angle": 270,
+            "atk": 200,
+            "curDistance": 125,
+            "direction_x": 0.02651876377537855,
+            "direction_y": -0.9996483157430046,
+            "maxDistance": 300,
+            "type": "Wave",
+            "x": 13683.754403247392,
+            "y": 14209.380095195058
+        },
+        {
+            "angle": 270,
+            "atk": 200,
+            "curDistance": 125,
+            "direction_x": -0.35804870554693996,
+            "direction_y": -0.9337029101679831,
+            "maxDistance": 300,
+            "type": "Wave",
+            "x": 13635.683469582089,
+            "y": 14217.62327089192
+        },
+        {
+            "angle": 270,
+            "atk": 200,
+            "curDistance": 125,
+            "direction_x": -0.10418839613803707,
+            "direction_y": -0.9945575790823694,
+            "maxDistance": 300,
+            "type": "Wave",
+            "x": 13667.416008258213,
+            "y": 14210.016437277602
+        },
+        {
+            "angle": 270,
+            "atk": 200,
+            "curDistance": 125,
+            "direction_x": -0.23311286370705034,
+            "direction_y": -0.9724496865001799,
+            "maxDistance": 300,
+            "type": "Wave",
+            "x": 13651.300449812104,
+            "y": 14212.779923850405
+        }
+    ]
+}

@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QGraphicsDropShadowEffect>
 #include "GameManager.h"
 #include <QTimer>
 #include <QEvent>
@@ -13,6 +14,9 @@
 #include<Qicon>
 #include <QMovie>
 #include <QLabel>
+#include <QFile>
+#include <QDataStream>
+#include <QMessageBox>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -23,7 +27,22 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     setWindowTitle("PhantomGenesis");
     setWindowIcon(QIcon("Resource/PhantomGenesis.ico"));
+
     ui->stackedWidget->setCurrentIndex(0);//初始界面
+    ui->label->setText("PhantomGenesis");
+    ui->label->setStyleSheet(
+        "background: transparent;"
+        "font-size:40px;"
+        "font-weight:bold;"
+        "color: #00ffe7;"
+        "letter-spacing:2px;"
+        "border: none;"
+    );
+    auto *effect = new QGraphicsDropShadowEffect(this);
+    effect->setBlurRadius(32);
+    effect->setColor(QColor("#ff00cc")); 
+    effect->setOffset(0, 0);
+    ui->label->setGraphicsEffect(effect);
     //放音乐
     bgmPlayer = new QMediaPlayer(this);
     audioOutput = new QAudioOutput(this);
@@ -34,7 +53,7 @@ MainWindow::MainWindow(QWidget *parent)
     playBgm(BgmType::StartPage);//开始界面音乐
     ui->graphicsView->installEventFilter(this);
     ui->graphicsView->viewport()->installEventFilter(this);
-    setupGifBackground();
+    setupBackground();
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     //各种按钮与界面的连接
     connect(ui->startBtn, &QPushButton::clicked, this, &MainWindow::startGame);
@@ -43,25 +62,288 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->backBtn_2, &QPushButton::clicked, this, &MainWindow::goBackToStartPage);
     connect(ui->backBtn_3, &QPushButton::clicked, this, &MainWindow::goBackToStartPage);
     connect(ui->backBtn_4, &QPushButton::clicked, this, &MainWindow::goBackToStartPage);
-    connect(ui->saveBtn, &QPushButton::clicked, this, &MainWindow::saveGame);
-    connect(ui->loadBtn, &QPushButton::clicked, this, &MainWindow::loadGame);
-    connect(ui->loadBtn_2, &QPushButton::clicked, this, &MainWindow::loadGame);
+    connect(ui->backBtn_5, &QPushButton::clicked, this, &MainWindow::goBackToStartPage);
+    connect(ui->skipBtn, &QPushButton::clicked, this, &MainWindow::skipEnd);
+    connect(ui->skipBtn_2, &QPushButton::clicked, this, &MainWindow::skipEnd);
+    connect(ui->skipBtn_3, &QPushButton::clicked, this, &MainWindow::skipEnd);
+    connect(ui->skipBtn_4, &QPushButton::clicked, this, &MainWindow::skipEnd);
+    connect(ui->saveBtn, &QPushButton::clicked, this, &MainWindow::saveAndLoadGame);
+    connect(ui->loadBtn, &QPushButton::clicked, this, &MainWindow::saveAndLoadGame);
+    connect(ui->loadBtn_2, &QPushButton::clicked, this, &MainWindow::saveAndLoadGame);
     connect(ui->edBtn, &QPushButton::clicked, this, &MainWindow::showEdPage);
     connect(ui->pauseBtn, &QPushButton::clicked, this, &MainWindow::togglePause);
     connect(ui->continueBtn, &QPushButton::clicked, this, &MainWindow::returnToGame);
+    connect(ui->continueBtn_2, &QPushButton::clicked, this, &MainWindow::returnToGame);
+    connect(ui->continueBtn_3, &QPushButton::clicked, this, &MainWindow::returnToGame);
+    connect(ui->continueBtn_4, &QPushButton::clicked, this, &MainWindow::returnToGame);
+    connect(ui->continueBtn_5, &QPushButton::clicked, this, &MainWindow::returnToGame);
+    connect(ui->helpBtn, &QPushButton::clicked, this, &MainWindow::showHelpPage);
+    connect(ui->helpBtn_2, &QPushButton::clicked, this, &MainWindow::showHelpPage);
+    connect(ui->settingBtn, &QPushButton::clicked, this, &MainWindow::showSettingsPage);
+    connect(ui->settingBtn_2, &QPushButton::clicked, this, &MainWindow::showSettingsPage);
+    connect(ui->deBtn, &QPushButton::clicked, this, [this]() {
+        onEnd(BgmType::DeadEnd, ui->dePage, &deadEndPlayed);
+    });
+    connect(ui->leBtn, &QPushButton::clicked, this, [this]() {
+        onEnd(BgmType::LostEnd, ui->lePage, &lostEndPlayed);
+    });
+    connect(ui->teBtn, &QPushButton::clicked, this, [this]() {
+        onEnd(BgmType::TrueEnd, ui->tePage, &trueEndPlayed);
+    });
+    connect(ui->feBtn, &QPushButton::clicked, this, [this]() {
+        onEnd(BgmType::FakeEnd, ui->fePage, &fakeEndPlayed);
+    });
+    connect(ui->stackedWidget, &QStackedWidget::currentChanged, this, [this](int idx) {
+        if (ui->stackedWidget->widget(idx) == ui->gamePage) {
+            if (gameStarted && gameManager) {
+                if (gameManager->isSecondCountdown()) {
+                    playBgm(BgmType::Trapped1);
+                } else {
+                    playBgm(BgmType::Trapped0);
+                }
+            }
+        }
+    });
+    for (int i = 0; i < 8; ++i) {
+        QString btnName = QString("archive_%1").arg(i + 1);
+        QPushButton* btn = findChild<QPushButton*>(btnName);
+        if (btn) {
+            connect(btn, &QPushButton::clicked, this, [this, i]() { onSaveSlotClicked(i); });
+        }
+    }
+    connect(ui->stackedWidget, &QStackedWidget::currentChanged, this, [this](int idx) {//自动保存
+        QWidget* cur = ui->stackedWidget->widget(idx);
+        static int lastIndex = ui->stackedWidget->currentIndex();
+        QWidget* lastWidget = ui->stackedWidget->widget(lastIndex);
+        if (lastWidget == ui->gamePage && cur != ui->gamePage) {
+            QFile::remove("last_game.json");
+            saveLastGame();
+        }
+        lastIndex = idx;
+    });
+    QPushButton* confirmBtn = findChild<QPushButton*>("confirmBtn");
+    QPushButton* cancelBtn = findChild<QPushButton*>("cancelBtn");
+    if (confirmBtn) connect(confirmBtn, &QPushButton::clicked, this, &MainWindow::onConfirmSave);
+    if (cancelBtn) connect(cancelBtn, &QPushButton::clicked, this, &MainWindow::onCancelSave);
+
+
+
+    ui->continueBtn->setEnabled(false);
+    ui->continueBtn_2->setEnabled(false);
+    ui->continueBtn_3->setEnabled(false);
+    ui->continueBtn_4->setEnabled(false);
+    ui->continueBtn_5->setEnabled(false); 
+
+    //按钮样式
+    QString BtnStyle = R"(
+        QPushButton {
+            background: #cba0aa;
+            color: #222;
+            border: 2px solid #bfa6ff;
+            border-radius: 18px;
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            padding: 8px 0;
+        }
+        QPushButton:hover {
+            background: #e0c3fc;
+            color: #000;
+            border: 2px solid #aeefff;
+        }
+        QPushButton:pressed {
+            background: #bfa6ff;
+            color: #000;
+            border: 2px solid #aeefff;
+        }
+    )";
+    QList<QPushButton*> allBtns = {
+        // startPage
+        ui->startBtn,
+        ui->continueBtn_2,
+        ui->loadBtn,
+        ui->helpBtn_2,
+        ui->edBtn,
+        ui->settingBtn_2,
+        ui->exitBtn,
+        // gamePage
+        ui->backBtn_4,
+        ui->saveBtn,
+        ui->loadBtn_2,
+        ui->pauseBtn,
+        ui->helpBtn,
+        ui->settingBtn,
+        ui->continueBtn,
+        // saveAndLoadPage
+        ui->backBtn_3,
+        ui->continueBtn_5,
+        ui->archive_1,
+        ui->archive_2,
+        ui->archive_3,
+        ui->archive_4,
+        ui->archive_5,
+        ui->archive_6,
+        ui->archive_7,
+        ui->archive_8,
+        // 存档确认弹窗
+        findChild<QPushButton*>("confirmBtn"),
+        findChild<QPushButton*>("cancelBtn"),
+        // settingsPage
+        ui->backBtn_2,
+        ui->continueBtn_3,
+        // helpPage
+        ui->backBtn_5,
+        ui->continueBtn_4,
+        // edPage
+        ui->backBtn,
+        ui->leBtn,
+        ui->teBtn,
+        ui->feBtn,
+        ui->deBtn,
+        // edScene/结局页面
+        ui->skipBtn,
+        ui->skipBtn_2,
+        ui->skipBtn_3,
+        ui->skipBtn_4
+    };
+    for (auto btn : allBtns) {
+        if (btn) {
+            btn->setStyleSheet(BtnStyle);
+            auto *effect = new QGraphicsDropShadowEffect(btn);
+            effect->setBlurRadius(18);
+            effect->setColor(QColor("#00ffe7"));
+            effect->setOffset(0, 0);
+            btn->setGraphicsEffect(effect);
+        }
+    }
+    QString LabelStyle = R"(
+        color: #00ffe7;
+        background: transparent;
+        font-size: 32px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        border: none;
+    )";
+    QList<QLabel*> allLabels = {
+        ui->countdownLabel,
+        ui->endingCounterLabel
+    };
+    for (auto label : allLabels) {
+        if (label) {
+            label->setStyleSheet(LabelStyle);
+            auto *effect = new QGraphicsDropShadowEffect(label);
+            effect->setBlurRadius(24);
+            effect->setColor(QColor("#00ffe7"));
+            effect->setOffset(0, 0);
+            label->setGraphicsEffect(effect);
+        }
+    }
+    QWidget* confirmWidget = findChild<QWidget*>("confirmWidget");
+    if (confirmWidget) {
+        confirmWidget->setStyleSheet(R"(
+            background-color: rgba(255,255,255,0.92);
+            border-radius: 24px;
+            border: 3px solid #bfa6ff;
+        )");
+        // 让弹窗内按钮和主按钮风格一致
+        QPushButton* confirmBtn = confirmWidget->findChild<QPushButton*>("confirmBtn");
+        QPushButton* cancelBtn = confirmWidget->findChild<QPushButton*>("cancelBtn");
+        QString BtnStyle = R"(
+            QPushButton {
+                background: #cba0aa;
+                color: #222;
+                border: 2px solid #bfa6ff;
+                border-radius: 18px;
+                font-size: 26px;
+                font-weight: bold;
+                letter-spacing: 2px;
+                padding: 8px 0;
+            }
+            QPushButton:hover {
+                background: #e0c3fc;
+                color: #000;
+                border: 2px solid #aeefff;
+            }
+            QPushButton:pressed {
+                background: #bfa6ff;
+                color: #000;
+                border: 2px solid #aeefff;
+            }
+        )";
+        if (confirmBtn) confirmBtn->setStyleSheet(BtnStyle);
+        if (cancelBtn) cancelBtn->setStyleSheet(BtnStyle);
+
+        // 设置确认文本样式
+        QLabel* confirmText = confirmWidget->findChild<QLabel*>("confirmText");
+        if (confirmText) {
+            auto *effect = new QGraphicsDropShadowEffect(confirmText);
+            effect->setBlurRadius(16);
+            effect->setColor(QColor("#bfa6ff"));
+            effect->setOffset(0, 0);
+            confirmText->setGraphicsEffect(effect);
+        }
+    }
+    loadEndingsRecord();
+    updateEndingButtonsAndCounter();
+    ui->deBtn->setVisible(false);
+    ui->leBtn->setVisible(false);
+    ui->teBtn->setVisible(false);
+    ui->feBtn->setVisible(false);
+    endingsWatcher = new QFileSystemWatcher(this);
+    if (QFile::exists("endings.json")) {
+        endingsWatcher->addPath("endings.json");
+    }
+    connect(endingsWatcher, &QFileSystemWatcher::fileChanged, this, [this](const QString& path){
+        if (path == "endings.json") {
+            loadEndingsRecord();
+            updateEndingButtonsAndCounter();
+            if (!endingsWatcher->files().contains("endings.json") && QFile::exists("endings.json")) {
+                endingsWatcher->addPath("endings.json");
+            }
+        }
+    });
+    bool hasLastGame = QFile::exists("last_game.json");
+    ui->continueBtn->setEnabled(hasLastGame);
+    ui->continueBtn_2->setEnabled(hasLastGame);
+    ui->continueBtn_3->setEnabled(hasLastGame);
+    ui->continueBtn_4->setEnabled(hasLastGame);
+    ui->continueBtn_5->setEnabled(hasLastGame);
+
 }
 
 MainWindow::~MainWindow()
 {
+    QFile::remove("last_game.json");
+    saveLastGame();//先存个档
     delete ui;
-    delete gameManager;
-    delete backgroundMovie;
-    delete bgmPlayer;
-    delete audioOutput;
 }
+
+void MainWindow::showHelpPage() {
+    ui->stackedWidget->setCurrentWidget(ui->helpPage);
+    if (gameManager && gameStarted && !gameManager->isGamePaused()) {
+        gameManager->pauseGame();
+        ui->pauseBtn->setText("继续");
+        if (bgmPlayer) bgmPlayer->pause();
+        gameManager->stopCountdown(); 
+    }
+}
+void MainWindow::showSettingsPage() {
+    ui->stackedWidget->setCurrentWidget(ui->settingsPage);
+    if (gameManager && gameStarted && !gameManager->isGamePaused()) {
+        gameManager->pauseGame();
+        ui->pauseBtn->setText("继续");
+        if (bgmPlayer) bgmPlayer->pause();
+        gameManager->stopCountdown(); 
+    }
+}
+
 void MainWindow::playBgm(BgmType type) {
+    
     if (currentBgm == type) return;
     currentBgm = type;
+    if (type == BgmType::Trapped0 || type == BgmType::Trapped1) {
+        lastGameBgm = type;
+    }
     if (bgmPlayer) {
         bgmPlayer->stop();
     }
@@ -69,8 +351,23 @@ void MainWindow::playBgm(BgmType type) {
     case BgmType::StartPage:
         bgmPlayer->setSource(QUrl::fromLocalFile("Resource/startPage.mp3"));
         break;
-    case BgmType::GamePage:
-        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/trapped0.flac"));
+    case BgmType::Trapped0:
+        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/trapped0.mp3"));
+        break;
+    case BgmType::Trapped1:
+        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/trapped1.mp3"));
+        break;
+    case BgmType::DeadEnd:
+        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/deadEnd.mp3"));
+        break;
+    case BgmType::LostEnd:
+        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/lostEnd.mp3"));
+        break;
+    case BgmType::TrueEnd:
+        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/trueEnd.mp3"));
+        break;
+    case BgmType::FakeEnd:
+        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/fakeEnd.mp3"));
         break;
     default:
         bgmPlayer->setSource(QUrl());
@@ -80,44 +377,28 @@ void MainWindow::playBgm(BgmType type) {
         bgmPlayer->play();
     }
 }
+
+
 void MainWindow::cleanupGame() {//进入ed前的准备
+    if (gameManager) {
+        disconnect(gameManager, nullptr, this, nullptr);
+        gameManager->pauseGame();
+    }
+    if (ui->graphicsView->scene()) {
+        ui->graphicsView->setScene(nullptr);
+    }
     if (gameManager) {
         delete gameManager;
         gameManager = nullptr;
     }
     map = nullptr;
     gameStarted = false;
-    if (ui->graphicsView->scene()) {
-        ui->graphicsView->setScene(nullptr);
-    }
-}
-void MainWindow::onPlayerDead() {
-    if (deadEndPlayed) return;//只放一次
-    deadEndPlayed = true;
-    cleanupGame();
-    ui->stackedWidget->setCurrentWidget(ui->edScene);
-    ui->stackedWidget_2->setCurrentWidget(ui->dePage);
-    bgmPlayer->stop();
-    bgmPlayer->setSource(QUrl::fromLocalFile("Resource/deadEnd.flac"));
-    bgmPlayer->setLoops(1);
-    bgmPlayer->play();
-    connect(bgmPlayer, &QMediaPlayer::mediaStatusChanged, this, [this](QMediaPlayer::MediaStatus status){
-        if (status == QMediaPlayer::EndOfMedia) {
-            onDeadEndMusicFinished();
-        }
-    });
 }
 
-void MainWindow::onDeadEndMusicFinished() {
-    bgmPlayer->setLoops(QMediaPlayer::Infinite);
-    ui->stackedWidget->setCurrentWidget(ui->startPage);
-    playBgm(BgmType::StartPage);
-    deadEndPlayed = false;
-    disconnect(bgmPlayer, nullptr, this, nullptr);
-}
+
 
 void MainWindow::adjustBackgroundLabel() {
-    if (backgroundLabel && ui->stackedWidget->currentIndex() == 0) {
+    if (startPageBgLabel && ui->stackedWidget->currentIndex() == 0) {
         int pageWidth = ui->startPage->width();
         int pageHeight = ui->startPage->height();
         int gifWidth, gifHeight;
@@ -130,7 +411,7 @@ void MainWindow::adjustBackgroundLabel() {
         }
         int x = (pageWidth - gifWidth) / 2;
         int y = (pageHeight - gifHeight) / 2;
-        backgroundLabel->setGeometry(x, y, gifWidth, gifHeight);
+        startPageBgLabel->setGeometry(x, y, gifWidth, gifHeight);
     }
 }
 void MainWindow::maintainAspectRatio(QResizeEvent *event) {
@@ -155,19 +436,46 @@ void MainWindow::maintainAspectRatio(QResizeEvent *event) {
     
     resizing = false;
 }
-void MainWindow::setupGifBackground() {
-    backgroundLabel = new QLabel(ui->startPage);
-    backgroundMovie = new QMovie("Resource/startPage.gif");
-    backgroundMovie->setCacheMode(QMovie::CacheAll);
-    backgroundLabel->setMovie(backgroundMovie);
-    backgroundLabel->setAlignment(Qt::AlignCenter);
-    backgroundLabel->setScaledContents(true);
-    backgroundLabel->setGeometry(0, 0, ui->startPage->width(), ui->startPage->height());
-    backgroundLabel->lower();
-    backgroundMovie->start();
+void MainWindow::setupBackground() {
+    // 开始界面GIF背景
+    startPageBgLabel = new QLabel(ui->startPage);
+    startPageBgMovie = new QMovie("Resource/startPage.gif");
+    startPageBgMovie->setCacheMode(QMovie::CacheAll);
+    startPageBgLabel->setMovie(startPageBgMovie);
+    startPageBgLabel->setAlignment(Qt::AlignCenter);
+    startPageBgLabel->setScaledContents(true);
+    startPageBgLabel->setGeometry(0, 0, ui->startPage->width(), ui->startPage->height());
+    startPageBgLabel->lower();
+    startPageBgMovie->start();
     adjustBackgroundLabel();
     QTimer::singleShot(0, this, [this](){ adjustBackgroundLabel(); });
+
+    // 其他页面图片背景
+    saveAndLoadPageBgLabel = new QLabel(ui->saveAndLoadPage);
+    saveAndLoadPageBgLabel->setPixmap(QPixmap("Resource/saveAndLoadPage.png"));
+    saveAndLoadPageBgLabel->setScaledContents(true);
+    saveAndLoadPageBgLabel->setGeometry(ui->saveAndLoadPage->rect());
+    saveAndLoadPageBgLabel->lower();
+
+    edPageBgLabel = new QLabel(ui->edPage);
+    edPageBgLabel->setPixmap(QPixmap("Resource/edPage.png"));
+    edPageBgLabel->setScaledContents(true);
+    edPageBgLabel->setGeometry(ui->edPage->rect());
+    edPageBgLabel->lower();
+
+    settingsPageBgLabel = new QLabel(ui->settingsPage);
+    settingsPageBgLabel->setPixmap(QPixmap("Resource/settingsPage.png"));
+    settingsPageBgLabel->setScaledContents(true);
+    settingsPageBgLabel->setGeometry(ui->settingsPage->rect());
+    settingsPageBgLabel->lower();
+
+    helpPageBgLabel = new QLabel(ui->helpPage);
+    helpPageBgLabel->setPixmap(QPixmap("Resource/helpPage.png"));
+    helpPageBgLabel->setScaledContents(true);
+    helpPageBgLabel->setGeometry(ui->helpPage->rect());
+    helpPageBgLabel->lower();
 }
+
 bool MainWindow::eventFilter(QObject* obj, QEvent* event)
 {
     if ((obj == ui->graphicsView || obj == ui->graphicsView->viewport()) && 
@@ -198,50 +506,63 @@ bool MainWindow::eventFilter(QObject* obj, QEvent* event)
     return QMainWindow::eventFilter(obj, event);
 }
 
+
+
 void MainWindow::startGame() {
-    ui->stackedWidget->setCurrentIndex(1);
-    playBgm(BgmType::GamePage);
-    if (!gameManager) {
-        gameManager = new GameManager(ui->graphicsView, this);
-        connect(gameManager, &GameManager::playerDead, this, &MainWindow::onPlayerDead);
-        gameManager->startGame();
-        gameStarted = true;
-    } else if (gameStarted) {
-        returnToGame();
-    } else {
-        gameManager->startGame();
-        gameStarted = true;
+    QMediaPlayer* clickPlayer = new QMediaPlayer(this);
+    QAudioOutput* clickAudio = new QAudioOutput(this);
+    clickPlayer->setAudioOutput(clickAudio);
+    clickAudio->setVolume(1.0);
+    clickPlayer->setSource(QUrl::fromLocalFile("Resource/click.wav"));
+    connect(clickPlayer, &QMediaPlayer::mediaStatusChanged, clickPlayer, [clickPlayer, clickAudio](QMediaPlayer::MediaStatus status){
+        if (status == QMediaPlayer::EndOfMedia || status == QMediaPlayer::InvalidMedia) {
+            clickPlayer->deleteLater();
+            clickAudio->deleteLater();
+        }
+    });
+    clickPlayer->play();
+    deadEndPlayed = false;
+    lostEndPlayed = false;
+    trueEndPlayed = false;
+    fakeEndPlayed = false;
+    ui->stackedWidget->setCurrentWidget(ui->gamePage);
+    playBgm(BgmType::Trapped0);
+    lastGameBgm = BgmType::Trapped0;
+    if (gameManager) {
+        delete gameManager;
+        gameManager = nullptr;
     }
-    ui->pauseBtn->setText("暂停");//显示暂停
-    ui->continueBtn->hide();//隐藏继续按钮
-    // 倒计时初始化
-    setCountdownTimer(30);
-    portalEnabled = true;
-    ui->countdownLabel->setText("00:30");
-    if (!countdownTimer) {
-        countdownTimer = new QTimer(this);
-        connect(countdownTimer, &QTimer::timeout, this, [this]() {
-            if (countdownSeconds > 0) {
-                countdownSeconds--;
-                int min = countdownSeconds / 60;
-                int sec = countdownSeconds % 60;
-                ui->countdownLabel->setText(QString("%1:%2").arg(min, 2, 10, QChar('0')).arg(sec, 2, 10, QChar('0')));
-                if (countdownSeconds == 0) {
-                    portalEnabled = false;
-                    emit forcePhantomsChasePlayer();
-                    if (bgmPlayer) {
-                        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/trapped1.flac"));
-                        bgmPlayer->play();
-                    }
-                    if (gameManager) {
-                        gameManager->accelerateAllPhantoms();
-                    }
-                }
-            }
-        });
+    ui->continueBtn->setEnabled(true);
+    ui->continueBtn_2->setEnabled(true);
+    ui->continueBtn_3->setEnabled(true);
+    ui->continueBtn_4->setEnabled(true);
+    ui->continueBtn_5->setEnabled(true); 
+    gameManager = new GameManager(ui->graphicsView, this);
+    gameManager->startGame();
+    gameStarted = true;
+
+    // 新增：如果没有last_game.json，保存一次
+    if (!QFile::exists("last_game.json")) {
+        gameManager->setSavedBgmType(static_cast<int>(currentBgm));
+        gameManager->saveToJson("last_game.json");
     }
-    countdownTimer->start(1000);
+
+    ui->pauseBtn->setText("暂停");
+    ui->continueBtn->hide();
+    connect(gameManager, &GameManager::countdownChanged, this, [this](int seconds) {
+        int min = seconds / 60;
+        int sec = seconds % 60;
+        ui->countdownLabel->setText(QString("%1:%2").arg(min, 2, 10, QChar('0')).arg(sec, 2, 10, QChar('0')));
+    });
+    connect(gameManager, &GameManager::countdownFinished, this, [this]() {
+        onEnd(BgmType::FakeEnd, ui->fePage, &fakeEndPlayed);
+    });
+    int seconds = gameManager->getCountdown();
+    int min = seconds / 60;
+    int sec = seconds % 60;
+    ui->countdownLabel->setText(QString("%1:%2").arg(min, 2, 10, QChar('0')).arg(sec, 2, 10, QChar('0')));
 }
+
 void MainWindow::togglePause() {
     if (gameManager) {
         if (gameManager->isGamePaused()) {
@@ -251,6 +572,7 @@ void MainWindow::togglePause() {
             if (bgmPlayer && bgmPlayer->source().isValid()) {
                 bgmPlayer->play();
             }
+            gameManager->startCountdown();
         } else {
             gameManager->pauseGame();
             ui->pauseBtn->setText("继续");
@@ -258,25 +580,37 @@ void MainWindow::togglePause() {
             if (bgmPlayer) {
                 bgmPlayer->pause();
             }
+            gameManager->stopCountdown();
         }
     }
 }
+
 
 void MainWindow::changeEvent(QEvent *event) {
     if (event->type() == QEvent::ActivationChange) {
         if (gameManager && gameStarted) { 
             if (isActiveWindow()) {
-                if (gameManager->isGamePaused()) { 
-                    gameManager->resumeGame();
-                    ui->pauseBtn->setText("暂停"); 
-                    ui->continueBtn->hide(); 
-                    if (bgmPlayer && bgmPlayer->source().isValid()) {
-                        bgmPlayer->play();
+                // 只在gamePage时自动继续
+                if (ui->stackedWidget->currentWidget() == ui->gamePage) {
+                    if (gameManager->isGamePaused()) { 
+                        gameManager->resumeGame();
+                        gameManager->startCountdown();
+                        ui->pauseBtn->setText("暂停"); 
+                        ui->continueBtn->hide(); 
+                        if (bgmPlayer && bgmPlayer->source().isValid()) {
+                            bgmPlayer->play();
+                        }
+                    }
+                } else {
+                    // 只恢复焦点，不自动继续
+                    if (ui->graphicsView) {
+                        ui->graphicsView->setFocus();
                     }
                 }
             } else {
                 if (!gameManager->isGamePaused()) {
                     gameManager->pauseGame();
+                    gameManager->stopCountdown();
                     ui->pauseBtn->setText("继续"); 
                     ui->continueBtn->show(); 
                     if (bgmPlayer) {
@@ -290,52 +624,107 @@ void MainWindow::changeEvent(QEvent *event) {
 }
 
 void MainWindow::returnToGame() {
-    ui->stackedWidget->setCurrentIndex(1);
-    playBgm(BgmType::GamePage);
-    if (gameManager) {
-        ui->graphicsView->setGeometry(0, 0, ui->stackedWidget->width(), ui->stackedWidget->height());
-        ui->graphicsView->setFocusPolicy(Qt::NoFocus);
-        emit viewResized();
-        if (gameStarted) {
-            gameManager->resumeGame();
-            ui->pauseBtn->setText("暂停");
-            if (bgmPlayer && bgmPlayer->playbackState() != QMediaPlayer::PlayingState) {
-                bgmPlayer->play();
-            }
+    // 如果有last_game.json，直接读取
+    if (QFile::exists("last_game.json")) {
+        if (gameManager) {
+            delete gameManager;
+            gameManager = nullptr;
         }
+        ui->stackedWidget->setCurrentWidget(ui->gamePage);
+        gameManager = new GameManager(ui->graphicsView, this);
+        gameManager->startGame();
+        gameManager->loadFromJson("last_game.json");
+        gameStarted = true;
+
+        // 重新连接信号槽
+        connect(gameManager, &GameManager::countdownChanged, this, [this](int seconds) {
+            int min = seconds / 60;
+            int sec = seconds % 60;
+            ui->countdownLabel->setText(QString("%1:%2").arg(min, 2, 10, QChar('0')).arg(sec, 2, 10, QChar('0')));
+        });
+        connect(gameManager, &GameManager::countdownFinished, this, [this]() {
+            onEnd(BgmType::FakeEnd, ui->fePage, &fakeEndPlayed);
+        });
+
+        // 读取BGM类型并播放
+        int bgmType = gameManager->getSavedBgmType();
+        playBgm(static_cast<BgmType>(bgmType));
+        lastGameBgm = static_cast<BgmType>(bgmType);
+
+        ui->pauseBtn->setText("暂停");
+        ui->continueBtn->hide();
+        if (bgmPlayer && bgmPlayer->source().isValid()) {
+            bgmPlayer->play();
+        }
+        gameManager->resumeGame();
+        gameManager->startCountdown();
+        Player* player = gameManager->getPlayer();
+        if (player) {
+            player->setFocus();
+        }
+    } else {
+        // 没有last_game.json，等同于新的开始：新建并保存
+        if (gameManager) {
+            delete gameManager;
+            gameManager = nullptr;
+        }
+        ui->stackedWidget->setCurrentWidget(ui->gamePage);
+        gameManager = new GameManager(ui->graphicsView, this);
+        gameManager->startGame();
+        gameStarted = true;
+        gameManager->setSavedBgmType(static_cast<int>(currentBgm));
+        gameManager->saveToJson("last_game.json");
+
+        ui->pauseBtn->setText("暂停");
+        ui->continueBtn->hide();
+        if (bgmPlayer && bgmPlayer->source().isValid()) {
+            bgmPlayer->play();
+        }
+        gameManager->resumeGame();
+        gameManager->startCountdown();
         Player* player = gameManager->getPlayer();
         if (player) {
             player->setFocus();
         }
     }
-    ui->continueBtn->hide();
 }
-void MainWindow::loadGame(){//读取，先简单实现
-    int prevIndex = ui->stackedWidget->currentIndex();
-    ui->stackedWidget->setCurrentIndex(3);
-}
+
 
 void MainWindow::showEdPage(){//ED鉴赏
     int prevIndex = ui->stackedWidget->currentIndex();
-    ui->stackedWidget->setCurrentIndex(4);
+    ui->stackedWidget->setCurrentWidget(ui->edPage);
+    updateEndingButtonsAndCounter();
 }
 
-void MainWindow::saveGame(){//保存
-    int prevIndex = ui->stackedWidget->currentIndex();
-    ui->stackedWidget->setCurrentIndex(2);
-}
+
 
 void MainWindow::goBackToStartPage(){//返回标题
     if (gameManager && gameStarted) {
+        lastGameBgm = currentBgm;
+        gameManager->pauseGame(); 
     }
-    ui->stackedWidget->setCurrentIndex(0);
-    playBgm(BgmType::StartPage); 
+    ui->stackedWidget->setCurrentWidget(ui->startPage);
+    playBgm(BgmType::StartPage);
 }
+void MainWindow::skipEnd() {//跳过结局
+    ui->stackedWidget->setCurrentIndex(0);
+    playBgm(BgmType::StartPage);
+    deadEndPlayed = false;
+    lostEndPlayed = false;
+    trueEndPlayed = false;
+    fakeEndPlayed = false;
+}
+
 
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
     QMainWindow::resizeEvent(event);
-
+    QRect fullRect = this->rect(); // 获取整个主窗口区域
+    if (startPageBgLabel) startPageBgLabel->setGeometry(ui->startPage->rect()); 
+    if (saveAndLoadPageBgLabel) saveAndLoadPageBgLabel->setGeometry(fullRect); 
+    if (edPageBgLabel) edPageBgLabel->setGeometry(fullRect);
+    if (settingsPageBgLabel) settingsPageBgLabel->setGeometry(fullRect);
+    if (helpPageBgLabel) helpPageBgLabel->setGeometry(fullRect);
     QRect availableGeometry = screen()->availableGeometry();
     bool maximized = isMaximized();
     if (!maximized) {
@@ -363,46 +752,60 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     adjustBackgroundLabel();
     int currentIndex = ui->stackedWidget->currentIndex();
     if (currentIndex == 0) { 
-        int startBtnWidth = 181;
-        int startBtnHeight = 51;
-        int loadBtnWidth = 181;
-        int loadBtnHeight = 61;
-        int edBtnWidth = 181;
-        int edBtnHeight = 51;
-        int exitBtnWidth = 181;
-        int exitBtnHeight = 51;
-        double heightRatio = height() / 720.0; 
-        ui->startBtn->setGeometry(40, int(230 * heightRatio), startBtnWidth, startBtnHeight);
-        ui->loadBtn->setGeometry(40, int(320 * heightRatio), loadBtnWidth, loadBtnHeight);
-        ui->edBtn->setGeometry(40, int(430 * heightRatio), edBtnWidth, edBtnHeight);
-        ui->exitBtn->setGeometry(40, int(520 * heightRatio), exitBtnWidth, exitBtnHeight);
+        if (ui->label) { 
+            ui->label->setGeometry(10, 10, 400, 60); 
+        }
+        int btnWidth = 200;
+        int btnHeight = 70;
+        int btnCount = 7;
+        int spacing = 10;
+        int totalHeight = btnCount * btnHeight + (btnCount - 1) * spacing;
+        int startY = height() - totalHeight - 30; 
+        QList<QPushButton*> btns = {
+            ui->startBtn,
+            ui->continueBtn_2,
+            ui->loadBtn,
+            ui->helpBtn_2,
+            ui->edBtn,
+            ui->settingBtn_2,
+            ui->exitBtn
+        };
+        for (int i = 0; i < btns.size(); ++i) {
+            if (btns[i]) {
+                btns[i]->setGeometry(0, startY + i * (btnHeight + spacing), btnWidth, btnHeight);
+            }
+        }
     }
     else if (currentIndex == 1) { 
-        double widthRatio = width() / 1080.0;
-        double heightRatio = height() / 720.0;
-        int backBtnWidth = 151;
-        int backBtnHeight = 51;
-        int saveBtnWidth = 151;
-        int saveBtnHeight = 51;
-        int loadBtnWidth = 141;
-        int loadBtnHeight = 51;
-        int pauseBtnWidth = 131;
-        int pauseBtnHeight = 51;
-        int helpBtnWidth = 131;
-        int helpBtnHeight = 51;
-        int settingBtnWidth = 121;
-        int settingBtnHeight = 51;
-        ui->backBtn_4->setGeometry(int(-10 * widthRatio), -10, backBtnWidth, backBtnHeight);
-        ui->saveBtn->setGeometry(int(149 * widthRatio), -8, saveBtnWidth, saveBtnHeight);
-        ui->loadBtn_2->setGeometry(int(309 * widthRatio), -8, loadBtnWidth, loadBtnHeight);
-        ui->pauseBtn->setGeometry(int(460 * widthRatio), -10, pauseBtnWidth, pauseBtnHeight);
-        ui->helpBtn->setGeometry(int(610 * widthRatio), -10, helpBtnWidth, helpBtnHeight);
-        ui->settingBtn->setGeometry(int(759 * widthRatio), -8, settingBtnWidth, settingBtnHeight);
+        // 统一按钮尺寸和间距
+        int btnWidth = 150;
+        int btnHeight = 50;
+        int spacing = 10;
+        int topMargin = 0;
+        int leftMargin = 0;
+        QList<QPushButton*> topBtns = {
+            ui->backBtn_4,
+            ui->saveBtn,
+            ui->loadBtn_2,
+            ui->pauseBtn,
+            ui->helpBtn,
+            ui->settingBtn
+        };
+        for (int i = 0; i < topBtns.size(); ++i) {
+            if (topBtns[i]) {
+                topBtns[i]->setGeometry(
+                    leftMargin + i * (btnWidth + spacing),
+                    topMargin,
+                    btnWidth,
+                    btnHeight
+                );
+            }
+        }
         int contentW = width();
-        int contentH = height() - 49;
+        int contentH = height() - btnHeight;
         int viewW = contentW;
         int viewH = contentH;
-        int x = 0, y = 49;
+        int x = 0, y = btnHeight;
         if (maximized) {
             if (contentW * 2 > contentH * 3) {
                 viewH = contentH;
@@ -412,33 +815,58 @@ void MainWindow::resizeEvent(QResizeEvent *event)
                 viewH = contentW * 2 / 3;
             }
             x = (contentW - viewW) / 2;
-            y = 49 + (contentH - viewH) / 2;
+            y = btnHeight + (contentH - viewH) / 2;
         }
         ui->graphicsView->setGeometry(x, y, viewW, viewH);
 
-        int btnWidth = 421;
-        int btnHeight = 261;
-        int btnX = (width() - btnWidth) / 2;
-        int btnY = (height() - btnHeight) / 2;
-        ui->continueBtn->setGeometry(btnX, btnY, btnWidth, btnHeight);
+        int continueBtnWidth = 421;
+        int continueBtnHeight = 261;
+        int btnX = (width() - continueBtnWidth) / 2;
+        int btnY = (height() - continueBtnHeight) / 2;
+        ui->continueBtn->setGeometry(btnX, btnY, continueBtnWidth, continueBtnHeight);
+        double widthRatio = width() / 1080.0;
+        double heightRatio = height() / 720.0;
         int countdownWidth = int(101 * widthRatio);
         int countdownHeight = int(41 * heightRatio);
         ui->countdownLabel->setGeometry(width() - countdownWidth, 0, countdownWidth, countdownHeight);
     }
-    else if (currentIndex == 2) {
-        double heightRatio = height() / 720.0;
-        ui->backBtn_2->setGeometry(0, int(550 * heightRatio), 151, 61);
-    }
-    else if (currentIndex == 3) { 
-        double heightRatio = height() / 720.0;
-        ui->backBtn_3->setGeometry(20, int(530 * heightRatio), 151, 61);
-    }
-    else if (currentIndex == 4) { 
-        ui->backBtn->setGeometry(0, 10, 151, 61);
+    if (ui->stackedWidget->currentWidget() == ui->saveAndLoadPage) {
+        // 存档框参数
+        int slotW = 240, slotH = 200, spacing = 10;
+        int cols = 4, rows = 2;
+        int totalW = cols * slotW + (cols - 1) * spacing;
+        int totalH = rows * slotH + (rows - 1) * spacing;
+        int startX = (width() - totalW) / 2;
+        int startY = (height() - totalH) / 2;
+
+        // 布局8个存档按钮
+        for (int i = 0; i < 8; ++i) {
+            int row = i / cols;
+            int col = i % cols;
+            int x = startX + col * (slotW + spacing);
+            int y = startY + row * (slotH + spacing);
+            QString btnName = QString("archive_%1").arg(i + 1);
+            QPushButton* btn = findChild<QPushButton*>(btnName);
+            if (btn) {
+                btn->setGeometry(x, y, slotW, slotH);
+            }
+        }
+
+        // 确认弹窗居中
+        QWidget* confirmWidget = findChild<QWidget*>("confirmWidget");
+        if (confirmWidget) {
+            int w = confirmWidget->width();
+            int h = confirmWidget->height();
+            int x = (width() - w) / 2;
+            int y = (height() - h) / 2;
+            confirmWidget->move(x, y);
+        }
     }
 
     emit viewResized();
-    if (gameManager && gameStarted) {//玩家视野居中
+    if (!gameStarted) return;
+
+    if (gameManager) {
         Player* player = gameManager->getPlayer();
         if (player && ui->graphicsView->scene()) {
             ui->graphicsView->centerOn(player);
@@ -446,3 +874,277 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     }
 }
 
+
+
+void MainWindow::onEnd(BgmType endType, QWidget* endPage, bool* playedFlag) {
+    if (playedFlag && *playedFlag) return;
+    if (playedFlag) *playedFlag = true;
+    switch (endType) {
+        case BgmType::DeadEnd: setEndingAchieved("deadEnd"); break;
+        case BgmType::LostEnd: setEndingAchieved("lostEnd"); break;
+        case BgmType::TrueEnd: setEndingAchieved("trueEnd"); break;
+        case BgmType::FakeEnd: setEndingAchieved("fakeEnd"); break;
+        default: break;
+    }
+    bool fromGame = (ui->stackedWidget->currentWidget() == ui->gamePage);
+    if (fromGame) {
+        cleanupGame();
+    }
+    ui->stackedWidget->setCurrentWidget(ui->edScene);
+    ui->stackedWidget_2->setCurrentWidget(endPage);
+    bgmPlayer->stop();
+    playBgm(endType);
+    bgmPlayer->setLoops(1);
+    bgmPlayer->play();
+    disconnect(bgmPlayer, &QMediaPlayer::mediaStatusChanged, this, nullptr);
+    connect(bgmPlayer, &QMediaPlayer::mediaStatusChanged, this, [this, fromGame](QMediaPlayer::MediaStatus status){
+        if (status == QMediaPlayer::EndOfMedia) {
+            onEndFinished(fromGame);
+        }
+    });
+    if (fromGame) {
+        ui->continueBtn->setEnabled(false);
+        ui->continueBtn_2->setEnabled(false);
+        ui->continueBtn_3->setEnabled(false);
+        ui->continueBtn_4->setEnabled(false);
+        ui->continueBtn_5->setEnabled(false);
+    } else {
+        if(gameManager){
+            ui->continueBtn->setEnabled(true);
+            ui->continueBtn_2->setEnabled(true);
+            ui->continueBtn_3->setEnabled(true);
+            ui->continueBtn_4->setEnabled(true);
+            ui->continueBtn_5->setEnabled(true);
+        }
+    }
+}
+
+
+
+void MainWindow::onEndFinished(bool fromGame) {
+    bgmPlayer->setLoops(QMediaPlayer::Infinite);
+    ui->stackedWidget->setCurrentWidget(ui->startPage);
+    playBgm(BgmType::StartPage);
+    disconnect(bgmPlayer, nullptr, this, nullptr);
+    if (fromGame) {
+        ui->continueBtn->setEnabled(false);
+        ui->continueBtn_2->setEnabled(false);
+        ui->continueBtn_3->setEnabled(false);
+        ui->continueBtn_4->setEnabled(false);
+        ui->continueBtn_5->setEnabled(false);
+    }
+    deadEndPlayed = false;
+    lostEndPlayed = false;
+    trueEndPlayed = false;
+    fakeEndPlayed = false;
+}
+
+
+void MainWindow::saveAndLoadGame() {
+    if (sender() == ui->saveBtn) {
+        saveLoadMode = SaveLoadMode::Save;
+    } else {
+        saveLoadMode = SaveLoadMode::Load;
+    }
+    for (int i = 0; i < 8; ++i) {
+        QString btnName = QString("archive_%1").arg(i + 1);
+        QPushButton* btn = findChild<QPushButton*>(btnName);
+        if (btn) {
+            disconnect(btn, nullptr, nullptr, nullptr); // 防止重复连接
+            connect(btn, &QPushButton::clicked, this, [this, i]() {
+                onSaveSlotClicked(i);
+            });
+        }
+    }
+    if (gameManager && gameStarted && !gameManager->isGamePaused()) {
+        gameManager->pauseGame();
+        ui->pauseBtn->setText("继续");
+        if (bgmPlayer) bgmPlayer->pause();
+        gameManager->stopCountdown(); // 替换原来的 countdownTimer->stop();
+    }
+    int prevIndex = ui->stackedWidget->currentIndex();
+    ui->stackedWidget->setCurrentWidget(ui->saveAndLoadPage);
+    ui->stackedWidget->setCurrentWidget(ui->saveAndLoadPage);
+    QWidget* confirmWidget = findChild<QWidget*>("confirmWidget");
+    if (confirmWidget) confirmWidget->hide();
+    for (int i = 0; i < 8; ++i) {
+        QString btnName = QString("archive_%1").arg(i + 1);
+        QPushButton* btn = findChild<QPushButton*>(btnName);
+        QString saveFile = QString("save%1.json").arg(i + 1);
+        QFile file(saveFile);
+        if (btn) {
+            if (file.exists()) {
+                QString timeStr = "已存档";
+                if (file.open(QIODevice::ReadOnly)) {
+                    QByteArray data = file.readAll();
+                    file.close();
+                    QJsonDocument doc = QJsonDocument::fromJson(data);
+                    QJsonObject root = doc.object();
+                    if (root.contains("save_time")) {
+                        QString saveTime = root["save_time"].toString();
+                        QStringList parts = saveTime.split(' ');
+                        if (parts.size() == 2) {
+                            timeStr = parts[0] + "\n" + parts[1];
+                        } else {
+                            timeStr = saveTime;
+                        }
+                    }
+                }
+                btn->setText(timeStr);
+            } else {
+                btn->setText("空");
+            }
+        }
+    }
+    refreshSaveSlotButtons(); 
+}
+
+void MainWindow::onSaveSlotClicked(int index) {
+    QString saveFile = QString("save%1.json").arg(index + 1);
+    QFile file(saveFile);
+    if (saveLoadMode == SaveLoadMode::Save) {
+        if (file.exists()) {
+            QWidget* confirmWidget = findChild<QWidget*>("confirmWidget");
+            if (confirmWidget) confirmWidget->show();
+            pendingSaveSlotIndex = index;
+            return;
+        }
+        if (gameManager) {
+            gameManager->setSavedBgmType(static_cast<int>(currentBgm));
+            gameManager->saveToJson("last_game.json");
+        }
+        QFile::remove(saveFile);
+        QFile::copy("last_game.json", saveFile);
+        refreshSaveSlotButtons();
+    } else if (saveLoadMode == SaveLoadMode::Load) {
+        if (!file.exists()) {
+            return;
+        }
+        QFile::remove("last_game.json");
+        QFile::copy(saveFile, "last_game.json");
+        returnToGame();
+    }
+}
+
+void MainWindow::refreshSaveSlotButtons() {
+    for (int i = 0; i < 8; ++i) {
+        QString btnName = QString("archive_%1").arg(i + 1);
+        QPushButton* btn = findChild<QPushButton*>(btnName);
+        QString saveFile = QString("save%1.json").arg(i + 1);
+        QFile file(saveFile);
+        if (btn) {
+            if (file.exists()) {
+                QString timeStr = "已存档";
+                if (file.open(QIODevice::ReadOnly)) {
+                    QByteArray data = file.readAll();
+                    file.close();
+                    QJsonDocument doc = QJsonDocument::fromJson(data);
+                    QJsonObject root = doc.object();
+                    if (root.contains("save_time")) {
+                        QString saveTime = root["save_time"].toString();
+                        QStringList parts = saveTime.split(' ');
+                        if (parts.size() == 2) {
+                            timeStr = parts[0] + "\n" + parts[1];
+                        } else {
+                            timeStr = saveTime;
+                        }
+                    }
+                }
+                btn->setText(timeStr);
+            } else {
+                btn->setText("空");
+            }
+        }
+    }
+}
+void MainWindow::onConfirmSave() {
+    if (pendingSaveSlotIndex >= 0 && pendingSaveSlotIndex < saveSlots.size()) {
+        QString saveFile = QString("save%1.json").arg(pendingSaveSlotIndex + 1);
+        if (gameManager) {
+            gameManager->setSavedBgmType(static_cast<int>(currentBgm));
+            gameManager->saveToJson("last_game.json");
+        }
+        QFile::remove(saveFile);
+        QFile::copy("last_game.json", saveFile);
+        refreshSaveSlotButtons();
+    }
+    QWidget* confirmWidget = findChild<QWidget*>("confirmWidget");
+    if (confirmWidget) confirmWidget->hide();
+    pendingSaveSlotIndex = -1;
+}
+
+
+void MainWindow::onCancelSave() {
+    QWidget* confirmWidget = findChild<QWidget*>("confirmWidget");
+    if (confirmWidget) confirmWidget->hide();
+    pendingSaveSlotIndex = -1;
+}
+
+void MainWindow::loadEndingsRecord() {
+    QFile file("endings.json");
+    if (file.open(QIODevice::ReadOnly)) {
+        QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
+        endingsRecord = doc.object();
+        file.close();
+    } else {
+        endingsRecord = QJsonObject{
+            {"deadEnd", false},
+            {"lostEnd", false},
+            {"trueEnd", false},
+            {"fakeEnd", false}
+        };
+    }
+}
+
+void MainWindow::saveEndingsRecord() {
+    QFile file("endings.json");
+    if (file.open(QIODevice::WriteOnly)) {
+        QJsonDocument doc(endingsRecord);
+        file.write(doc.toJson(QJsonDocument::Indented));
+        file.close();
+    }
+    if (endingsWatcher && !endingsWatcher->files().contains("endings.json") && QFile::exists("endings.json")) {
+        endingsWatcher->addPath("endings.json");
+    }
+    updateEndingButtonsAndCounter(); 
+}
+
+void MainWindow::setEndingAchieved(const QString& endingKey) {
+    if (!endingsRecord.value(endingKey).toBool()) {
+        endingsRecord[endingKey] = true;
+        saveEndingsRecord();
+        updateEndingButtonsAndCounter();
+    }
+}
+
+void MainWindow::updateEndingButtonsAndCounter() {
+    ui->deBtn->setVisible(endingsRecord.value("deadEnd").toBool());
+    ui->leBtn->setVisible(endingsRecord.value("lostEnd").toBool());
+    ui->teBtn->setVisible(endingsRecord.value("trueEnd").toBool());
+    ui->feBtn->setVisible(endingsRecord.value("fakeEnd").toBool());
+    int count = 0;
+    for (const QString& key : {"deadEnd", "lostEnd", "trueEnd", "fakeEnd"}) {
+        if (endingsRecord.value(key).toBool()) ++count;
+    }
+    ui->endingCounterLabel->setText(QString("已达结局数：%1").arg(count));
+    QTextBrowser* helpTextBrowser = findChild<QTextBrowser*>("textBrowser");
+    if (helpTextBrowser) {
+        QString html = R"(
+<p align="center"><span style="font-weight:700;">我是幽灵</span></p>
+<p align="center"><span style="font-weight:700;">在这个游戏中似乎是通过WASD移动，空格发射波</span></p>
+)";
+        if (count >= 2) {
+            html += R"(<p align="center"><span style="font-weight:700;">我似乎要尽量多地传送</span></p>)";
+        }
+        if (count >= 3) {
+            html += R"(<p align="center"><span style="font-weight:700;">貌似在左上角与众不同的格子停留会有奇妙发生</span></p>)";
+        }
+        helpTextBrowser->setHtml(html);
+    }
+}
+
+void MainWindow::saveLastGame() {
+    if (gameManager) {
+        gameManager->saveToJson("last_game.json");
+    }
+}

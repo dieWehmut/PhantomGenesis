@@ -12,6 +12,7 @@
 #include <QGraphicsView>
 #include "VisionMaskItem.h"
 #include <functional>
+
 class GameManager : public QObject 
 {
     Q_OBJECT
@@ -26,6 +27,16 @@ public:
     bool isGamePaused() const { return gamePaused; } 
     const QVector<FlamePhantom*>& getFlamePhantoms() const { return flamePhantoms; }
     const QVector<LurkPhantom*>& getLurkPhantoms() const { return lurkPhantoms; }
+    void setCountdown(int seconds);
+    int getCountdown() const;
+    bool isPortalEnabled() const;
+    void startCountdown();
+    void stopCountdown();
+    void saveToJson(const QString& filename) const;//保存为json
+    void loadFromJson(const QString& filename); //加载json
+    int getSavedBgmType() const { return savedBgmType; }
+    void setSavedBgmType(int type) { savedBgmType = type; }
+    bool isSecondCountdown() const { return inSecondCountdown; }
 public slots:
     void handleViewResize(); // 处理视图的改变
     void onForcePhantomsChasePlayer();// 强制锁定
@@ -51,8 +62,23 @@ private:
     King* king = nullptr;
     void checkKingSpawn();//检查是否生成King
     VisionMaskItem* visionMask = nullptr;//视野遮罩
+    QElapsedTimer trueEndTimer;//te计时
+    bool inTrueEndZone = false; 
+    void pauseAllWaves();//wave的暂停与恢复
+    void resumeAllWaves();
+    int countdownSeconds = 0;//倒数秒数
+    QTimer* countdownTimer = nullptr;//倒计时
+    bool portalEnabled = true; // 传送门是否启用
+    bool inSecondCountdown = false;// 是否在第二次倒计时中
+    void tryTeleportPhantom(PhantomBase* phantom);//传送PhantomBase
+    int savedBgmType = 0; // 保存的游戏bgm
 signals:
     void playerDead();
+    void playerLost();
+    void playerTrueEnd(); 
+    void countdownChanged(int seconds);// 倒计时改变      
+    void countdownFinished();// 倒计时结束  
+    void portalStateChanged(bool enabled);// 传送门状态改变 
 };
 
 #endif // GAMEMANAGER_H

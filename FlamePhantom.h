@@ -13,6 +13,8 @@ public:
     void setRangeAtkCD(int cd) { rangeAtkCD = cd; }
     int getRangeAtkCD() const { return rangeAtkCD; }
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;//画射线
+    void stopTimers() override;
+    void startTimers() override;
 private:
     void rangeDebuff(); // 范围干扰
     void meleeAtk(); // 近战攻击

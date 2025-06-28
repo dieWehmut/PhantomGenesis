@@ -12,6 +12,8 @@ public:
     ~King();
     void updateStatus() override;
     void shootWave(const QPointF& direction) override;
+    void stopTimers() override;
+    void startTimers() override;
 private:
     void shootAllDirections();
     QTimer* rangeTimer = nullptr;

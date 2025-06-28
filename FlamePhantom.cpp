@@ -8,18 +8,18 @@ FlamePhantom::FlamePhantom(Player* targetPlayer)
     : player(targetPlayer) {
     setStaticPixmap(QPixmap("Resource/flamePhantom.png").scaled(64, 64));
     wanderTarget = pos();
-    setMaxHp(2000);
-    setHp(getMaxHp());
+    setMaxHp(10000);
+    hp = maxHp;
     setSpeed(2.0f);
-    setSightRange(800);
-    setAtkRange(600);
-    setAtk(100);
+    setSightRange(5000);
+    setAtkRange(500);
+    setAtk(10);
     setRangeAtkCD(3000);
     rangeAtkTimer.start();
     rangeIndicatorItem = new QGraphicsEllipseItem();
     rangeIndicatorItem->setZValue(0);
     QPen pen(Qt::red);
-    pen.setWidth(2);
+    pen.setWidth(4);
     rangeIndicatorItem->setPen(pen);
     rangeIndicatorItem->setBrush(Qt::NoBrush);
     rangeIndicatorItem->hide();
@@ -158,4 +158,10 @@ void FlamePhantom::meleeAtk() {
         qreal knockbackDist = 300.0;
         player->setPos(player->pos() + knockbackDir * knockbackDist);
     }
+}
+void FlamePhantom::stopTimers() {
+
+}
+void FlamePhantom::startTimers() {
+
 }

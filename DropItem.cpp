@@ -15,28 +15,30 @@ DropItem::DropItem(DropType type, QObject* parent)
 }
 
 void DropItem::strengthenPlayer(Player* player) {
-    player->setHp(player->getHp()+100);
+    player->setHp(player->getHp()+10000);
     switch (dropType){
         case DropType::flamePhantomDrop:
-            if(player->getAtk()<=500) { 
+            if(player->getAtk()<=1000) {//5次
                 player->setAtk(player->getAtk()+100);
-            } else if(player->getSightRange()<300){
-                player->setSightRange(player->getSightRange()+10);
-            } else if(player->getPlayerWaveAoeRadius()<300.0f) {
-                player->setPlayerWaveAoeRadius(player->getPlayerWaveAoeRadius() + 30.0f);
-            }else if(player->getAtkRange()<250){
-                player->setAtkRange(player->getAtkRange()+100);
-            } else if(player->getPlayerWaveSpeed()<20.0f) {
+            } else if(player->getSightRange()<300){//5次
+                player->setSightRange(player->getSightRange()+20);
+            } else if(player->getPlayerWaveAoeRadius()<200.0f) {//5次
+                player->setPlayerWaveAoeRadius(player->getPlayerWaveAoeRadius() + 20.0f);
+            }else if(player->getAtkRange()<150){//5次
+                player->setAtkRange(player->getAtkRange()+10);
+            } else if(player->getPlayerWaveSpeed()<20.0f) {//5次
                 player->setPlayerWaveSpeed(player->getPlayerWaveSpeed() + 2.0f);
-            } else if(player->getMaxHp()<20000) {
-                player->setMaxHp(player->getMaxHp() + 1000);
+            } else if(player->getMaxHp()<1000000) {
+                player->setMaxHp(player->getMaxHp() + 5000);
             }
         break;
         case DropType::lurkPhantomDrop: 
-            if(player->getSpeed()<20.0f) {
-                player->setSpeed(player->getSpeed() + 0.5f);
-            } else if(player->getAtkCD()>=200) {
+            if(player->getSpeed()<20.0f) {//10次
+                player->setSpeed(player->getSpeed() + 1.0f);
+            } else if(player->getAtkCD()>=200) {//9次
                 player->setAtkCD(player->getAtkCD() - 100);
+            }else if(player->getMaxHp()<1000000) {
+                player->setMaxHp(player->getMaxHp() + 5000);
             }
         break;
     }

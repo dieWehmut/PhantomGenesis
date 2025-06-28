@@ -27,10 +27,16 @@ public:
     bool isSlowed() const { return slowed; }
     float getOriginSpeed() const { return originalSpeed; }
     void setOriginSpeed(float value) { originalSpeed = value; }
+    
     void activateShield(); // 激活防护盾
     void setHp(int v) override;//护盾相关，回血逻辑
     void setBurning(bool on);
     void burnTick();
+    int getTeleportCount() const { return teleportCount; }
+    void setTeleportCount(int count) { teleportCount = count; }
+    void addTeleportCount() { teleportCount++; }
+    void stopTimers() override;
+    void startTimers() override;
 protected:
     void focusInEvent(QFocusEvent *event) override; //焦点获得
     void focusOutEvent(QFocusEvent *event) override; //焦点失去
@@ -46,16 +52,18 @@ private:
     QElapsedTimer shieldTimer;//护盾计时器
     static const int shieldDuration = 3000;//护盾持续时间
     float playerWaveAoeRadius = 100.0f;//波的波及半径
-    float playerWaveSpeed = 15.0f;//波的速度
+    float playerWaveSpeed = 12.0f;//波的速度
     bool burning = false;//是否燃烧
     QTimer* burnTickTimer = nullptr;//燃烧定时器
     QElapsedTimer burnTimer;
     int burnDurationMs = 4000;
     int burnTickInterval = 400;//扣血时间
-    int burnDamagePerTick = 10;
+    int burnDamagePerTick = 10;//每次燃烧扣血
+    //玩家不同状态
     QPixmap normalPixmap;
     QPixmap burningPixmap;
     QPixmap lowHpPixmap;
+    int teleportCount = 0;//玩家传送次数
 };
 
 #endif // PLAYER_H

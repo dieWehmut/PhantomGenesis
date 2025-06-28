@@ -17,7 +17,7 @@ public:
     int getAtkRange() const{return atkRange;}
     int getSightRange() const{return sightRange;}
     float getSpeed() const{return speed;}
-    virtual void setHp(int v) { hp = v; update(); }//血条跟着变，子类要重写
+    virtual void setHp(int v);//血条跟着变，子类要重写
     void setMaxHp(int v){maxHp = v;update();}
     void setAtk(int v){atk = v;}
     void setAtkRange(int v){atkRange = v; updateRangeIndicator();}
@@ -33,7 +33,8 @@ public:
     void createRangeIndicator(const QColor& color = QColor(0,128,255,60), int penWidth = 2);//创建范围指示器
     void setRangeIndicatorVisible(bool visible);//设置可见性
     void updateRangeIndicator();//更新范围指示器
-
+    virtual void stopTimers() {}//停止所有定时
+    virtual void startTimers() {}//启动所有定时
 protected:
     int hp;//血
     int maxHp;//最大血

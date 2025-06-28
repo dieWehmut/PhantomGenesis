@@ -6,6 +6,8 @@
 class KingWave : public Wave {
 public:
     KingWave(const QPointF& dir, int atk, QObject* parent = nullptr);
+    void startTimers() override;
+    void stopTimers() override;
 protected:
     void handleCollision(QGraphicsItem* item) override;
     void playCollisionEffect(QGraphicsItem* item) override;

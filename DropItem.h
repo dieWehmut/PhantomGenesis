@@ -19,8 +19,8 @@ protected:
     void advance(int phase) override;//掉落物拾取
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;//加旋转
 private:
-    DropType dropType;
-    qreal angle = 0;
+    DropType dropType;//掉落类型
+    qreal angle = 0;//旋转角度
 };
 
 #endif // DROPITEM_H

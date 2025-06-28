@@ -41,6 +41,13 @@ template <> constexpr inline auto GameManager::qt_create_metaobjectdata<qt_meta_
         "GameManager",
         "playerDead",
         "",
+        "playerLost",
+        "playerTrueEnd",
+        "countdownChanged",
+        "seconds",
+        "countdownFinished",
+        "portalStateChanged",
+        "enabled",
         "handleViewResize",
         "onForcePhantomsChasePlayer",
         "accelerateAllPhantoms"
@@ -49,12 +56,26 @@ template <> constexpr inline auto GameManager::qt_create_metaobjectdata<qt_meta_
     QtMocHelpers::UintData qt_methods {
         // Signal 'playerDead'
         QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'playerLost'
+        QtMocHelpers::SignalData<void()>(3, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'playerTrueEnd'
+        QtMocHelpers::SignalData<void()>(4, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'countdownChanged'
+        QtMocHelpers::SignalData<void(int)>(5, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 6 },
+        }}),
+        // Signal 'countdownFinished'
+        QtMocHelpers::SignalData<void()>(7, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'portalStateChanged'
+        QtMocHelpers::SignalData<void(bool)>(8, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Bool, 9 },
+        }}),
         // Slot 'handleViewResize'
-        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'onForcePhantomsChasePlayer'
-        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'accelerateAllPhantoms'
-        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPublic, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -79,14 +100,29 @@ void GameManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->playerDead(); break;
-        case 1: _t->handleViewResize(); break;
-        case 2: _t->onForcePhantomsChasePlayer(); break;
-        case 3: _t->accelerateAllPhantoms(); break;
+        case 1: _t->playerLost(); break;
+        case 2: _t->playerTrueEnd(); break;
+        case 3: _t->countdownChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 4: _t->countdownFinished(); break;
+        case 5: _t->portalStateChanged((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
+        case 6: _t->handleViewResize(); break;
+        case 7: _t->onForcePhantomsChasePlayer(); break;
+        case 8: _t->accelerateAllPhantoms(); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
         if (QtMocHelpers::indexOfMethod<void (GameManager::*)()>(_a, &GameManager::playerDead, 0))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (GameManager::*)()>(_a, &GameManager::playerLost, 1))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (GameManager::*)()>(_a, &GameManager::playerTrueEnd, 2))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (GameManager::*)(int )>(_a, &GameManager::countdownChanged, 3))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (GameManager::*)()>(_a, &GameManager::countdownFinished, 4))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (GameManager::*)(bool )>(_a, &GameManager::portalStateChanged, 5))
             return;
     }
 }
@@ -110,14 +146,14 @@ int GameManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 9;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 9)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 4;
+        _id -= 9;
     }
     return _id;
 }
@@ -126,5 +162,35 @@ int GameManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void GameManager::playerDead()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+}
+
+// SIGNAL 1
+void GameManager::playerLost()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+}
+
+// SIGNAL 2
+void GameManager::playerTrueEnd()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
+}
+
+// SIGNAL 3
+void GameManager::countdownChanged(int _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 3, nullptr, _t1);
+}
+
+// SIGNAL 4
+void GameManager::countdownFinished()
+{
+    QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
+}
+
+// SIGNAL 5
+void GameManager::portalStateChanged(bool _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 5, nullptr, _t1);
 }
 QT_WARNING_POP

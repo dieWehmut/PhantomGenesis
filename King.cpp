@@ -8,11 +8,11 @@
 #include "Player.h"
 King::King(QObject* parent) : PhantomBase()
 {
-    setMaxHp(10000);
-    setHp(getMaxHp());
-    setAtk(80);
-    setAtkRange(2000);
-    setSpeed(10.0f);
+    setMaxHp(30000);
+    hp = maxHp;
+    setAtk(500);
+    setAtkRange(600);
+    setSpeed(6.0f);
     setSightRange(1000);
     setStaticPixmap(QPixmap("Resource/king.png").scaled(128, 128));
     createRangeIndicator(QColor(255, 215, 0, 60), 3);
@@ -88,4 +88,13 @@ void King::shootWave(const QPointF& direction)
     QPointF waveTopLeft = kingCenter - wave->boundingRect().center();
     wave->setPos(waveTopLeft);
     scene()->addItem(wave);
+}
+void King::stopTimers() {
+    if (rangeTimer) rangeTimer->stop();
+    if (waveTimer) waveTimer->stop();
+
+}
+void King::startTimers() {
+    if (rangeTimer && !rangeTimer->isActive()) rangeTimer->start(2000);
+    if (waveTimer && !waveTimer->isActive()) waveTimer->start(60);
 }
