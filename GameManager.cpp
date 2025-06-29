@@ -263,7 +263,7 @@ void GameManager::startGame() {
                     QAudioOutput* teleportAudio = new QAudioOutput(this);
                     teleportPlayer->setAudioOutput(teleportAudio);
                     teleportAudio->setVolume(1.0);
-                    teleportPlayer->setSource(QUrl::fromLocalFile("Resource/teleport.wav"));
+                    teleportPlayer->setSource(QUrl("qrc:/Resource/teleport.wav"));
                     connect(teleportPlayer, &QMediaPlayer::mediaStatusChanged, teleportPlayer, [teleportPlayer, teleportAudio](QMediaPlayer::MediaStatus status){
                         if (status == QMediaPlayer::EndOfMedia || status == QMediaPlayer::InvalidMedia) {
                             teleportPlayer->deleteLater();

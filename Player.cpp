@@ -21,9 +21,9 @@ Player::Player(QObject *parent) : ActiveObject(parent) {
     });
     cdUpdateTimer->start();
     setLastMoveDirection(QPointF(1, 0));
-    normalPixmap = QPixmap("Resource/playerNormal.png").scaled(64, 64);
-    burningPixmap = QPixmap("Resource/playerBurned.png").scaled(64, 64);
-    lowHpPixmap = QPixmap("Resource/playerLowHp.png").scaled(64, 64);
+    normalPixmap = QPixmap(":/Resource/playerNormal.png").scaled(64, 64);
+    burningPixmap = QPixmap(":/Resource/playerBurned.png").scaled(64, 64);
+    lowHpPixmap = QPixmap(":/Resource/playerLowHp.png").scaled(64, 64);
     setStaticPixmap(normalPixmap);
     setTransformOriginPoint(pixmap().width()/2, pixmap().height()/2);
     setFlag(QGraphicsItem::ItemIsFocusable); 

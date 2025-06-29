@@ -5,7 +5,7 @@
 LurkPhantom::LurkPhantom(Player* targetPlayer)
     : player(targetPlayer)
 {
-    setStaticPixmap(QPixmap("Resource/lurkPhantom.png").scaled(96, 96));
+    setStaticPixmap(QPixmap(":/Resource/lurkPhantom.png").scaled(96, 96));
     wanderTarget = pos();
     setMaxHp(5000);
     hp = maxHp;
@@ -53,7 +53,7 @@ void LurkPhantom::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
                     player->setHp(player->getHp() - getAtk());
                     static QSoundEffect laserEffect;
                     if (laserEffect.source().isEmpty())
-                        laserEffect.setSource(QUrl::fromLocalFile("Resource/lurkPhantomLaser.wav"));
+                        laserEffect.setSource(QUrl(":/Resource/lurkPhantomLaser.wav"));
                     laserEffect.setVolume(1.0f);
                     laserEffect.play();
                     hasDealtDamage = true;

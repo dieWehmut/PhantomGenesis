@@ -9,13 +9,14 @@
 #include "LurkWave.h"
 #include "FlameWave.h"
 PlayerWave::PlayerWave(const QPointF &direction, int damage, QObject *parent)
-    : Wave(direction, damage, 800, 10.0f, QPixmap("Resource/playerWave.png").scaled(64,64), parent),
+    : Wave(direction, damage, 800, 10.0f, QPixmap(":/Resource/playerWave.png").scaled(64,64), parent),
+
     hitObjects(), aoeRadius(0), playerWaveEffectInitialized(false) {
     setDirection(direction);
     setAtk(damage);
     originalAtk = damage;
     setMaxDistance(800.0f);
-    setStaticPixmap(QPixmap("Resource/playerWave.png").scaled(96, 96));
+
     maxPierceCnt = 10;
     curPierceCnt = 0;
     startAoeTimer(100);
@@ -41,7 +42,7 @@ void PlayerWave::handleCollision(QGraphicsItem *item) {
         if (auto* lurkWave = dynamic_cast<LurkWave*>(item)) {
         curPierceCnt++;
         if (!playerWaveEffectInitialized) {
-            playerWaveHitEffect.setSource(QUrl::fromLocalFile("Resource/playerWaveHit.wav"));
+            playerWaveHitEffect.setSource(QUrl("qrc:/Resource/playerWaveHit.wav"));
             playerWaveHitEffect.setVolume(1.0f);
             playerWaveEffectInitialized = true;
         }
@@ -56,7 +57,7 @@ void PlayerWave::handleCollision(QGraphicsItem *item) {
     if (auto* flameWave = dynamic_cast<FlameWave*>(item)) {
         curPierceCnt++;
         if (!playerWaveEffectInitialized) {
-            playerWaveHitEffect.setSource(QUrl::fromLocalFile("Resource/playerWaveHit.wav"));
+            playerWaveHitEffect.setSource(QUrl("qrc:/Resource/playerWaveHit.wav"));
             playerWaveHitEffect.setVolume(1.0f);
             playerWaveEffectInitialized = true;
         }
@@ -74,7 +75,7 @@ void PlayerWave::handleCollision(QGraphicsItem *item) {
         hitObjects.insert(obj);
         curPierceCnt++;
         if (!playerWaveEffectInitialized) {
-            playerWaveHitEffect.setSource(QUrl::fromLocalFile("Resource/playerWaveHit.wav"));
+            playerWaveHitEffect.setSource(QUrl("qrc:/Resource/playerWaveHit.wav"));
             playerWaveHitEffect.setVolume(1.0f);//大一点
             playerWaveEffectInitialized = true;
         }
@@ -121,7 +122,8 @@ void PlayerWave::applyAoeDamage(ActiveObject* directHitObj) {
                 obj->setHp(obj->getHp() - damage);
                 hitObjects.insert(obj);
             if (!playerWaveEffectInitialized) {
-                playerWaveHitEffect.setSource(QUrl::fromLocalFile("Resource/playerWaveHit.wav"));
+                playerWaveHitEffect.setSource(QUrl("qrc:/Resource/playerWaveHit.wav"));
+
                 playerWaveHitEffect.setVolume(0.7f);
                 playerWaveEffectInitialized = true;
             }

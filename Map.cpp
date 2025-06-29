@@ -84,15 +84,15 @@ int Map::getGridCol()const{
 void Map::loadMapTile(int row, int col, int tileType) {
     QString imagePath;
     switch(tileType) {
-        case -3: imagePath = "Resource/mazeExit.png"; break;// 迷宫出口
-        case -2: imagePath = "Resource/portalEnd.png"; break;// 传送门终点
-        case -1: imagePath = "Resource/portalStart.png"; break;// 传送门起点
-        case 0: imagePath = "Resource/optimize.png"; break;//优化点，没时间做了
-        case 1: imagePath = "Resource/flame.png"; break;// 火焰
-        case 2: imagePath = "Resource/ruins.png"; break;// 废墟
-        case 3: imagePath = "Resource/flamePhantomBase.png"; break;//flamePhantom生成点
-        case 4: imagePath = "Resource/lurkPhantomBase.png"; break;//lurkPhantom生成点
-        default: imagePath = "Resource/ruins.png"; break; 
+        case -3: imagePath = ":/Resource/mazeExit.png"; break;// 迷宫出口
+        case -2: imagePath = ":/Resource/portalEnd.png"; break;// 传送门终点
+        case -1: imagePath = ":/Resource/portalStart.png"; break;// 传送门起点
+        case 0: imagePath = ":/Resource/optimize.png"; break;//优化点，没时间做了
+        case 1: imagePath = ":/Resource/flame.png"; break;// 火焰
+        case 2: imagePath = ":/Resource/ruins.png"; break;// 废墟
+        case 3: imagePath = ":/Resource/flamePhantomBase.png"; break;//flamePhantom生成点
+        case 4: imagePath = ":/Resource/lurkPhantomBase.png"; break;//lurkPhantom生成点
+        default: imagePath = ":/Resource/ruins.png"; break; 
     }
     QGraphicsPixmapItem* item = new QGraphicsPixmapItem(QPixmap(imagePath));
     item->setPos(col * GRID_SIZE, row * GRID_SIZE);

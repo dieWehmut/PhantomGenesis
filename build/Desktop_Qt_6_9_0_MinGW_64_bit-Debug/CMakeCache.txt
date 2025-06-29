@@ -328,12 +328,6 @@ Qt6Gui_DIR:PATH=E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Gui
 //The directory containing a CMake configuration file for Qt6MultimediaPrivate.
 Qt6MultimediaPrivate_DIR:PATH=E:/qt/6.9.0/mingw_64/lib/cmake/Qt6MultimediaPrivate
 
-//The directory containing a CMake configuration file for Qt6MultimediaWidgetsPrivate.
-Qt6MultimediaWidgetsPrivate_DIR:PATH=E:/qt/6.9.0/mingw_64/lib/cmake/Qt6MultimediaWidgetsPrivate
-
-//The directory containing a CMake configuration file for Qt6MultimediaWidgets.
-Qt6MultimediaWidgets_DIR:PATH=E:/qt/6.9.0/mingw_64/lib/cmake/Qt6MultimediaWidgets
-
 //The directory containing a CMake configuration file for Qt6Multimedia.
 Qt6Multimedia_DIR:PATH=E:/qt/6.9.0/mingw_64/lib/cmake/Qt6Multimedia
 

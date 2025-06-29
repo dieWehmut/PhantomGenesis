@@ -26,18 +26,20 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("PhantomGenesis");
-    setWindowIcon(QIcon("Resource/PhantomGenesis.ico"));
+    setWindowIcon(QIcon(":/Resource/PhantomGenesis.ico"));
 
     ui->stackedWidget->setCurrentIndex(0);//初始界面
     ui->label->setText("PhantomGenesis");
     ui->label->setStyleSheet(
         "background: transparent;"
-        "font-size:40px;"
-        "font-weight:bold;"
-        "color: #00ffe7;"
-        "letter-spacing:2px;"
+        "font-size: 32px;"
+        "font-weight: 400;"
+        "color: #66d9cc;"          
+        "letter-spacing: 1px;"
         "border: none;"
+
     );
+
     auto *effect = new QGraphicsDropShadowEffect(this);
     effect->setBlurRadius(32);
     effect->setColor(QColor("#ff00cc")); 
@@ -47,7 +49,7 @@ MainWindow::MainWindow(QWidget *parent)
     bgmPlayer = new QMediaPlayer(this);
     audioOutput = new QAudioOutput(this);
     bgmPlayer->setAudioOutput(audioOutput);
-    audioOutput->setVolume(0.5);
+
     bgmPlayer->setLoops(QMediaPlayer::Infinite);
 
     playBgm(BgmType::StartPage);//开始界面音乐
@@ -137,26 +139,28 @@ MainWindow::MainWindow(QWidget *parent)
     //按钮样式
     QString BtnStyle = R"(
         QPushButton {
-            background: #cba0aa;
-            color: #222;
-            border: 2px solid #bfa6ff;
+            background-color: #e9dce5;
+            color: #444444;
+            border: 2px solid #d6c7ef;
             border-radius: 18px;
-            font-size: 26px;
-            font-weight: bold;
-            letter-spacing: 2px;
+            font-size: 24px;
+
+            font-weight: 500;
+            letter-spacing: 1.5px;
             padding: 8px 0;
         }
         QPushButton:hover {
-            background: #e0c3fc;
-            color: #000;
-            border: 2px solid #aeefff;
+            background-color: #f3eaf2;
+            color: #333333;
+            border: 2px solid #c7def0;
         }
         QPushButton:pressed {
-            background: #bfa6ff;
-            color: #000;
-            border: 2px solid #aeefff;
+            background-color: #d8cde2;
+            color: #222222;
+            border: 2px solid #bfdbe8;
         }
     )";
+
     QList<QPushButton*> allBtns = {
         // startPage
         ui->startBtn,
@@ -217,11 +221,12 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
     QString LabelStyle = R"(
-        color: #00ffe7;
-        background: transparent;
-        font-size: 32px;
-        font-weight: bold;
-        letter-spacing: 2px;
+        color: #66d9cc;         
+        background-color: transparent;
+        font-size: 28px;
+
+        font-weight: 400;          
+        letter-spacing: 1px;
         border: none;
     )";
     QList<QLabel*> allLabels = {
@@ -245,7 +250,6 @@ MainWindow::MainWindow(QWidget *parent)
             border-radius: 24px;
             border: 3px solid #bfa6ff;
         )");
-        // 让弹窗内按钮和主按钮风格一致
         QPushButton* confirmBtn = confirmWidget->findChild<QPushButton*>("confirmBtn");
         QPushButton* cancelBtn = confirmWidget->findChild<QPushButton*>("cancelBtn");
         QString BtnStyle = R"(
@@ -366,30 +370,32 @@ void MainWindow::playBgm(BgmType type) {
     }
     switch (type) {
     case BgmType::StartPage:
-        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/startPage.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/startPage.mp3"));
         break;
     case BgmType::Trapped0:
-        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/trapped0.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/trapped0.mp3"));
         break;
     case BgmType::Trapped1:
-        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/trapped1.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/trapped1.mp3"));
         break;
     case BgmType::DeadEnd:
-        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/deadEnd.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/deadEnd.mp3"));
         break;
     case BgmType::LostEnd:
-        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/lostEnd.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/lostEnd.mp3"));
         break;
     case BgmType::TrueEnd:
-        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/trueEnd.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/trueEnd.mp3"));
         break;
     case BgmType::FakeEnd:
-        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/fakeEnd.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/fakeEnd.mp3"));
+
         break;
     default:
         bgmPlayer->setSource(QUrl());
         break;
     }
+    audioOutput->setVolume(0.5);
     if (type != BgmType::None) {
         bgmPlayer->play();
     }
@@ -456,7 +462,7 @@ void MainWindow::maintainAspectRatio(QResizeEvent *event) {
 void MainWindow::setupBackground() {
     // 开始界面GIF背景
     startPageBgLabel = new QLabel(ui->startPage);
-    startPageBgMovie = new QMovie("Resource/startPage.gif");
+    startPageBgMovie = new QMovie(":/Resource/startPage.gif");
     startPageBgMovie->setCacheMode(QMovie::CacheAll);
     startPageBgLabel->setMovie(startPageBgMovie);
     startPageBgLabel->setAlignment(Qt::AlignCenter);
@@ -469,25 +475,25 @@ void MainWindow::setupBackground() {
 
     // 其他页面图片背景
     saveAndLoadPageBgLabel = new QLabel(ui->saveAndLoadPage);
-    saveAndLoadPageBgLabel->setPixmap(QPixmap("Resource/saveAndLoadPage.png"));
+    saveAndLoadPageBgLabel->setPixmap(QPixmap(":/Resource/saveAndLoadPage.png"));
     saveAndLoadPageBgLabel->setScaledContents(true);
     saveAndLoadPageBgLabel->setGeometry(ui->saveAndLoadPage->rect());
     saveAndLoadPageBgLabel->lower();
 
     edPageBgLabel = new QLabel(ui->edPage);
-    edPageBgLabel->setPixmap(QPixmap("Resource/edPage.png"));
+    edPageBgLabel->setPixmap(QPixmap(":/Resource/edPage.png"));
     edPageBgLabel->setScaledContents(true);
     edPageBgLabel->setGeometry(ui->edPage->rect());
     edPageBgLabel->lower();
 
     settingsPageBgLabel = new QLabel(ui->settingsPage);
-    settingsPageBgLabel->setPixmap(QPixmap("Resource/settingsPage.png"));
+    settingsPageBgLabel->setPixmap(QPixmap(":/Resource/settingsPage.png"));
     settingsPageBgLabel->setScaledContents(true);
     settingsPageBgLabel->setGeometry(ui->settingsPage->rect());
     settingsPageBgLabel->lower();
 
     helpPageBgLabel = new QLabel(ui->helpPage);
-    helpPageBgLabel->setPixmap(QPixmap("Resource/helpPage.png"));
+    helpPageBgLabel->setPixmap(QPixmap(":/Resource/helpPage.png"));
     helpPageBgLabel->setScaledContents(true);
     helpPageBgLabel->setGeometry(ui->helpPage->rect());
     helpPageBgLabel->lower();
@@ -530,7 +536,7 @@ void MainWindow::startGame() {
     QAudioOutput* clickAudio = new QAudioOutput(this);
     clickPlayer->setAudioOutput(clickAudio);
     clickAudio->setVolume(1.0);
-    clickPlayer->setSource(QUrl::fromLocalFile("Resource/click.wav"));
+    clickPlayer->setSource(QUrl("qrc:/Resource/click.wav"));
     connect(clickPlayer, &QMediaPlayer::mediaStatusChanged, clickPlayer, [clickPlayer, clickAudio](QMediaPlayer::MediaStatus status){
         if (status == QMediaPlayer::EndOfMedia || status == QMediaPlayer::InvalidMedia) {
             clickPlayer->deleteLater();
@@ -982,7 +988,7 @@ void MainWindow::saveAndLoadGame() {
         gameManager->pauseGame();
         ui->pauseBtn->setText("继续");
         if (bgmPlayer) bgmPlayer->pause();
-        gameManager->stopCountdown(); // 替换原来的 countdownTimer->stop();
+        gameManager->stopCountdown(); 
     }
     int prevIndex = ui->stackedWidget->currentIndex();
     ui->stackedWidget->setCurrentWidget(ui->saveAndLoadPage);

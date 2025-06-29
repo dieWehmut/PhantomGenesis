@@ -6,7 +6,8 @@
 #include <QPixmap>
 
 KingWave::KingWave(const QPointF& dir, int atk, QObject* parent)
-    : Wave(dir, atk, 1000, 15.0f, QPixmap("Resource/kingWave.png").scaled(128,128), parent)
+    : Wave(dir, atk, 1000, 15.0f, QPixmap(":/Resource/kingWave.png").scaled(128,128), parent)
+
 {
     setTargetType(None); // 可伤害所有非King对象
 }
@@ -19,7 +20,7 @@ void KingWave::playCollisionSound(QGraphicsItem* item)
 {
     if (dynamic_cast<Player*>(item)) {
         static QSoundEffect effect;
-        effect.setSource(QUrl::fromLocalFile("Resource/kingWaveHit.wav"));
+        effect.setSource(QUrl("qrc:/Resource/kingWaveHit.wav"));
         effect.setVolume(0.7f);
         effect.play();
     }

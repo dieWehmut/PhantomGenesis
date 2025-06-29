@@ -6,7 +6,7 @@
 #include "FlameWave.h"
 FlamePhantom::FlamePhantom(Player* targetPlayer) 
     : player(targetPlayer) {
-    setStaticPixmap(QPixmap("Resource/flamePhantom.png").scaled(64, 64));
+    setStaticPixmap(QPixmap(":/Resource/flamePhantom.png").scaled(64, 64));
     wanderTarget = pos();
     setMaxHp(10000);
     hp = maxHp;

@@ -38,6 +38,7 @@ PhantomGenesis_autogen/timestamp: \
 	D:/game/qt/PhantomGenesis/main.cpp \
 	D:/game/qt/PhantomGenesis/mainwindow.cpp \
 	D:/game/qt/PhantomGenesis/mainwindow.h \
+	D:/game/qt/PhantomGenesis/resources.qrc \
 	D:/mingw64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake \
 	D:/mingw64/share/cmake-3.30/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake \
 	D:/mingw64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake \
