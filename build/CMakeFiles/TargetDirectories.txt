@@ -1,9 +1,0 @@
-D:/game/qt/PhantomGenesis/build/CMakeFiles/PhantomGenesis.dir
-D:/game/qt/PhantomGenesis/build/CMakeFiles/edit_cache.dir
-D:/game/qt/PhantomGenesis/build/CMakeFiles/rebuild_cache.dir
-D:/game/qt/PhantomGenesis/build/CMakeFiles/list_install_components.dir
-D:/game/qt/PhantomGenesis/build/CMakeFiles/install.dir
-D:/game/qt/PhantomGenesis/build/CMakeFiles/install/local.dir
-D:/game/qt/PhantomGenesis/build/CMakeFiles/install/strip.dir
-D:/game/qt/PhantomGenesis/build/CMakeFiles/PhantomGenesis_autogen_timestamp_deps.dir
-D:/game/qt/PhantomGenesis/build/CMakeFiles/PhantomGenesis_autogen.dir

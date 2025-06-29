@@ -5,6 +5,7 @@
 #include <QElapsedTimer>
 class LurkPhantom:public PhantomBase
 {
+    Q_OBJECT
 public:
     LurkPhantom(Player* targetPlayer);
     ~LurkPhantom();

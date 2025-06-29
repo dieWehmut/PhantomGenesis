@@ -5,10 +5,10 @@ DropItem::DropItem(DropType type, QObject* parent)
     : QObject(parent), QGraphicsPixmapItem(), dropType(type) {
     switch (dropType) {
         case flamePhantomDrop:
-            setPixmap(QPixmap("Resource/flamePhantomDrop.png").scaled(64, 64));
+            setPixmap(QPixmap(":/Resource/flamePhantomDrop.png").scaled(64, 64));
             break;
         case lurkPhantomDrop:
-            setPixmap(QPixmap("Resource/lurkPhantomDrop.png").scaled(64, 64));
+            setPixmap(QPixmap(":/Resource/lurkPhantomDrop.png").scaled(64, 64));
             break;
     }
     setZValue(10);

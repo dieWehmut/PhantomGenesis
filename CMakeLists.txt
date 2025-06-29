@@ -33,6 +33,7 @@ qt_add_executable(PhantomGenesis
     DropItem.h DropItem.cpp
     KingWave.h KingWave.cpp
     ${RESOURCES}
+    Resource/1.mp3 Resource/2.mp3 Resource/3.mp3 Resource/4.mp3 Resource/5.mp3 Resource/6.mp3 Resource/7.mp3
 )
 
 target_link_libraries(PhantomGenesis

@@ -45,14 +45,7 @@ MainWindow::MainWindow(QWidget *parent)
     effect->setColor(QColor("#ff00cc")); 
     effect->setOffset(0, 0);
     ui->label->setGraphicsEffect(effect);
-    //放音乐
-    bgmPlayer = new QMediaPlayer(this);
-    audioOutput = new QAudioOutput(this);
-    bgmPlayer->setAudioOutput(audioOutput);
 
-    bgmPlayer->setLoops(QMediaPlayer::Infinite);
-
-    playBgm(BgmType::StartPage);//开始界面音乐
     ui->graphicsView->installEventFilter(this);
     ui->graphicsView->viewport()->installEventFilter(this);
     setupBackground();
@@ -330,6 +323,13 @@ MainWindow::MainWindow(QWidget *parent)
         }
     });
     updateContinueButtons();
+    QTimer::singleShot(0, this, [this]() {
+        bgmPlayer = new QMediaPlayer(this);
+        audioOutput = new QAudioOutput(this);
+        bgmPlayer->setAudioOutput(audioOutput);
+        bgmPlayer->setLoops(QMediaPlayer::Infinite);
+        playBgm(BgmType::StartPage);
+    });
 }
 
 MainWindow::~MainWindow()
@@ -370,26 +370,25 @@ void MainWindow::playBgm(BgmType type) {
     }
     switch (type) {
     case BgmType::StartPage:
-        bgmPlayer->setSource(QUrl("qrc:/Resource/startPage.mp3"));
+        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/1.mp3"));
         break;
     case BgmType::Trapped0:
-        bgmPlayer->setSource(QUrl("qrc:/Resource/trapped0.mp3"));
+        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/2.mp3"));
         break;
     case BgmType::Trapped1:
-        bgmPlayer->setSource(QUrl("qrc:/Resource/trapped1.mp3"));
+        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/3.mp3"));
         break;
     case BgmType::DeadEnd:
-        bgmPlayer->setSource(QUrl("qrc:/Resource/deadEnd.mp3"));
+        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/4.mp3"));
         break;
     case BgmType::LostEnd:
-        bgmPlayer->setSource(QUrl("qrc:/Resource/lostEnd.mp3"));
+        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/5.mp3"));
         break;
     case BgmType::TrueEnd:
-        bgmPlayer->setSource(QUrl("qrc:/Resource/trueEnd.mp3"));
+        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/6.mp3"));
         break;
     case BgmType::FakeEnd:
-        bgmPlayer->setSource(QUrl("qrc:/Resource/fakeEnd.mp3"));
-
+        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/7.mp3"));
         break;
     default:
         bgmPlayer->setSource(QUrl());

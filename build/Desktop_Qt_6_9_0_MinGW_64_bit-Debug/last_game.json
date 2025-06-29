@@ -1,0 +1,27 @@
+{
+    "bgmType": 2,
+    "countdownSeconds": 239,
+    "curMapId": 0,
+    "dropItems": [
+    ],
+    "flamePhantoms": [
+    ],
+    "inSecondCountdown": false,
+    "lurkPhantoms": [
+    ],
+    "player_atk": 500,
+    "player_atkCD": 1000,
+    "player_atkRange": 100,
+    "player_hp": 100000,
+    "player_maxHp": 100000,
+    "player_sightRange": 200,
+    "player_speed": 10,
+    "player_teleportCount": 0,
+    "player_waveAoeRadius": 100,
+    "player_waveSpeed": 12,
+    "player_x": 12800,
+    "player_y": 10752,
+    "save_time": "2025-06-30 00:45:21",
+    "waves": [
+    ]
+}

@@ -4,6 +4,7 @@
 #include "Wave.h"
 
 class KingWave : public Wave {
+    Q_OBJECT
 public:
     KingWave(const QPointF& dir, int atk, QObject* parent = nullptr);
     void startTimers() override;

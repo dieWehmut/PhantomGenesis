@@ -5,6 +5,7 @@
 #include <QSoundEffect>
 
 class LurkWave : public Wave {
+    Q_OBJECT
 public:
     LurkWave(const QPointF& dir, int atk, QObject* parent = nullptr);
     void startTimers() override;
