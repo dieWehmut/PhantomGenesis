@@ -7,7 +7,7 @@ Player::Player(QObject *parent) : ActiveObject(parent) {
     //属性初始值设置
     setMaxHp(100000);
     hp = maxHp;
-    setSpeed(10.0f);
+    setSpeed(8.0f);
     setOriginSpeed(getSpeed());
     setSightRange(200);
     setAtkRange(100);

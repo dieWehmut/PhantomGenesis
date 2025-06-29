@@ -464,12 +464,12 @@ void GameManager::updateLurkPhantoms() {
 void GameManager::accelerateAllPhantoms() {
     for (auto* phantom : flamePhantoms) {
         if (phantom) {
-            phantom->setSpeed(phantom->getSpeed() * 3.0f);
+            phantom->setSpeed(phantom->getSpeed() * 2.0f);
         }
     }
     for (auto* phantom : lurkPhantoms) {
         if (phantom) {
-            phantom->setSpeed(phantom->getSpeed() * 4.0f);
+            phantom->setSpeed(phantom->getSpeed() * 3.0f);
         }
     }
 }
@@ -619,7 +619,9 @@ void GameManager::loadFromJson(const QString& filename) {
         player->setAtk(root["player_atk"].toInt());
         player->setAtkRange(root["player_atkRange"].toInt());
         player->setSightRange(root["player_sightRange"].toInt());
-        player->setSpeed(root["player_speed"].toDouble());
+        float playerSpeed = root["player_speed"].toDouble();
+        player->setSpeed(playerSpeed);
+        player->setOriginSpeed(playerSpeed);
         player->setAtkCD(root["player_atkCD"].toInt());
         player->setPlayerWaveAoeRadius(root["player_waveAoeRadius"].toDouble());
         player->setPlayerWaveSpeed(root["player_waveSpeed"].toDouble());

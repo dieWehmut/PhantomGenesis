@@ -39,7 +39,7 @@
        </sizepolicy>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="startPage">
        <property name="sizePolicy">
@@ -301,7 +301,7 @@ font-weight: bold;</string>
          <string notr="true">color: red; background: transparent; font-size: 28px;</string>
         </property>
         <property name="text">
-         <string>02：00</string>
+         <string/>
         </property>
        </widget>
       </widget>

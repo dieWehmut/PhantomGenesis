@@ -32,7 +32,7 @@ void DropItem::strengthenPlayer(Player* player) {
                 player->setMaxHp(player->getMaxHp() + 5000);
             }
         break;
-        case DropType::lurkPhantomDrop: 
+        case DropType::lurkPhantomDrop:
             if(player->getSpeed()<20.0f) {//10次
                 player->setSpeed(player->getSpeed() + 1.0f);
             } else if(player->getAtkCD()>=200) {//9次

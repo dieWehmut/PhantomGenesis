@@ -370,25 +370,25 @@ void MainWindow::playBgm(BgmType type) {
     }
     switch (type) {
     case BgmType::StartPage:
-        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/1.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/1.mp3"));
         break;
     case BgmType::Trapped0:
-        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/2.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/2.mp3"));
         break;
     case BgmType::Trapped1:
-        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/3.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/3.mp3"));
         break;
     case BgmType::DeadEnd:
-        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/4.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/4.mp3"));
         break;
     case BgmType::LostEnd:
-        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/5.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/5.mp3"));
         break;
     case BgmType::TrueEnd:
-        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/6.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/6.mp3"));
         break;
     case BgmType::FakeEnd:
-        bgmPlayer->setSource(QUrl::fromLocalFile("Resource/7.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/7.mp3"));
         break;
     default:
         bgmPlayer->setSource(QUrl());

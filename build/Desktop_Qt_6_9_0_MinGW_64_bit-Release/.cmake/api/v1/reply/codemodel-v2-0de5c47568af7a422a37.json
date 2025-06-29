@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Release-293d6af95b235738c43a.json",
+					"jsonFile" : "directory-.-Release-e34ec1e59707c7ffd316.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -44,7 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "PhantomGenesis::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-PhantomGenesis-Release-a743289a877f6fbb89ef.json",
+					"jsonFile" : "target-PhantomGenesis-Release-03e9045e9bbaa9295650.json",
 					"name" : "PhantomGenesis",
 					"projectIndex" : 0
 				},

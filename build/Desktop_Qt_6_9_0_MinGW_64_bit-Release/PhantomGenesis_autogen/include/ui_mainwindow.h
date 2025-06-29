@@ -331,7 +331,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -355,7 +355,7 @@ public:
         helpBtn->setText(QCoreApplication::translate("MainWindow", "\346\203\205\346\212\245", nullptr));
         settingBtn->setText(QCoreApplication::translate("MainWindow", "\350\256\276\347\275\256", nullptr));
         continueBtn->setText(QCoreApplication::translate("MainWindow", "\347\273\247\347\273\255\346\216\242\347\264\242", nullptr));
-        countdownLabel->setText(QCoreApplication::translate("MainWindow", "02\357\274\23200", nullptr));
+        countdownLabel->setText(QString());
         backBtn_3->setText(QCoreApplication::translate("MainWindow", "\350\277\224\345\233\236\346\240\207\351\242\230", nullptr));
         continueBtn_5->setText(QCoreApplication::translate("MainWindow", "\347\273\247\347\273\255\346\216\242\347\264\242", nullptr));
         archive_1->setText(QCoreApplication::translate("MainWindow", "\347\251\272", nullptr));
