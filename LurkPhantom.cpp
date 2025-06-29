@@ -10,7 +10,7 @@ LurkPhantom::LurkPhantom(Player* targetPlayer)
     setMaxHp(5000);
     hp = maxHp;
     setSpeed(4.0f);
-    setSightRange(6000);
+    setSightRange(10000);
     setAtkRange(300);
     setAtk(200);
     blinkCooldown = 3000;

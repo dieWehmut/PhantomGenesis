@@ -11,7 +11,7 @@ FlamePhantom::FlamePhantom(Player* targetPlayer)
     setMaxHp(10000);
     hp = maxHp;
     setSpeed(2.0f);
-    setSightRange(5000);
+    setSightRange(8000);
     setAtkRange(500);
     setAtk(10);
     setRangeAtkCD(3000);

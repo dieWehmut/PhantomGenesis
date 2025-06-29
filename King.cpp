@@ -13,7 +13,7 @@ King::King(QObject* parent) : PhantomBase()
     setAtk(500);
     setAtkRange(600);
     setSpeed(6.0f);
-    setSightRange(1000);
+    setSightRange(2000);
     setStaticPixmap(QPixmap("Resource/king.png").scaled(128, 128));
     createRangeIndicator(QColor(255, 215, 0, 60), 3);
 

@@ -75,8 +75,11 @@ private:
     void updateEndingButtonsAndCounter(); //更新结局按钮和计数器
     void setEndingAchieved(const QString& endingKey);//设置结局达成状态
     void refreshSaveSlotButtons();//刷新存档
-    QFileSystemWatcher* endingsWatcher = nullptr;//监测文件
+    QFileSystemWatcher* endingsWatcher = nullptr;//监测结局文件
+    QFileSystemWatcher* lastGameWatcher = nullptr; //监测上次游戏文件
+    QFileSystemWatcher* savesWatcher = nullptr;//监测所有存档
     void saveLastGame();//保存上次游戏
+    void updateContinueButtons(); //更新继续按钮
 private slots://页面跳转
     void startGame();//开始游戏
     void showEdPage();//ED鉴赏

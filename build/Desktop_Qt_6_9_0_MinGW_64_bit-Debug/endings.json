@@ -1,6 +1,6 @@
 {
-    "deadEnd": flase,
-    "fakeEnd": false,
+    "deadEnd": false,
+    "fakeEnd": true,
     "lostEnd": false,
     "trueEnd": false
 }

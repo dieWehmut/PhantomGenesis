@@ -302,13 +302,30 @@ MainWindow::MainWindow(QWidget *parent)
             }
         }
     });
-    bool hasLastGame = QFile::exists("last_game.json");
-    ui->continueBtn->setEnabled(hasLastGame);
-    ui->continueBtn_2->setEnabled(hasLastGame);
-    ui->continueBtn_3->setEnabled(hasLastGame);
-    ui->continueBtn_4->setEnabled(hasLastGame);
-    ui->continueBtn_5->setEnabled(hasLastGame);
-
+    lastGameWatcher = new QFileSystemWatcher(this);
+    lastGameWatcher->addPath("last_game.json");
+    connect(lastGameWatcher, &QFileSystemWatcher::fileChanged, this, [this](const QString&) {
+        updateContinueButtons();
+        if (!QFile::exists("last_game.json")) {
+            lastGameWatcher->removePath("last_game.json");
+        } else if (!lastGameWatcher->files().contains("last_game.json")) {
+            lastGameWatcher->addPath("last_game.json");
+        }
+    });
+    savesWatcher = new QFileSystemWatcher(this);
+    QStringList saveFiles;
+    for (int i = 1; i <= 8; ++i) {
+        QString file = QString("save%1.json").arg(i);
+        saveFiles << file;
+    }
+    savesWatcher->addPaths(saveFiles);
+    connect(savesWatcher, &QFileSystemWatcher::fileChanged, this, [this](const QString& path) {
+        refreshSaveSlotButtons();
+        if (QFile::exists(path) && !savesWatcher->files().contains(path)) {
+            savesWatcher->addPath(path);
+        }
+    });
+    updateContinueButtons();
 }
 
 MainWindow::~MainWindow()
@@ -541,7 +558,6 @@ void MainWindow::startGame() {
     gameManager->startGame();
     gameStarted = true;
 
-    // 新增：如果没有last_game.json，保存一次
     if (!QFile::exists("last_game.json")) {
         gameManager->setSavedBgmType(static_cast<int>(currentBgm));
         gameManager->saveToJson("last_game.json");
@@ -648,7 +664,13 @@ void MainWindow::returnToGame() {
 
         // 读取BGM类型并播放
         int bgmType = gameManager->getSavedBgmType();
-        playBgm(static_cast<BgmType>(bgmType));
+        if (gameManager->isSecondCountdown()) {
+            playBgm(BgmType::Trapped1);
+            lastGameBgm = BgmType::Trapped1;
+        } else {
+            playBgm(BgmType::Trapped0);
+            lastGameBgm = BgmType::Trapped0;
+        }
         lastGameBgm = static_cast<BgmType>(bgmType);
 
         ui->pauseBtn->setText("暂停");
@@ -1055,6 +1077,10 @@ void MainWindow::refreshSaveSlotButtons() {
                 btn->setText("空");
             }
         }
+        // 保证监控
+        if (file.exists() && !savesWatcher->files().contains(saveFile)) {
+            savesWatcher->addPath(saveFile);
+        }
     }
 }
 void MainWindow::onConfirmSave() {
@@ -1147,4 +1173,12 @@ void MainWindow::saveLastGame() {
     if (gameManager) {
         gameManager->saveToJson("last_game.json");
     }
+}
+void MainWindow::updateContinueButtons() {
+    bool hasLastGame = QFile::exists("last_game.json");
+    ui->continueBtn->setEnabled(hasLastGame);
+    ui->continueBtn_2->setEnabled(hasLastGame);
+    ui->continueBtn_3->setEnabled(hasLastGame);
+    ui->continueBtn_4->setEnabled(hasLastGame);
+    ui->continueBtn_5->setEnabled(hasLastGame);
 }

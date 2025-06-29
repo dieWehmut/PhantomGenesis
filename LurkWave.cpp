@@ -16,7 +16,7 @@ void LurkWave::playCollisionSound(QGraphicsItem* item) {
     if (dynamic_cast<Player*>(item)) {
         if (hitSound.source().isEmpty()) {
             hitSound.setSource(QUrl::fromLocalFile("Resource/lurkWaveHit.wav"));
-            hitSound.setVolume(1.7f);
+            hitSound.setVolume(1.0f);
         }
         hitSound.play();
     }
