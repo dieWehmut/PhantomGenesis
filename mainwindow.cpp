@@ -946,8 +946,6 @@ void MainWindow::onEnd(BgmType endType, QWidget* endPage, bool* playedFlag) {
     }
 }
 
-
-
 void MainWindow::onEndFinished(bool fromGame) {
     bgmPlayer->setLoops(QMediaPlayer::Infinite);
     ui->stackedWidget->setCurrentWidget(ui->startPage);

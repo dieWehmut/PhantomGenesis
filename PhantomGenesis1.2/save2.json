@@ -1,0 +1,59 @@
+{
+    "bgmType": 2,
+    "countdownSeconds": 232,
+    "curMapId": 0,
+    "dropItems": [
+    ],
+    "flamePhantoms": [
+        {
+            "atk": 10,
+            "atkRange": 500,
+            "hp": 10000,
+            "speed": 2,
+            "x": 11138.63537674393,
+            "y": 8070.133082667451
+        },
+        {
+            "atk": 10,
+            "atkRange": 500,
+            "hp": 10000,
+            "speed": 2,
+            "x": 10928.697897238222,
+            "y": 7813.339872634029
+        }
+    ],
+    "inSecondCountdown": false,
+    "lurkPhantoms": [
+        {
+            "atk": 200,
+            "atkRange": 300,
+            "hp": 5000,
+            "speed": 4,
+            "x": 11981.523074696175,
+            "y": 10112.210399524323
+        },
+        {
+            "atk": 200,
+            "atkRange": 300,
+            "hp": 5000,
+            "speed": 4,
+            "x": 12766.119367766154,
+            "y": 7614.156121829296
+        }
+    ],
+    "player_atk": 500,
+    "player_atkCD": 1000,
+    "player_atkRange": 100,
+    "player_hp": 100000,
+    "player_maxHp": 100000,
+    "player_sightRange": 200,
+    "player_speed": 8,
+    "player_teleportCount": 0,
+    "player_waveAoeRadius": 100,
+    "player_waveSpeed": 12,
+    "player_x": 11910.912033081055,
+    "player_y": 8500.593682289124,
+    "save_time": "2025-06-30 10:29:55",
+    "waves": [
+    ]
+}

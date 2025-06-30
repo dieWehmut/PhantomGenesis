@@ -1,5 +1,5 @@
 #include "FlameWave.h"
-#include <QPixmap>  // 需要包含 QPixmap 头文件用于加载贴图
+#include <QPixmap>  
 #include "Player.h"
 
 QSoundEffect FlameWave::hitSound;
