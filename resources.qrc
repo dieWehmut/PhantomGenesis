@@ -1,0 +1,44 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Resource/click.wav</file>
+        <file>Resource/edPage.png</file>
+        <file>Resource/flame.png</file>
+        <file>Resource/flamePhantom.png</file>
+        <file>Resource/flamePhantomBase.png</file>
+        <file>Resource/flamePhantomDrop.png</file>
+        <file>Resource/flameWave.png</file>
+        <file>Resource/flameWaveHit.wav</file>
+        <file>Resource/helpPage.png</file>
+        <file>Resource/king.png</file>
+        <file>Resource/kingWave.png</file>
+        <file>Resource/kingWaveHit.wav</file>
+        <file>Resource/lurkPhantom.png</file>
+        <file>Resource/lurkPhantomBase.png</file>
+        <file>Resource/lurkPhantomDrop.png</file>
+        <file>Resource/lurkPhantomLaser.wav</file>
+        <file>Resource/lurkWave.png</file>
+        <file>Resource/mazeExit.png</file>
+        <file>Resource/fog.png</file>
+        <file>Resource/PhantomGenesis.ico</file>
+        <file>Resource/playerBurned.png</file>
+        <file>Resource/playerLowHp.png</file>
+        <file>Resource/playerNormal.png</file>
+        <file>Resource/playerWave.png</file>
+        <file>Resource/playerWaveHit.wav</file>
+        <file>Resource/portalEnd.png</file>
+        <file>Resource/portalStart.png</file>
+        <file>Resource/ruins.png</file>
+        <file>Resource/saveAndLoadPage.png</file>
+        <file>Resource/settingsPage.png</file>
+        <file>Resource/teleport.wav</file>
+        <file>Resource/startPage.gif</file>
+        <file>Resource/lostEnd.mp3</file>
+        <file>Resource/startPage.mp3</file>
+        <file>Resource/trueEnd.mp3</file>
+        <file>Resource/trapped1.mp3</file>
+        <file>Resource/deadEnd.mp3</file>
+        <file>Resource/fakeEnd.mp3</file>
+        <file>Resource/trapped0.mp3</file>
+        <file>Resource/lurkWaveHit.wav</file>
+    </qresource>
+</RCC>

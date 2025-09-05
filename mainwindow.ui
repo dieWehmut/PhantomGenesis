@@ -1,0 +1,826 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1080</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1080</width>
+    <height>720</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(0, 0, 0);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="currentIndex">
+       <number>6</number>
+      </property>
+      <widget class="QWidget" name="startPage">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <widget class="QPushButton" name="startBtn">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>110</y>
+          <width>200</width>
+          <height>70</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(188, 255, 196);</string>
+        </property>
+        <property name="text">
+         <string>新的开始</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="loadBtn">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>270</y>
+          <width>200</width>
+          <height>70</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>读取存档</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="edBtn">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>430</y>
+          <width>200</width>
+          <height>70</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>ED鉴赏</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="exitBtn">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>590</y>
+          <width>200</width>
+          <height>70</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>退出游戏</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="continueBtn_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>190</y>
+          <width>200</width>
+          <height>70</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>继续探索</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="helpBtn_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>350</y>
+          <width>200</width>
+          <height>70</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>情报查看</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="settingBtn_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>510</y>
+          <width>200</width>
+          <height>70</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>游戏设置</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>10</y>
+          <width>271</width>
+          <height>81</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: white;
+background: transparent;
+font-size: 32px;
+font-weight: bold;</string>
+        </property>
+        <property name="text">
+         <string>PhantomGenesis</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="gamePage">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(0, 0, 0);</string>
+       </property>
+       <widget class="QGraphicsView" name="graphicsView">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>49</y>
+          <width>1080</width>
+          <height>671</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(0, 0, 0);</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="backBtn_4">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>150</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>返回标题</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="saveBtn">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>0</y>
+          <width>150</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>保存</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="loadBtn_2">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>0</y>
+          <width>150</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>读取</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pauseBtn">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>0</y>
+          <width>150</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>暂停</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="helpBtn">
+        <property name="geometry">
+         <rect>
+          <x>640</x>
+          <y>0</y>
+          <width>150</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>情报</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="settingBtn">
+        <property name="geometry">
+         <rect>
+          <x>800</x>
+          <y>0</y>
+          <width>150</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>设置</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="continueBtn">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>230</y>
+          <width>421</width>
+          <height>261</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(149, 255, 183);</string>
+        </property>
+        <property name="text">
+         <string>继续探索</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="countdownLabel">
+        <property name="geometry">
+         <rect>
+          <x>960</x>
+          <y>0</y>
+          <width>100</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: red; background: transparent; font-size: 28px;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="saveAndLoadPage">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 211, 37);</string>
+       </property>
+       <widget class="QPushButton" name="backBtn_3">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>150</width>
+          <height>80</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>返回标题</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="continueBtn_5">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>0</y>
+          <width>160</width>
+          <height>80</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>继续探索</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="archive_1">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>150</y>
+          <width>240</width>
+          <height>200</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>空</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="archive_2">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>150</y>
+          <width>240</width>
+          <height>200</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>空</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="archive_3">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>150</y>
+          <width>240</width>
+          <height>200</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>空</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="archive_4">
+        <property name="geometry">
+         <rect>
+          <x>790</x>
+          <y>150</y>
+          <width>240</width>
+          <height>200</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>空</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="archive_5">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>390</y>
+          <width>240</width>
+          <height>200</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>空</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="archive_6">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>390</y>
+          <width>240</width>
+          <height>200</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>空</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="archive_7">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>390</y>
+          <width>240</width>
+          <height>200</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>空</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="archive_8">
+        <property name="geometry">
+         <rect>
+          <x>790</x>
+          <y>390</y>
+          <width>240</width>
+          <height>200</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>空</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="confirmWidget" native="true">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>310</y>
+          <width>301</width>
+          <height>161</height>
+         </rect>
+        </property>
+        <widget class="QLabel" name="confirmText">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>40</y>
+           <width>171</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">                color: #7c3aed;
+                font-size: 28px;
+                font-weight: bold;
+                background: transparent;
+                border: none;
+                text-align: center;
+</string>
+         </property>
+         <property name="text">
+          <string>确定要覆盖吗</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="confirmBtn">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>100</y>
+           <width>150</width>
+           <height>60</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>确认</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="cancelBtn">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>100</y>
+           <width>150</width>
+           <height>60</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>取消</string>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="edPage">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(69, 165, 255);</string>
+       </property>
+       <widget class="QPushButton" name="backBtn">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>150</width>
+          <height>80</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>返回标题</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="leBtn">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>310</y>
+          <width>250</width>
+          <height>150</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>3</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="teBtn">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>310</y>
+          <width>250</width>
+          <height>150</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>4</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="feBtn">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>130</y>
+          <width>250</width>
+          <height>150</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>2</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="deBtn">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>130</y>
+          <width>250</width>
+          <height>150</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>1</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="endingCounterLabel">
+        <property name="geometry">
+         <rect>
+          <x>163</x>
+          <y>0</y>
+          <width>271</width>
+          <height>80</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>已达结局数：0</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="settingsPage">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(0, 255, 127);</string>
+       </property>
+       <widget class="QPushButton" name="backBtn_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>150</width>
+          <height>80</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>返回标题</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="continueBtn_3">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>0</y>
+          <width>150</width>
+          <height>80</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>继续探索</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="helpPage">
+       <widget class="QPushButton" name="backBtn_5">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>150</width>
+          <height>80</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>返回标题</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="continueBtn_4">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>0</y>
+          <width>150</width>
+          <height>80</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>继续探索</string>
+        </property>
+       </widget>
+       <widget class="QTextBrowser" name="textBrowser">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>80</y>
+          <width>1080</width>
+          <height>640</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background: transparent; border: none; color:#ff3333;font-size: 22px;</string>
+        </property>
+        <property name="html">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI'; font-size:22px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:700;&quot;&gt;我是幽灵&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:700;&quot;&gt;在这个游戏中似乎是通过WASD移动，空格发射波&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="edScene">
+       <widget class="QStackedWidget" name="stackedWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>-1</x>
+          <y>-1</y>
+          <width>1081</width>
+          <height>601</height>
+         </rect>
+        </property>
+        <widget class="QWidget" name="dePage">
+         <widget class="QTextBrowser" name="textBrowser_2">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>80</y>
+            <width>1080</width>
+            <height>640</height>
+           </rect>
+          </property>
+          <property name="html">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="skipBtn">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>150</width>
+            <height>80</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>跳过</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="tePage">
+         <widget class="QPushButton" name="skipBtn_4">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>150</width>
+            <height>80</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>跳过</string>
+          </property>
+         </widget>
+         <widget class="QTextBrowser" name="textBrowser_5">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>80</y>
+            <width>1080</width>
+            <height>640</height>
+           </rect>
+          </property>
+          <property name="html">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="fePage">
+         <widget class="QPushButton" name="skipBtn_2">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>150</width>
+            <height>80</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>跳过</string>
+          </property>
+         </widget>
+         <widget class="QTextBrowser" name="textBrowser_3">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>80</y>
+            <width>1080</width>
+            <height>640</height>
+           </rect>
+          </property>
+          <property name="html">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="lePage">
+         <widget class="QPushButton" name="skipBtn_3">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>150</width>
+            <height>80</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>跳过</string>
+          </property>
+         </widget>
+         <widget class="QTextBrowser" name="textBrowser_4">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>80</y>
+            <width>1080</width>
+            <height>640</height>
+           </rect>
+          </property>
+          <property name="html">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </widget>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
