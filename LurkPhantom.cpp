@@ -12,7 +12,7 @@ LurkPhantom::LurkPhantom(Player* targetPlayer)
     setSpeed(4.0f);
     setSightRange(10000);
     setAtkRange(300);
-    setAtk(200);
+    setAtk(500);
     blinkCooldown = 3000;
     lastBlinkTimer.start();
     createRangeIndicator(QColor(0, 128, 255, 80), 1);
@@ -50,10 +50,10 @@ void LurkPhantom::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
             qreal distance = QLineF(myCenter, playerCenter).length();
             if (distance <= getAtkRange()) {
                 if (!hasDealtDamage) {
-                    player->setHp(player->getHp() - getAtk());
+                    player->setHp(player->getHp() - 4*getAtk());
                     static QSoundEffect laserEffect;
                     if (laserEffect.source().isEmpty())
-                        laserEffect.setSource(QUrl(":/Resource/lurkPhantomLaser.wav"));
+                        laserEffect.setSource(QUrl("qrc:/Resource/lurkPhantomLaser.wav"));
                     laserEffect.setVolume(1.0f);
                     laserEffect.play();
                     hasDealtDamage = true;
@@ -167,7 +167,7 @@ void LurkPhantom::setHp(int v) {
     int oldHp = getHp();
     if (shieldActive && v < oldHp) {
         int damage = oldHp - v;
-        int recovery = damage*0.8;
+        int recovery = damage*0.5;
         PhantomBase::setHp(v + recovery);
     } else {
         PhantomBase::setHp(v);

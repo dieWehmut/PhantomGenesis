@@ -15,13 +15,11 @@ DropItem::DropItem(DropType type, QObject* parent)
 }
 
 void DropItem::strengthenPlayer(Player* player) {
-    player->setHp(player->getHp()+10000);
+    player->setHp(player->getHp()+20000);
     switch (dropType){
         case DropType::flamePhantomDrop:
-            if(player->getAtk()<=1000) {//5次
-                player->setAtk(player->getAtk()+100);
-            } else if(player->getSightRange()<300){//5次
-                player->setSightRange(player->getSightRange()+20);
+            if(player->getSightRange()<400){//2次
+                player->setSightRange(player->getSightRange()+100);
             } else if(player->getPlayerWaveAoeRadius()<200.0f) {//5次
                 player->setPlayerWaveAoeRadius(player->getPlayerWaveAoeRadius() + 20.0f);
             }else if(player->getAtkRange()<150){//5次
@@ -29,16 +27,16 @@ void DropItem::strengthenPlayer(Player* player) {
             } else if(player->getPlayerWaveSpeed()<20.0f) {//5次
                 player->setPlayerWaveSpeed(player->getPlayerWaveSpeed() + 2.0f);
             } else if(player->getMaxHp()<1000000) {
-                player->setMaxHp(player->getMaxHp() + 5000);
+                player->setMaxHp(player->getMaxHp() + 15000);
             }
         break;
         case DropType::lurkPhantomDrop:
-            if(player->getSpeed()<20.0f) {//10次
-                player->setSpeed(player->getSpeed() + 1.0f);
-            } else if(player->getAtkCD()>=200) {//9次
-                player->setAtkCD(player->getAtkCD() - 100);
+            if(player->getSpeed()<20.0f) {//4次
+                player->setSpeed(player->getSpeed() + 2.0f);
+            } else if(player->getAtkCD()>=200) {//3次
+                player->setAtkCD(player->getAtkCD() - 200);
             }else if(player->getMaxHp()<1000000) {
-                player->setMaxHp(player->getMaxHp() + 5000);
+                player->setMaxHp(player->getMaxHp() + 15000);
             }
         break;
     }

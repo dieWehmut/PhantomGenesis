@@ -1,0 +1,24 @@
+# Qt build directories
+build*/
+CMakeLists.txt.user
+
+# IDE/Qt Creator cache
+*.pro.user
+*.qmake.stash
+*.user
+
+# Compiled objects
+*.o
+*.obj
+*.dll
+*.exe
+*.pdb
+
+# Clangd / IDE caches
+.qtc_clangd/
+.vs/
+
+# Temporary files
+*.log
+*.tmp
+*.cache

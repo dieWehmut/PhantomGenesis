@@ -39,7 +39,7 @@
        </sizepolicy>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="startPage">
        <property name="sizePolicy">
@@ -525,7 +525,7 @@ font-weight: bold;</string>
          </rect>
         </property>
         <property name="text">
-         <string>迷失</string>
+         <string>3</string>
         </property>
        </widget>
        <widget class="QPushButton" name="teBtn">
@@ -538,7 +538,7 @@ font-weight: bold;</string>
          </rect>
         </property>
         <property name="text">
-         <string>真相</string>
+         <string>4</string>
         </property>
        </widget>
        <widget class="QPushButton" name="feBtn">
@@ -551,7 +551,7 @@ font-weight: bold;</string>
          </rect>
         </property>
         <property name="text">
-         <string>虚无</string>
+         <string>2</string>
         </property>
        </widget>
        <widget class="QPushButton" name="deBtn">
@@ -564,7 +564,7 @@ font-weight: bold;</string>
          </rect>
         </property>
         <property name="text">
-         <string>失败</string>
+         <string>1</string>
         </property>
        </widget>
        <widget class="QLabel" name="endingCounterLabel">
@@ -797,7 +797,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>70</y>
+            <y>80</y>
             <width>1080</width>
             <height>640</height>
            </rect>

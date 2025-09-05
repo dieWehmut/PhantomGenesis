@@ -5,14 +5,14 @@
 #include"PlayerWave.h"
 Player::Player(QObject *parent) : ActiveObject(parent) {
     //属性初始值设置
-    setMaxHp(100000);
+    setMaxHp(50000);
     hp = maxHp;
-    setSpeed(8.0f);
+    setSpeed(14.0f);
     setOriginSpeed(getSpeed());
     setSightRange(200);
     setAtkRange(100);
-    setAtk(500);
-    setAtkCD(1000);
+    setAtk(1000);
+    setAtkCD(800);
     atkTimer.restart();
     cdUpdateTimer = new QTimer(this);
     cdUpdateTimer->setInterval(1000/60); 
@@ -36,7 +36,7 @@ void Player::setSlowed(bool s) {
     if (slowed == s) return;
     slowed = s;
     if (slowed) {
-        setSpeed(originalSpeed * 0.5f);
+        setSpeed(originalSpeed * 0.6f);
     } else {
         setSpeed(originalSpeed);
     }

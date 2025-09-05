@@ -10,8 +10,8 @@ King::King(QObject* parent) : PhantomBase()
 {
     setMaxHp(30000);
     hp = maxHp;
-    setAtk(500);
-    setAtkRange(600);
+    setAtk(2000);
+    setAtkRange(800);
     setSpeed(6.0f);
     setSightRange(2000);
     setStaticPixmap(QPixmap(":/Resource/king.png").scaled(128, 128));

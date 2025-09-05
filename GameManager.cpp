@@ -74,7 +74,7 @@ GameManager::GameManager(QGraphicsView* graphicsView, QObject *parent) : QObject
                 MainWindow* mw = qobject_cast<MainWindow*>(this->parent());
                 if (mw) mw->playBgm(MainWindow::BgmType::Trapped1);
                 accelerateAllPhantoms();
-                setCountdown(120);
+                setCountdown(60);
                 inSecondCountdown = true;
             } else {
                 countdownTimer->stop();
@@ -190,14 +190,14 @@ void GameManager::startGame() {
     handleViewResize();
     gameLoopTimer = new QTimer(this);
     player->setFocus();
-    setCountdown(240);
+    setCountdown(120);
     portalEnabled = true;
     inSecondCountdown = false;
     startCountdown();
     //游戏主循环
     connect(gameLoopTimer, &QTimer::timeout, this, [=]() {
         //各种结局
-        if(player->getTeleportCount()==20){
+        if(player->getTeleportCount()>=10){
             MainWindow* mw = qobject_cast<MainWindow*>(parent());
             if (mw) mw->onEnd(MainWindow::BgmType::LostEnd, mw->findChild<QWidget*>("lePage"), &(mw->lostEndPlayed));
             gameLoopTimer->stop();
@@ -382,7 +382,7 @@ void GameManager::spawnFlamePhantoms() {
     spawnPhantoms<FlamePhantom>(
         flamePhantoms,
         gameMap->getFlamePhantomBases(),
-        10,
+        15,
         [this]() { return new FlamePhantom(player); }
     );
 }
@@ -464,12 +464,12 @@ void GameManager::updateLurkPhantoms() {
 void GameManager::accelerateAllPhantoms() {
     for (auto* phantom : flamePhantoms) {
         if (phantom) {
-            phantom->setSpeed(phantom->getSpeed() * 2.0f);
+            phantom->setSpeed(phantom->getSpeed() * 4.0f);
         }
     }
     for (auto* phantom : lurkPhantoms) {
         if (phantom) {
-            phantom->setSpeed(phantom->getSpeed() * 3.0f);
+            phantom->setSpeed(phantom->getSpeed() * 5.0f);
         }
     }
 }

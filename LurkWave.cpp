@@ -5,7 +5,7 @@
 QSoundEffect LurkWave::hitSound;
 
 LurkWave::LurkWave(const QPointF& dir, int atk, QObject* parent)
-    : Wave(dir, atk, 400, 5.0f, QPixmap(":/Resource/lurkWave.png").scaled(64,64), parent)
+    : Wave(dir, atk, 500, 8.0f, QPixmap(":/Resource/lurkWave.png").scaled(64,64), parent)
 {
     setTargetType(PlayerTarget);
 }

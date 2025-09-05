@@ -13,7 +13,7 @@ FlamePhantom::FlamePhantom(Player* targetPlayer)
     setSpeed(2.0f);
     setSightRange(8000);
     setAtkRange(500);
-    setAtk(10);
+    setAtk(500);
     setRangeAtkCD(3000);
     rangeAtkTimer.start();
     rangeIndicatorItem = new QGraphicsEllipseItem();
@@ -50,7 +50,7 @@ void FlamePhantom::updateStatus() {
     if (inRange) {
         rangeDebuff();
         if (rangeAtkTimer.elapsed() >= getRangeAtkCD()) {
-            player->setHp(player->getHp() - atk);//定时扣血
+            player->setHp(player->getHp() - 0.1*atk);//定时扣血
             // 发射火焰波
             QPointF dir = playerCenter - myCenter;
             qreal len = std::hypot(dir.x(), dir.y());

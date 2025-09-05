@@ -335,11 +335,14 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     QFile::remove("last_game.json");
-    saveLastGame();//先存个档
+            QFile::remove("last_game.json");
+            saveLastGame();
     delete ui;
 }
 
 void MainWindow::showHelpPage() {
+                QFile::remove("last_game.json");
+            saveLastGame();
     ui->stackedWidget->setCurrentWidget(ui->helpPage);
     if (gameManager && gameStarted && !gameManager->isGamePaused()) {
         gameManager->pauseGame();
@@ -349,6 +352,8 @@ void MainWindow::showHelpPage() {
     }
 }
 void MainWindow::showSettingsPage() {
+                QFile::remove("last_game.json");
+            saveLastGame();
     ui->stackedWidget->setCurrentWidget(ui->settingsPage);
     if (gameManager && gameStarted && !gameManager->isGamePaused()) {
         gameManager->pauseGame();
@@ -370,25 +375,25 @@ void MainWindow::playBgm(BgmType type) {
     }
     switch (type) {
     case BgmType::StartPage:
-        bgmPlayer->setSource(QUrl("qrc:/Resource/1.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/startPage.mp3"));
         break;
     case BgmType::Trapped0:
-        bgmPlayer->setSource(QUrl("qrc:/Resource/2.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/trapped0.mp3"));
         break;
     case BgmType::Trapped1:
-        bgmPlayer->setSource(QUrl("qrc:/Resource/3.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/trapped1.mp3"));
         break;
     case BgmType::DeadEnd:
-        bgmPlayer->setSource(QUrl("qrc:/Resource/4.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/deadEnd.mp3"));
         break;
     case BgmType::LostEnd:
-        bgmPlayer->setSource(QUrl("qrc:/Resource/5.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/lostEnd.mp3"));
         break;
     case BgmType::TrueEnd:
-        bgmPlayer->setSource(QUrl("qrc:/Resource/6.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/trueEnd.mp3"));
         break;
     case BgmType::FakeEnd:
-        bgmPlayer->setSource(QUrl("qrc:/Resource/7.mp3"));
+        bgmPlayer->setSource(QUrl("qrc:/Resource/fakeEnd.mp3"));
         break;
     default:
         bgmPlayer->setSource(QUrl());
@@ -726,6 +731,8 @@ void MainWindow::showEdPage(){//ED鉴赏
 
 
 void MainWindow::goBackToStartPage(){//返回标题
+                QFile::remove("last_game.json");
+            saveLastGame();
     if (gameManager && gameStarted) {
         lastGameBgm = currentBgm;
         gameManager->pauseGame(); 
@@ -1159,14 +1166,14 @@ void MainWindow::updateEndingButtonsAndCounter() {
     QTextBrowser* helpTextBrowser = findChild<QTextBrowser*>("textBrowser");
     if (helpTextBrowser) {
         QString html = R"(
-<p align="center"><span style="font-weight:700;">我是幽灵</span></p>
-<p align="center"><span style="font-weight:700;">在这个游戏中似乎是通过WASD移动，空格发射波</span></p>
+<p align="center"><span style="font-weight:700;">通过WASD移动，空格发射波</span></p>
+<p align="center"><span style="font-weight:700;">等倒计时彻底结束</span></p>
 )";
         if (count >= 2) {
-            html += R"(<p align="center"><span style="font-weight:700;">我似乎要尽量多地传送</span></p>)";
+            html += R"(<p align="center"><span style="font-weight:700;">传送达到一定次数</span></p>)";
         }
         if (count >= 3) {
-            html += R"(<p align="center"><span style="font-weight:700;">貌似在左上角与众不同的格子停留会有奇妙发生</span></p>)";
+            html += R"(<p align="center"><span style="font-weight:700;">在迷宫外与众不同的格子停留</span></p>)";
         }
         helpTextBrowser->setHtml(html);
     }
