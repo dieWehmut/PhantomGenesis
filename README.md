@@ -1,6 +1,6 @@
 # PhantomGenesis
 
-原作业提交地(如果号还活着)[https://git.nju.edu.cn/dieWehmut/mygame0]
+[原作业提交地(如果号还活着)](https://github.com/dieWehmut/PhantomGenesis)
 
 <details>
 <summary>目录</summary>
