@@ -1,15 +1,15 @@
 # PhantomGenesis
 
-## 目录
+原作业提交地(如果号还活着)[https://git.nju.edu.cn/dieWehmut/mygame0]
+
+<details>
+<summary>目录</summary>
 
 - [PhantomGenesis](#phantomgenesis)
-  - [目录](#目录)
   - [项目简介](#项目简介)
   - [技术栈](#技术栈)
-  - [构建与运行](#构建与运行)
-    - [环境要求](#环境要求)
-    - [编译步骤](#编译步骤)
-  - [项目结构](#项目结构)
+  - [开发过程](#开发过程)
+  - [类继承关系图：](#类继承关系图)
   - [玩法说明](#玩法说明)
     - [基础操作](#基础操作)
     - [地图与场景机制](#地图与场景机制)
@@ -23,9 +23,10 @@
     - [存档与读档](#存档与读档)
     - [掉落与强化](#掉落与强化)
     - [阶段推进](#阶段推进)
-  - [开发过程](#开发过程)
   - [代码特点](#代码特点)
   - [结局与提示](#结局与提示)
+
+</details>
 
 ## 项目简介
 
@@ -40,47 +41,16 @@ PhantomGenesis 是一个基于 C++ 与 Qt 6 开发的动作冒险游戏。整体
 - 音频模块：Qt Multimedia
 - 核心模块：Qt Core
 - 构建系统：CMake
-- 当前工程名：PhantomGenesis
 
-## 构建与运行
+## 开发过程
 
-### 环境要求
+- 第一阶段：构思玩法，创建地图和可活动单位，完成基本界面。
+- 第二阶段：完善各类单位功能，补充多个界面与按钮，并加入背景音乐。
+- 第三阶段：加入情报系统，实现存档与读档，完成主要设计与数值调整。
+- 第四阶段：进行最终整合、打包与可移植性测试。
 
-- CMake 3.19 或更高版本
-- Qt 6.5 或更高版本
-- 支持 C++ 的编译器
-	- Windows 下可使用 MSVC
-	- 也可使用支持 Qt 6 的 MinGW 或 Clang 工具链
-
-### 编译步骤
-
-1. 克隆仓库
-
-```bash
-git clone <your-repo-url>
-cd mygame0
-```
-
-2. 配置工程
-
-```bash
-cmake -S . -B build
-```
-
-3. 编译项目
-
-```bash
-cmake --build build
-```
-
-4. 运行程序
-
-- 若使用 Qt Creator，可直接打开 CMakeLists.txt 并选择合适的 Kit 构建运行。
-- 若使用命令行构建，生成的可执行文件位于 build 目录对应的构建输出中。
-
-## 项目结构
-
-源代码位于 `src/` 子目录，结构与功能如下：
+<details>
+<summary> 项目结构</summary>
 
 ```text
 mygame0/
@@ -125,7 +95,24 @@ mygame0/
     ├── VisionMaskItem.h
     ├── Wave.cpp
     ├── Wave.h
-    └── Resource/              # 资源文件（图片、音频等）
+    └── Resource/   # 资源文件（图片、音频等）
+```
+</details>
+
+## 类继承关系图：
+
+```mermaid
+classDiagram
+    ActiveObject <|-- Player
+    ActiveObject <|-- Wave
+    ActiveObject <|-- PhantomBase
+    PhantomBase <|-- FlamePhantom
+    PhantomBase <|-- LurkPhantom
+    PhantomBase <|-- King
+    Wave <|-- PlayerWave
+    Wave <|-- FlameWave
+    Wave <|-- LurkWave
+    Wave <|-- KingWave
 ```
 
 ## 玩法说明
@@ -211,14 +198,6 @@ mygame0/
 - 第二阶段推进后，战场压力显著增加
 - 不同阶段的存活、探索与路线选择会影响最终结局
 
-## 开发过程
-
-项目开发大致经历了以下阶段：
-
-1. 第一阶段：构思玩法，创建地图和可活动单位，完成基本界面。
-2. 第二阶段：完善各类单位功能，补充多个界面与按钮，并加入背景音乐。
-3. 第三阶段：加入情报系统，实现存档与读档，完成主要设计与数值调整。
-4. 第四阶段：进行最终整合、打包与可移植性测试。
 
 ## 代码特点
 
