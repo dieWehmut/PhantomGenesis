@@ -16,7 +16,7 @@ CMakeLists.txt.user
 # Clangd / IDE caches
 .qtc_clangd/
 .vs/
-
+.vscode/
 # Temporary files
 *.log
 *.tmp
